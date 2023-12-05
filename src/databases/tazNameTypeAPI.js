@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:3000'; // Replace with your JSON Server URL
-
+import {BASE_URL} from '../params.js'
 
  const  addTazNameType = async (tazNameType) => {
     try {
@@ -10,7 +9,7 @@ const BASE_URL = 'http://localhost:3000'; // Replace with your JSON Server URL
       }
       console.log(JSON.stringify(tazNameType))
       // Add the new TazNameType
-      const response = await fetch("http://localhost:3000/TazNameType", {
+      const response = await fetch(BASE_URL + "/TazNameType", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

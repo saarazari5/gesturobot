@@ -1,6 +1,8 @@
+import {BASE_URL} from '../params.js'
+
 function addTaggerJson(newTagger) {
   // get the current maximum ID
-  fetch("http://localhost:3000/taggers")
+  fetch(BASE_URL + "/taggers")
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -9,7 +11,7 @@ function addTaggerJson(newTagger) {
       const nextId = maxId + 1;
 
       // add the new gesture with the next ID
-      fetch("http://localhost:3000/taggers", {
+      fetch(BASE_URL + "/taggers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

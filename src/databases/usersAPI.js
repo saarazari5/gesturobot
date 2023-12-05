@@ -1,5 +1,7 @@
+import {BASE_URL} from '../params.js'
+
 export const getUsers = async () => {
-  return fetch("http://localhost:3000/users")
+  return fetch(BASE_URL + "/users")
     .then((response) => response.json())
     .catch((error) => console.log("Error fetching gestures:", error));
 };
