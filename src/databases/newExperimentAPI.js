@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { mapEnglishToHebrew , mapHebrewToEnglish} from "./emotions";
+import {BASE_URL} from '../params.js'
+
 
 function addGestureEx(newGesture) {
   return new Promise((resolve, reject) => {
     // Get the current maximum ID
-    fetch("http://localhost:3000/newExperiment")
+    fetch(BASE_URL + "/newExperiment")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -12,7 +14,7 @@ function addGestureEx(newGesture) {
         // Add 1 to the maximum ID to get the next ID for the new gesture
         const nextId = maxId + 1;
         // Add the new gesture with the next ID
-        fetch("http://localhost:3000/newExperiment", {
+        fetch(BASE_URL + "/newExperiment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -38,17 +40,17 @@ function addGestureEx(newGesture) {
 
 
   function getAllGesturesEx() {
-    return fetch("http://localhost:3000/newExperiment")
+    return fetch(BASE_URL + "/newExperiment")
       .then((response) => response.json())
       .catch((error) => console.log("Error fetching gestures:", error));
   }
 
   async function deleteAllExperiments() {
-    fetch('http://localhost:3000/newExperiment')
+    fetch(BASE_URL + "/newExperiment")
       .then(response => response.json())
       .then(experiments => {
         experiments.forEach(experiment => {
-          fetch(`http://localhost:3000/newExperiment/${experiment.id}`, {
+          fetch(BASE_URL + '/newExperiment/' + experiment.id, {
             method: 'DELETE'
           })
           .catch((error) => console.log(`Error deleting experiment ${experiment.id}:`, error));
@@ -58,7 +60,7 @@ function addGestureEx(newGesture) {
   }
 
   function deleteExperiment(experimentId) {
-    fetch(`http://localhost:3000/newExperiment/${experimentId}`, {
+    fetch(BASE_URL + '/newExperiment/' + experimentId, {
       method: 'DELETE'
     })
       .then(response => {

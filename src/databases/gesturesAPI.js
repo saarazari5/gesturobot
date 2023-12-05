@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
+import {BASE_URL} from '../params.js'
 
 function getAllGestures() {
-  return fetch("http://localhost:3000/gestures")
+  return fetch(BASE_URL + "/gestures")
     .then((response) => response.json())
     .catch((error) => console.log("Error fetching gestures:", error));
 }
 
 function getGestureById(id) {
-  return fetch(`http://localhost:3000/gestures/${id}`)
+  return fetch(BASE_URL + '/gestures/' + id)
     .then((response) => response.json())
     .catch((error) => console.log("Error fetching gesture:", error));
 }
 
 function editGesture(id, updatedGesture) {
-  return fetch(`http://localhost:3000/gestures/${id}`, {
+  return fetch(BASE_URL + '/gestures/' + id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -26,14 +27,14 @@ function editGesture(id, updatedGesture) {
 
 function addGestureJson(newGesture) {
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:3000/gestures")
+    fetch(BASE_URL + "/gestures")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
         const nextId = maxId + 1;
         
-        fetch("http://localhost:3000/gestures", {
+        fetch(BASE_URL + "/gestures", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,7 +57,7 @@ function addGestureJson(newGesture) {
 
 function deleteGesture(id) {
   // send a DELETE request to delete the gesture with the given ID
-  fetch(`http://localhost:3000/gestures/${id}`, {
+  fetch(BASE_URL + '/gestures/' + id, {
     method: "DELETE",
   }).then(() => {
     // update the gestures state by removing the deleted gesture
