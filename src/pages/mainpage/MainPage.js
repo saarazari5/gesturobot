@@ -6,6 +6,7 @@ function MainPage() {
   let navigate = useNavigate();
 
   const moveToGestureManagement = () => {
+    /*navigate("/GestureManagement");*/
     navigate("/UserLogin");
   };
 
