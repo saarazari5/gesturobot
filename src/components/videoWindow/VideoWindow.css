@@ -29,6 +29,11 @@
     margin-right: 10px; 
   } */
 
+  
+  .App {
+    text-align: center;
+  }  
+
   .combined-video video{
     background-color: rgb(224, 223, 223);
     width: 500px;
