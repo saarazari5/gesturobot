@@ -34,6 +34,7 @@ const CreateNewGesture = (props) => {
   const [movements, setMovements] = useState([]);
   const [series, setSeries] = useState([]);
   const [selectedEmotion, setSelectedEmotion] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState("");
   const { language } = useContext(LanguageContext);
 
   let navigate = useNavigate();
@@ -127,6 +128,10 @@ const CreateNewGesture = (props) => {
     },
   });
 
+  const handleGroupChange = (event) => {
+    setSelectedGroup(event.target.value); // Update selected group when user makes a selection
+  };
+
   const addGesture = async () => {
     if (series.length === 0) {
       //here add the code that dent message to the user
@@ -148,6 +153,7 @@ const CreateNewGesture = (props) => {
       movements: series.map((movement) => movement.id),
       creator: [props.name, parseInt(props.type), props.Taz],
       labels: [],
+      group: selectedGroup
     };
 
     console.log(newGesture)
@@ -330,6 +336,16 @@ const CreateNewGesture = (props) => {
                 </div>
               </div>
             </div>
+            <label>
+              {translate("Select a group")}: {/* Label for group selection */}
+              <select value={selectedGroup} onChange={handleGroupChange}>
+                {/* Dropdown for group selection */}
+                <option value="group1">Group 1</option>
+                <option value="group2">Group 2</option>
+                <option value="group3">Group 3</option>
+                {/* Add more options as needed */}
+              </select>
+            </label>
           </div>
         </div>
       )}

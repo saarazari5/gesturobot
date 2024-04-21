@@ -23,7 +23,7 @@ function UserLogin() {
   }
 
   const moveToGestureManagement = () => {
-    navigate("/MainPage");
+    navigate("/GestureManagement");
   };
 
   const HandleLogin = async (event) => {
