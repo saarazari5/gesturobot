@@ -19,6 +19,7 @@ function CreateNewExperiment({id}) {
   const [errorMessage, setErrorMessage] = useState('');
   const [Taz, setTaz] = useState("");
   const [type, setType] = useState("");
+  const [group, setGroup] = useState("");
   const [hoveredGestureId, setHoveredGestureId] = useState(null);
   const [gestures, setGestures] = useState([]);
   const [showCreateNewGesture, setShowCreateNewGesture] = useState(false);
@@ -28,6 +29,10 @@ function CreateNewExperiment({id}) {
     if (isLocked) return;
     setName(event.target.value);
   };
+
+  const handleGroupChange = async (event) => {
+    setGroup(event.target.value);
+  }
 
   const handleTazChange = async (event) => {
     if (isLocked) return;
@@ -76,6 +81,7 @@ function CreateNewExperiment({id}) {
         setName(gestureToEdit.creator[0])
         setType(gestureToEdit.creator[1])
         setTaz(gestureToEdit.creator[2])
+        setGroup(gestureToEdit.creator[3])
         console.log(gestureToEdit)
       }
     };
@@ -225,6 +231,7 @@ function CreateNewExperiment({id}) {
                   type={type}
                   Taz={Taz}
                   gesture={id}
+                  group={group}
                   CreateNewGesture = {showCreateNewGesture}
                   handleSubmit = {handleSubmit}
                   setGestures = {setGestures}
