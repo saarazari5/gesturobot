@@ -1,0 +1,54 @@
+
+/* Add this CSS to your stylesheet */
+/* .video-container {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    overflow-x: auto;
+  }
+   */
+  /* .side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 200px; 
+    background-color: #f0f0f0; 
+    z-index: 1; 
+  } */
+  
+  /* .video-container video {
+    width: 100px; 
+    margin-right: 10px; 
+  } */
+
+  
+  .App {
+    text-align: center;
+  }  
+
+  .combined-video video{
+    background-color: rgb(224, 223, 223);
+    width: 500px;
+    height: 300px;
+  }
+  
+  .combined-video video{
+    padding: 10px;
+    width: 400px;
+    height: 250px;
+    margin-top: 3%;
+  }
+  
+  .drop-area {
+    border-left: 1px dashed black;
+    margin-left: 20px;
+  }
+  
