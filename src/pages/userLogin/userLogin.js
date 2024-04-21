@@ -18,8 +18,12 @@ function UserLogin() {
     setPassword(event.target.value);
   };
 
+  const handleGuestUser = () => {
+    navigate("/LabelFeedBack");
+  }
+
   const moveToGestureManagement = () => {
-    navigate("/GestureManagement");
+    navigate("/MainPage");
   };
 
   const HandleLogin = async (event) => {
@@ -49,8 +53,9 @@ function UserLogin() {
   return (
     <Translations>
       {({ translate }) => (
-        <div class="container">
+        <div id = "login-container" class="container">
           <form onSubmit={HandleLogin} class="login-form">
+          <label id="loginTitle">GestuRobot</label>
             <div>
               <label htmlFor="username-input">{translate("Username")}</label>
               <input
@@ -72,8 +77,14 @@ function UserLogin() {
               />
             </div>
             {errorMessage && <div class="error-message">{errorMessage}</div>}
-            <button type="submit">{translate("Login")}</button>
+            <div>
+                <button type="submit">{"Login"}</button>
+            </div>
+            <div>
+                 <button onClick={handleGuestUser} id="btn-guest">{"sign in as guest"}</button>
+            </div> 
           </form>
+          
         </div>
       )}
     </Translations>

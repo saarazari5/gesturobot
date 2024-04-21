@@ -5,6 +5,17 @@ body {
   background-color: #f1f1f1;
 }
 
+#loginTitle {
+  font-size: x-large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  margin-bottom: 16px;
+}
+
+#login-container {
+  background-color: transparent !important;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -16,6 +27,22 @@ body {
   display: block;
   margin: 0 auto;
   max-width: 200px;
+}
+
+#btn-guest {
+  margin-top: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent; /* No background */
+  color: #007BFF; /* Bootstrap's default link color for consistency */
+  font-size: 16px; /* Reasonable font size */
+  text-decoration: underline; /* Underline to suggest it is clickable */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#btn-guest:hover {
+  color: #0056b3; /* Darker blue on hover */
 }
 
 form {
