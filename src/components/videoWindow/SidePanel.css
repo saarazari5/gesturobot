@@ -1,0 +1,66 @@
+/* SidePanel.css */
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f0f0f0;
+  }
+  
+  .slide-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f0f0f0;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  .slide-window.open {
+    left: 250px; /* Slide in when open */
+  }
+  
+  .slide-window.closed {
+    left: 0; /* Slide out when closed */
+  }
+  
+  .slide-window-content {
+    padding: 20px;
+  }
+  
+  .toggle-slide-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  /* SidePanel.css */
+
+/* Other styles... */
+
+.draggable-item {
+    height: 120px;
+    width: 150px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .draggable-item:hover {
+    background-color: #ccc;
+  }
+
+  p {
+    margin: 0px;
+  }
+
+  .text-movements-library{
+    text-align: left; /* Or any other alignment you want */
+    padding: 7px;
+  }
+  
+  
