@@ -12,9 +12,9 @@ export const LanguageSwitcher = () => {
     <nav id="nav" className="navbar" style={{ position: '' }}>
       <Link to="/">
         <img
-          src="/logo3.png"
-          height="75"
-          style={{ marginLeft: '10px' }}
+          src="/home.png"
+          height="30"
+          style={{ marginLeft: '25px' }}
           className="d-inline-block align-top"
           alt=""
         />

@@ -34,7 +34,7 @@ function App() {
         <LanguageSwitcher />
       </div>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<UserLogin />} />
         <Route path="/createNewExperiment/*" element={<CreateNewExperiment id = {gestureID}/>} />
         <Route path="/CreateNewGesture" element={<CreateNewGesture />} />
         <Route path="/GestureTag" element={<GestureTag />} />
