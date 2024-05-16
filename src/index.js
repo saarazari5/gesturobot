@@ -5,16 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { LanguageProvider } from "./language-management/LanguageContext.js";
+import { AuthProvider } from "./pages/userLogin/AuthContext"; // Import AuthProvider
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <LanguageProvider>
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  </LanguageProvider>
+  <React.StrictMode>
+    <AuthProvider> {/* Wrap with AuthProvider */}
+      <LanguageProvider> {/* Then wrap with LanguageProvider */}
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </LanguageProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
