@@ -19,6 +19,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import CreateNewGesture from "./pages/createNewGesture/createNewGesture";
 import CreateNewExperiment from "./pages/createNewExperiment/createNewExperiment";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   const [gestureID, setGestureID] = useState(0);
@@ -39,7 +40,10 @@ function App() {
         <Route path="/CreateNewGesture" element={<CreateNewGesture />} />
         <Route path="/GestureTag" element={<GestureTag />} />
         <Route path="/UserLogin" element={<UserLogin />} />
-        <Route path="/GestureManagement" element={<GestureManagement setGestureID={setGestureID}/>} />
+        <Route path="/GestureManagement" element={
+                                                  <PrivateRoute>
+                                                    <GestureManagement setGestureID={setGestureID}/>
+                                                  </PrivateRoute>} />
         <Route path="/MovementsLib" element={<MovementsLib />} />
         <Route path="/GestureDisplay" element={<GestureDisplay setGestureID={setGestureID} />} />
         <Route path="/DemographicForm" element={<DemographicForm />} />
