@@ -133,7 +133,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className='VideoContsiner' style={containerStyle}>
       {droppedItems.map((item, index) => (
         <Item key={index} name={item.name} videoUrl={item.videoUrl} index={index} />
       ))}

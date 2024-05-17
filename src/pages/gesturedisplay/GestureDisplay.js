@@ -6,7 +6,7 @@ import { Translations } from "../../language-management/Translations";
 import { Link } from 'react-router-dom';
 
 
-function GestureDisplay({setGestureID}) {
+function GestureDisplay({ setGestureID }) {
 
   const [selectedGesture, setSelectedGesture] = useState('');
   const [selectedGroup, setSelectedGroup] = useState('');
@@ -69,14 +69,14 @@ function GestureDisplay({setGestureID}) {
               </div>
 
               <div className="form-column group-filter">
-              <div className="label-container">
-                <label htmlFor="group-dropdown">{translate('Group:')}</label>
-              </div>
-                  <select
-                    id="group-dropdown"
-                    value={selectedGroup}
-                    onChange={handleGroupChange}
-                  >
+                <div className="label-container">
+                  <label htmlFor="group-dropdown">{translate('Group:')}</label>
+                </div>
+                <select
+                  id="group-dropdown"
+                  value={selectedGroup}
+                  onChange={handleGroupChange}
+                >
                   <option value=""></option>
                   <option value="group1">Group 1</option>
                   <option value="group2">Group 2</option>
@@ -85,10 +85,10 @@ function GestureDisplay({setGestureID}) {
               </div>
             </div>
           </form>
-          {<GestureSection  emotion={selectedGesture} group={selectedGroup} setGestureID={setGestureID}/>}
+          {<GestureSection emotion={selectedGesture} group={selectedGroup} setGestureID={setGestureID} />}
 
-           {/* Container for checkbox and add icon */}
-           <div className="actions-container">
+          {/* Container for checkbox and add icon */}
+          <div className="actions-container">
             {/* Checkbox */}
             <div className="checkbox-container">
               <label>
@@ -102,7 +102,7 @@ function GestureDisplay({setGestureID}) {
             </div>
 
             {/* Add icon */}
-            <Link to="/createNewExperiment" className="add-icon">
+            <Link to="/videoWindow" className="add-icon">
               <img src="/add.png" alt="Add" />
             </Link>
           </div>

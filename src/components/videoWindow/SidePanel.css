@@ -1,66 +1,83 @@
 /* SidePanel.css */
 
 .side-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #f0f0f0;
-  }
-  
-  .slide-window {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #f0f0f0;
-    transition: left 0.3s ease-in-out;
-  }
-  
-  .slide-window.open {
-    left: 250px; /* Slide in when open */
-  }
-  
-  .slide-window.closed {
-    left: 0; /* Slide out when closed */
-  }
-  
-  .slide-window-content {
-    padding: 20px;
-  }
-  
-  .toggle-slide-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-  /* SidePanel.css */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f0f0f0;
+  overflow-y: auto; /* Enable vertical scrolling for the entire side panel */
+}
 
-/* Other styles... */
+.slide-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f0f0f0;
+  transition: left 0.3s ease-in-out;
+}
+
+.slide-window.open {
+  left: 250px; /* Slide in when open */
+}
+
+.slide-window.closed {
+  left: 0; /* Slide out when closed */
+}
+
+.slide-window-content {
+  padding: 20px;
+}
+
+.toggle-slide-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 
 .draggable-item {
-    height: 120px;
-    width: 150px;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-  }
-  
-  .draggable-item:hover {
-    background-color: #ccc;
-  }
+  height: 120px;
+  width: 150px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
 
-  p {
-    margin: 0px;
-  }
+.draggable-item:hover {
+  background-color: #ccc;
+}
 
-  .text-movements-library{
-    text-align: left; /* Or any other alignment you want */
-    padding: 7px;
-  }
-  
-  
+p {
+  margin: 0px;
+  font-size: 15px;
+}
+
+.text-movements-library {
+  text-align: left; /* Or any other alignment you want */
+  padding: 7px;
+}
+
+/* Customize scrollbar */
+.side-panel {
+  scrollbar-width: thin; /* Set scrollbar width */
+  scrollbar-color: #ccc7c7 transparent; /* Set scrollbar thumb color and track color */
+}
+
+/* Position scrollbar on the left */
+.side-panel::-webkit-scrollbar {
+  width: 8px; /* Set scrollbar width */
+  height: 8px; /* Set scrollbar height */
+}
+
+.side-panel::-webkit-scrollbar-thumb {
+  background-color: #888; /* Set scrollbar thumb color */
+  border-radius: 5px; /* Round the scrollbar thumb */
+}
+
+.side-panel::-webkit-scrollbar-track {
+  background-color: transparent; /* Make scrollbar track transparent */
+}
