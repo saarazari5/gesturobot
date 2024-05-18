@@ -57,27 +57,33 @@ p {
 }
 
 .text-movements-library {
-  text-align: left; /* Or any other alignment you want */
+  font-family: 'Montserrat', sans-serif;
+  text-align: right; /* Or any other alignment you want */
   padding: 7px;
 }
 
 /* Customize scrollbar */
-.side-panel {
-  scrollbar-width: thin; /* Set scrollbar width */
-  scrollbar-color: #ccc7c7 transparent; /* Set scrollbar thumb color and track color */
-}
-
-/* Position scrollbar on the left */
 .side-panel::-webkit-scrollbar {
   width: 8px; /* Set scrollbar width */
   height: 8px; /* Set scrollbar height */
 }
 
 .side-panel::-webkit-scrollbar-thumb {
-  background-color: #888; /* Set scrollbar thumb color */
+  background-color: #c5c1c1; /* Set scrollbar thumb color */
   border-radius: 5px; /* Round the scrollbar thumb */
 }
 
 .side-panel::-webkit-scrollbar-track {
   background-color: transparent; /* Make scrollbar track transparent */
+}
+
+/* Position scrollbar on the left */
+.side-panel {
+  direction: rtl;
+}
+
+.side-panel::-webkit-scrollbar {
+  width: 8px; /* Set scrollbar width */
+  height: 8px; /* Set scrollbar height */
+  transform: rotate(180deg);
 }
