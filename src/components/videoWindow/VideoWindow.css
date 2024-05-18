@@ -4,9 +4,13 @@
 
   .combined-video video{
     background-color: rgb(224, 223, 223);
-    width: 400px;
-    height: 200px;
+    position: fixed;
+    top: 5%;
+    left: 30%;
+    width: 600px;
+    height: 350px;
     padding: 10px;
+    box-sizing: content-box;
   }
   
   /* .combined-video video{
@@ -20,5 +24,12 @@
   .drop-area {
     border-left: 1px dashed black;
     margin-left: 20px;
+  }
+
+  .btn{
+    position: absolute;
+    top: 66%;
+    color: black;
+    border-color: black;
   }
   
