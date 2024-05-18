@@ -34,7 +34,7 @@ const SidePanel = () => {
 
   const arrowStyle = {
     position: 'absolute',
-    right: isOpen ? 'calc(100% - 220px)' : '220px', // Move arrow to the right when side panel is open
+    right: isOpen ? 'calc(100% - 235px)' : '220px', // Move arrow to the right when side panel is open
     top: '50%',
     transform: 'translateY(-50%)',
     cursor: 'pointer',
