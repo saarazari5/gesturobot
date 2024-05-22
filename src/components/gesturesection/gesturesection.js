@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './gesturesection.css';
 import { getAllGestures, deleteGesture } from '../../databases/gesturesAPI';
 import LoopOfMovements from '../loopOfMovements/loopOfMovements';
 import { LanguageContext } from '../../language-management/LanguageContext';
 import { useNavigate } from "react-router-dom";
-import CreateNewExperiment from '../../pages/createNewExperiment/createNewExperiment';
 
 function GestureSection(props) {
   let navigate = useNavigate();
   const language = useContext(LanguageContext);
   const [gestures, setGestures] = useState([]);
   const [hoveredGestureId, setHoveredGestureId] = useState(null);
-  const videoRef = useRef(null);
 
   useEffect(() => {
     const fetchGestures = async () => {
@@ -27,20 +25,18 @@ function GestureSection(props) {
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
   };
 
-  const hangleEditGesture = (gestureId) => {
-    props.setGestureID(gestureId)
+  const handleEditGesture = (gestureId) => {
+    props.setGestureID(gestureId);
     navigate("/CreateNewExperiment");
   };
 
   const filteredGestures = gestures.filter(gesture => {
     const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
-    const type = gesture.creator[1] === 0 ? '0' : '1';
     return (
       temp.toLowerCase().includes(props.emotion.toLowerCase()) &&
       gesture.group === props.group
     );
   });
-  
 
   return (
     <div className="row">
@@ -51,24 +47,25 @@ function GestureSection(props) {
           onMouseEnter={() => setHoveredGestureId(gesture.id)}
           onMouseLeave={() => setHoveredGestureId(null)}
         >
-          <div className="card">
-            {hoveredGestureId === gesture.id && (
-              <div className="icon-container">
-              <div className="delete-gesture" onClick={() => handleDeleteGesture(gesture.id)}>
-                &#10006; {/* Delete icon */}
-              </div>
-              <div className="edit-gesture" onClick={()=> hangleEditGesture(gesture.id)}>
-              {String.fromCharCode(9998)} {/* edit icon */} 
-              </div>
-              </div>
-            )}
+          <div className="card-gestureSection">
             <div className="card-video">
               <LoopOfMovements ids={gesture.movements} />
+              <div className="card-title-overlay">
+                <h5 className="card-title">{gesture.name}</h5>
+              </div>
             </div>
-            <div className="card-body">
-              <h5 className="card-title">{gesture.name}</h5>
+              <div className="icon-container">
+                <div className="delete-gesture" onClick={() => handleDeleteGesture(gesture.id)}>
+                  &#10006; {/* Delete icon */}
+                </div>
+                <div className="edit-gesture" onClick={() => handleEditGesture(gesture.id)}>
+                  {String.fromCharCode(9998)} {/* Edit icon */}
+                </div>
+              </div>
+            
+            {/* <div className="card-body">
               <p className="card-text">{gesture.creator[0]}</p>
-            </div>
+            </div> */}
           </div>
         </div>
       ))}
