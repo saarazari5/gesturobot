@@ -62,44 +62,12 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
     const ref = useRef(null);
     drag(drop(ref));
 
-    const frameStyle = {
-      border: '1px solid #ccc',
-      padding: '8px',
-      marginBottom: '10px',
-      transition: 'all 0.3s',
-      opacity,
-    };
-
-    const videoStyle = {
-      width: '130px',
-      height: '100px',
-      marginBottom: '0px',
-    };
-
-    const nameStyle = {
-      margin: '0',
-      marginBottom: '5px',
-    };
-
-    const buttonStyle = {
-      marginLeft: '5px',
-    };
-
-    const containerStyle = {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      transition: 'margin 0.3s',
-    };
-
     return (
-      <div ref={ref} style={{ ...frameStyle, opacity, cursor: 'move' }}>
-        <div style={{ marginBottom: '10px' }}>
-          <video src={videoUrl} controls style={videoStyle} loading="lazy" preload="metadata" />
-        </div>
-        <div style={containerStyle}>
-          <p style={nameStyle}>{name}</p>
-          <button onClick={() => handleRemoveItem(index)} style={buttonStyle}>X</button>
+      <div ref={ref} className={`frameStyle ${isDragging ? 'dragging' : ''}`} style={{ opacity }}>
+        <div className="videoContainer">
+          <video src={videoUrl} controls className="videoStyle" loading="lazy" preload="metadata" />
+          <button onClick={() => handleRemoveItem(index)} className="buttonStyle">X</button>
+          <div className="videoName">{name}</div>
         </div>
       </div>
     );
@@ -115,30 +83,16 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   };
 
   const containerStyle = {
-    position: 'fixed',
-    bottom: '50px',
-    left: '45%',
-    transform: 'translateX(-50%)',
-    padding: '10px',
     backgroundColor: isOver ? 'lightgray' : 'transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    maxWidth: 'calc(100% - 200px)',
-    overflowX: 'auto',
-    zIndex: 2,
-    border: '2px solid black',
-    borderRadius: '5px',
-    marginLeft: '100px',
   };
 
   return (
-    <div style={containerStyle}>
+    <div className='VideoContainer' style={containerStyle}>
       {droppedItems.map((item, index) => (
         <Item key={index} name={item.name} videoUrl={item.videoUrl} index={index} />
       ))}
       {droppedItems.length < MAX_ITEMS && (
-        <div className='drop-area' ref={drop} style={{ padding: '10px', cursor: 'pointer', minWidth: '150px', minHeight: '150px' }}>Drop Here</div>
+        <div className='dropZoneStyle' ref={drop}>Drop Here</div>
       )}
     </div>
   );

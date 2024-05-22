@@ -1,40 +1,95 @@
 .frameStyle {
-    border: 1px solid #ccc;
-    padding: 8px;
-    margin-bottom: 10px;
-    transition: all 0.3s;
-  }
-  
-  .videoStyle {
-    width: 130px;
-    height: 100px;
-    margin-bottom: 0px;
-  }
-  
-  .nameStyle {
-    margin: 0;
-    margin-bottom: 5px;
-  }
-  
-  .buttonStyle {
-    margin-left: 5px;
-  }
-  
-  .containerStyle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: margin 0.3s;
-  }
-  
-  .containerStyle:hover {
-    background-color: lightgray;
-  }
-  
-  .dropZoneStyle {
-    padding: 10px;
-    cursor: pointer;
-    min-width: 150px;
-    min-height: 150px;
-  }
-  
+  border: 1px solid #918d8d;
+  padding: 8px;
+  transition: all 0.3s;
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.frameStyle.dragging {
+  opacity: 0.5;
+}
+
+.videoStyle {
+  width: auto;
+  height: 70px;
+  margin-top: 5px;
+}
+
+.buttonStyle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  background-color: transparent;
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  box-sizing: content-box;
+  margin: 5px;
+  padding: 0px;
+}
+
+.frameStyle:hover .buttonStyle {
+  display: block;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoName {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.frameStyle:hover .videoName {
+  display: block;
+}
+
+.dropZoneStyle {
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 10px;
+  cursor: pointer;
+  min-width: 120px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #8f8c8c;
+}
+
+.VideoContainer {
+  position: fixed;
+  bottom: 50px;
+  left: 55%;
+  transform: translateX(-50%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 200px);
+  overflow-x: auto;
+  z-index: 2;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: auto;
+}
