@@ -1,7 +1,6 @@
 import "./gestureManagement.css";
 import { Translations } from "../../language-management/Translations";
 import { useNavigate } from "react-router-dom";
-import GestureSection from "../../components/gesturesection/gesturesection";
 
 function GestureManagement({setGestureID}) {
   let navigate = useNavigate();
