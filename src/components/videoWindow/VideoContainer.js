@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css'; // Import CSS file
+import { FaSave } from 'react-icons/fa';
+import { FcCheckmark } from "react-icons/fc";
+
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
   const [{ isOver }, drop] = useDrop({
@@ -112,6 +115,12 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
           />
         ))}
       </div>
+      {/* <button className='savebtn btn'>Save</button> */}
+      <button className='savebtn btn'>
+        <FcCheckmark />
+      </button>
+
+
 
     </div>
   );
