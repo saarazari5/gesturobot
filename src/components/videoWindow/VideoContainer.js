@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css'; // Import CSS file
+import LabelModal from './LabelModal'; // Assuming LabelModal is in the same directory
 import { FaSave } from 'react-icons/fa';
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
@@ -89,7 +90,9 @@ const Item = ({ name, videoUrl, index, moveItem, handleRemoveItem, droppedItems 
 
 const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   const MAX_ITEMS = 6;
-  const [showModal, setShowModal] = useState(false); // Fix: Define state variable and its setter
+  const [showModal, setShowModal] = useState(false);
+  const [showLabelModal, setShowLabelModal] = useState(false); // State for label modal
+  const [gestureLabel, setGestureLabel] = useState(''); // State for gesture label
 
   const moveItem = (dragIndex, hoverIndex) => {
     const draggedItem = droppedItems[dragIndex];
@@ -99,8 +102,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
     setDroppedItems(newItems);
   };
 
-  const handleRemoveItem = index => {
-    setDroppedItems(prevItems => prevItems.filter((item, i) => i !== index));
+  const handleRemoveItem = (index) => {
+    setDroppedItems((prevItems) => prevItems.filter((item, i) => i !== index));
   };
 
   const handleSaveClick = () => {
@@ -108,19 +111,27 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   };
 
   const handleConfirm = () => {
-    // Perform save action here
     setShowModal(false);
-    // Example action after confirmation (you can implement your save logic here)
-    alert('Saved successfully!'); // Replace with your actual save logic
+    setShowLabelModal(true); // Show label modal after confirmation
   };
 
   const handleCancel = () => {
     setShowModal(false);
   };
 
+  const handleSaveLabel = (label) => {
+    // Implement your logic to save the label here
+    setGestureLabel(label);
+    setShowLabelModal(false);
+    // Additional logic you might want to execute after saving the label
+    alert(`Gesture labeled as: ${label}`);
+  };
+
+  const canSave = droppedItems.length > 0;
+
   return (
-    <div className='videoContainerWrapper'>
-      <div className='VideoContainer'>
+    <div className="videoContainerWrapper">
+      <div className="VideoContainer">
         {[...Array(MAX_ITEMS)].map((_, index) => (
           <DropZone
             key={index}
@@ -132,15 +143,25 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
           />
         ))}
       </div>
-      <button className='savebtn btn' onClick={handleSaveClick}>
-        <FcCheckmark />
-      </button>
+      {canSave && (
+        <button className="savebtn btn" onClick={handleSaveClick}>
+          <FcCheckmark />
+        </button>
+      )}
 
       {showModal && (
         <ConfirmationModal
-          message='Are you sure you want to save?'
+          message="Are you sure you want to save?"
           onConfirm={handleConfirm}
           onCancel={handleCancel}
+        />
+      )}
+
+      {/* Only show LabelModal if showLabelModal is true */}
+      {showLabelModal && (
+        <LabelModal
+          onSaveLabel={handleSaveLabel}
+          onCancel={() => setShowLabelModal(false)}
         />
       )}
 

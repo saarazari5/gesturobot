@@ -43,4 +43,8 @@
   .modalButton:focus {
     outline: none;
   }
+
+  .lableMessage {
+    margin-bottom: 8px;
+  }
   
