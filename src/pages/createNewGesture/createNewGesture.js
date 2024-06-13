@@ -47,6 +47,7 @@ const CreateNewGesture = (props) => {
       if(props.gesture == 0)
         return;
       gestureToEdit = await getGestureById(gesture)
+      if(!gestureToEdit) { return }
       console.log(gestureToEdit.movements)
       console.log(series.length)
       console.log(gestureToEdit.realLabel)
