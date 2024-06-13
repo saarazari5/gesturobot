@@ -62,7 +62,7 @@ function VideoWindow() {
                     <div className="combined-video">
                         {combineVideos()}
                         <div>
-                            <button type="button" class="btn btn-outline-info" onClick={handleManualPlay}>Play</button>
+                            <button type="button" class="btn btn-outline-info playbtn" onClick={handleManualPlay}>Play</button>
                             {/* <button id='play-button' onClick={handleManualPlay}>Play</button> */}
                         </div>
                     </div>

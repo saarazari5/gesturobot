@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   width: 900px;
-  height: 100px; /* Adjust height as needed */
+  height: 80px; /* Adjust height as needed */
   padding: 10px;
   z-index: 2;
   border: 2px solid black;
@@ -18,7 +18,7 @@
 
 .frameStyle {
   border: 1px solid #918d8d;
-  padding: 8px;
+  padding: 5px;
   transition: all 0.3s;
   position: relative;
   display: flex;
@@ -105,6 +105,40 @@
   align-items: center;
 }
 
-.vbutton {
-  position: flex;
+/* .savebtn {
+  position: absolute;
+  /* bottom: 5px; */
+  /*right: 5%;
+  background-color: rgb(129, 194, 129);
+  max-height: 40px;
+  top: 80% !important;
+} */
+
+.savebtn {
+  position: absolute;
+  right: 5%;
+  top: 80%;
+  background-color: rgb(235, 245, 235);
+  border: 2px solid rgb(136, 202, 136);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transition for transform and background-color */
 }
+
+.savebtn:hover {
+  transform: scale(1.1); /* Scale up by 10% on hover */
+  background-color: transparent; /* Transparent background on hover */
+}
+
+
+
+.savebtn .fa-save {
+  color: white;
+  font-size: 20px;
+}
+
