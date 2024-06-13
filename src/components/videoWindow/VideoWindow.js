@@ -4,6 +4,7 @@ import SidePanel from './SidePanel';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './VideoWindow.css'; // Import CSS file
+import { CiPlay1 } from "react-icons/ci";
 
 function VideoWindow() {
     const [droppedItems, setDroppedItems] = useState([]);
@@ -61,10 +62,13 @@ function VideoWindow() {
                 {droppedItems.length > 0 && (
                     <div className="combined-video">
                         {combineVideos()}
-                        <div>
-                            <button type="button" class="btn btn-outline-info playbtn" onClick={handleManualPlay}>Play</button>
-                            {/* <button id='play-button' onClick={handleManualPlay}>Play</button> */}
+                        <div className="video-play-buttonn" onClick={handleManualPlay}>
+                            <CiPlay1 />
                         </div>
+                        {/* <div className="video-play-button" onClick={handleManualPlay}>
+                            <img src="https://clipart-library.com/clipart/8izrb858T.htm" />
+                        </div> */}
+                        {/* <button type="button" class="btn btn-outline-info playbtn" onClick={handleManualPlay}>Play</button> */}
                     </div>
                 )}
             </div>

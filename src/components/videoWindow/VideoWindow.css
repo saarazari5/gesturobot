@@ -33,3 +33,18 @@
     border-color: black;
   }
   
+  .video-play-buttonn {
+  position: absolute;
+  top: 66%;
+  left: 50% ;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(209, 204, 204, 0.77); */
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid rgb(129 129 129);
+}

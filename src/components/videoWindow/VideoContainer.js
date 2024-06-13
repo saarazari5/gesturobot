@@ -38,9 +38,11 @@ const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemove
           handleRemoveItem={handleRemoveItem}
           droppedItems={droppedItems}
         />
-      ) : (
-        `Frame ${index + 1}`
-      )}
+      ) :
+        (
+          // `Frame ${index + 1}`
+          ' '
+        )}
     </div>
   );
 };
