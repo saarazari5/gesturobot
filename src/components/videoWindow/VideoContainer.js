@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css'; // Import CSS file
 import { FaSave } from 'react-icons/fa';
 import { FcCheckmark } from "react-icons/fc";
+import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
 
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
@@ -88,6 +89,7 @@ const Item = ({ name, videoUrl, index, moveItem, handleRemoveItem, droppedItems 
 
 const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   const MAX_ITEMS = 6;
+  const [showModal, setShowModal] = useState(false); // Fix: Define state variable and its setter
 
   const moveItem = (dragIndex, hoverIndex) => {
     const draggedItem = droppedItems[dragIndex];
@@ -99,6 +101,21 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
 
   const handleRemoveItem = index => {
     setDroppedItems(prevItems => prevItems.filter((item, i) => i !== index));
+  };
+
+  const handleSaveClick = () => {
+    setShowModal(true);
+  };
+
+  const handleConfirm = () => {
+    // Perform save action here
+    setShowModal(false);
+    // Example action after confirmation (you can implement your save logic here)
+    alert('Saved successfully!'); // Replace with your actual save logic
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
   };
 
   return (
@@ -115,12 +132,17 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
           />
         ))}
       </div>
-      {/* <button className='savebtn btn'>Save</button> */}
-      <button className='savebtn btn'>
+      <button className='savebtn btn' onClick={handleSaveClick}>
         <FcCheckmark />
       </button>
 
-
+      {showModal && (
+        <ConfirmationModal
+          message='Are you sure you want to save?'
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
 
     </div>
   );
