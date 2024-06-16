@@ -45,7 +45,7 @@ const SidePanel = () => {
   const sidePanelStyle = {
     width: '200px',
     height: '100%',
-    backgroundColor: 'rgb(224, 223, 223)',
+    backgroundColor: 'white',
     position: 'fixed',
     top: '0',
     left: isOpen ? '0' : '-200px', // Change 'right' to 'left' and adjust positions accordingly

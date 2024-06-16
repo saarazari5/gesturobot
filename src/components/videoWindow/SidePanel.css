@@ -7,9 +7,10 @@
   left: 0;
   width: 250px;
   height: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   overflow-y: auto; /* Enable vertical scrolling for the entire side panel */
   transition: transform 0.3s ease-in-out; /* Use transform for hiding the panel */
+  background-color: #ebfaff !important;
 }
 
 /* Hide the side panel on smaller screens */
@@ -26,8 +27,9 @@
   left: 0;
   width: 250px;
   height: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   transition: left 0.3s ease-in-out;
+  background-color: white !important;
 }
 
 .slide-window.open {
@@ -58,6 +60,7 @@
   cursor: pointer;
   box-sizing: content-box !important;
   border-radius: 15px;
+  background-color: #deeef3  !important;
 }
 
 .draggable-item:hover {

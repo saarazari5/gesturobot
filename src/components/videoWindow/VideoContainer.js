@@ -4,6 +4,8 @@ import './VideoContainer.css'; // Import CSS file
 import LabelModal from './LabelModal'; // Assuming LabelModal is in the same directory
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
+import { FiCheck } from "react-icons/fi";
+
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
   const [{ isOver }, drop] = useDrop({
@@ -144,7 +146,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
       </div>
       {canSave && (
         <button className="savebtn btn" onClick={handleSaveClick}>
-          <FcCheckmark />
+          {/* <FcCheckmark /> */}
+          <FiCheck />
         </button>
       )}
 

@@ -123,9 +123,10 @@
   position: absolute;
   right: 5%;
   bottom: 90px;
+  color: #121212;
   /* top: 80%; */
-  background-color: rgb(235, 245, 235);
-  border: 2px solid rgb(136, 202, 136);
+  background-color: transparent;
+  border: 2px solid rgb(117 117 117);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -138,7 +139,8 @@
 
 .savebtn:hover {
   transform: scale(1.2); /* Scale up by 10% on hover */
-  border: 2px solid rgb(136, 202, 136);
+  color: #005adf;
+  border: 2px solid rgb(63 157 255);
   background-color: transparent; 
 }
 
