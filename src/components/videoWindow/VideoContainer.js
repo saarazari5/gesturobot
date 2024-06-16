@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css'; // Import CSS file
 import LabelModal from './LabelModal'; // Assuming LabelModal is in the same directory
-import { FaSave } from 'react-icons/fa';
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
+import { FiCheck } from "react-icons/fi";
 
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
@@ -15,7 +15,7 @@ const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemove
       setDroppedItems(prevItems => {
         const newItems = [...prevItems];
         newItems[index] = { name, videoUrl };
-        return newItems;
+        return newItems.filter(item => item !== undefined); // Filter out undefined items
       });
     },
     collect: monitor => ({
@@ -31,18 +31,14 @@ const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemove
     >
       {droppedItems[index] ? (
         <Item
-          name={droppedItems[index].name}
-          videoUrl={droppedItems[index].videoUrl}
+          name={droppedItems[index]?.name} // Optional chaining
+          videoUrl={droppedItems[index]?.videoUrl} // Optional chaining
           index={index}
           moveItem={moveItem}
           handleRemoveItem={handleRemoveItem}
           droppedItems={droppedItems}
         />
-      ) :
-        (
-          // `Frame ${index + 1}`
-          ' '
-        )}
+      ) : ' '}
     </div>
   );
 };
@@ -69,7 +65,7 @@ const Item = ({ name, videoUrl, index, moveItem, handleRemoveItem, droppedItems 
       if (dragIndex === hoverIndex) {
         return;
       }
-      if (dragIndex < droppedItems.length) {
+      if (dragIndex < droppedItems.length && droppedItems[dragIndex]) {
         moveItem(dragIndex, hoverIndex);
         item.index = hoverIndex;
       }
@@ -97,15 +93,18 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   const [gestureLabel, setGestureLabel] = useState(''); // State for gesture label
 
   const moveItem = (dragIndex, hoverIndex) => {
-    const draggedItem = droppedItems[dragIndex];
-    const newItems = [...droppedItems];
-    newItems.splice(dragIndex, 1);
+    const newItems = droppedItems.filter(item => item !== undefined); // Filter out undefined items
+    const draggedItem = newItems.splice(dragIndex, 1)[0];
     newItems.splice(hoverIndex, 0, draggedItem);
     setDroppedItems(newItems);
   };
 
   const handleRemoveItem = (index) => {
-    setDroppedItems((prevItems) => prevItems.filter((item, i) => i !== index));
+    setDroppedItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems.splice(index, 1);
+      return newItems.filter(item => item !== undefined); // Filter out undefined items
+    });
   };
 
   const handleSaveClick = () => {
@@ -129,7 +128,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
     alert(`Gesture labeled as: ${label}`);
   };
 
-  const canSave = droppedItems.length > 0;
+  const canSave = droppedItems.some(item => item !== undefined); // Check if there is at least one non-undefined item
 
   return (
     <div className="videoContainerWrapper">
@@ -147,7 +146,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
       </div>
       {canSave && (
         <button className="savebtn btn" onClick={handleSaveClick}>
-          <FcCheckmark />
+          {/* <FcCheckmark /> */}
+          <FiCheck />
         </button>
       )}
 

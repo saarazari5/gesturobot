@@ -1,16 +1,18 @@
   .App {
     text-align: center;
+    box-sizing: content-box !important;
   }  
 
   .combined-video video{
-    background-color: rgb(224, 223, 223);
+    /* background-color: rgb(224, 223, 223); */
     position: fixed;
     top: 5%;
-    left: 30%;
-    width: 600px;
-    height: 350px;
+    left: 27%;
+    /* width: 60%; */
+    height: 60%;
     padding: 10px;
-    box-sizing: content-box;
+    box-sizing: content-box !important;
+    border-radius: 70px;
   }
   
   /* .combined-video video{
@@ -35,7 +37,7 @@
   
   .video-play-buttonn {
   position: absolute;
-  top: 66%;
+  top: 68%;
   left: 50% ;
   width: 40px;
   height: 40px;
@@ -47,4 +49,12 @@
   cursor: pointer;
   border-radius: 20px;
   border: 1px solid rgb(129 129 129);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transition for transform and background-color */
+
+}
+
+.video-play-buttonn:hover {
+  transform: scale(1.2); /* Scale up by 10% on hover */
+  border: 1px solid rgb(129 129 129);
+  background-color: transparent; 
 }

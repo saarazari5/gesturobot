@@ -7,8 +7,18 @@
   left: 0;
   width: 250px;
   height: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   overflow-y: auto; /* Enable vertical scrolling for the entire side panel */
+  transition: transform 0.3s ease-in-out; /* Use transform for hiding the panel */
+  background-color: #ebfaff !important;
+}
+
+/* Hide the side panel on smaller screens */
+@media (max-width: 1145px) {
+  .side-panel {
+    transform: translateX(-100%); /* Move the panel off-screen */
+    display: none; /* Optionally hide the panel completely */
+  }
 }
 
 .slide-window {
@@ -17,8 +27,9 @@
   left: 0;
   width: 250px;
   height: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   transition: left 0.3s ease-in-out;
+  background-color: white !important;
 }
 
 .slide-window.open {
@@ -47,6 +58,9 @@
   padding: 5px 10px;
   background-color: #e0e0e0;
   cursor: pointer;
+  box-sizing: content-box !important;
+  border-radius: 15px;
+  background-color: #deeef3  !important;
 }
 
 .draggable-item:hover {
@@ -89,4 +103,11 @@ p {
   width: 8px; /* Set scrollbar width */
   height: 8px; /* Set scrollbar height */
   transform: rotate(180deg);
+}
+
+/* Hide toggle button on smaller screens */
+@media (max-width: 1145px) {
+  .side-panel {
+    display: none;
+  }
 }

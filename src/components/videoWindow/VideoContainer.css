@@ -6,14 +6,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 900px;
-  height: 80px; /* Adjust height as needed */
+  /* width: 900px; */
+  /* height: 80px; */
+  width: 60%;
+  height: 10%;
   padding: 10px;
   z-index: 2;
   border: 2px solid black;
   border-radius: 5px;
   background-color: white;
   overflow: hidden;
+  box-sizing: content-box !important;
 }
 
 .frameStyle {
@@ -28,6 +31,7 @@
   background-color: #f0f0f0;
   width: 100%;
   height: 100%;
+  box-sizing: content-box !important;
 }
 
 .frameStyle.dragging {
@@ -37,7 +41,8 @@
 .videoStyle {
   width: auto;
   max-width: 100%;
-  /* max-height: 100%; */
+  max-height: 100%;
+  box-sizing: content-box !important;
 }
 
 .buttonStyle {
@@ -117,9 +122,11 @@
 .savebtn {
   position: absolute;
   right: 5%;
-  top: 80%;
-  background-color: rgb(235, 245, 235);
-  border: 2px solid rgb(136, 202, 136);
+  bottom: 90px;
+  color: #121212;
+  /* top: 80%; */
+  background-color: transparent;
+  border: 2px solid rgb(117 117 117);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -131,8 +138,10 @@
 }
 
 .savebtn:hover {
-  transform: scale(1.1); /* Scale up by 10% on hover */
-  background-color: transparent; /* Transparent background on hover */
+  transform: scale(1.2); /* Scale up by 10% on hover */
+  color: #005adf;
+  border: 2px solid rgb(63 157 255);
+  background-color: transparent; 
 }
 
 

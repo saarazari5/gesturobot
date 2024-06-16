@@ -22,17 +22,17 @@ function VideoWindow() {
     };
 
     const combineVideos = () => {
+        const validDroppedItems = droppedItems.filter(item => item !== undefined); // Filter out undefined items
         return (
             <>
                 <video muted ref={combinedVideoRef} onEnded={playNextVideo}>
-                    {droppedItems.map((item, index) => (
+                    {validDroppedItems.map((item, index) => (
                         <source key={index} src={item.videoUrl} type="video/mp4" />
                     ))}
                 </video>
             </>
         );
     };
-
 
     const playNextVideo = () => {
         const nextVideoIndex = currentVideoIndex + 1;
@@ -65,10 +65,6 @@ function VideoWindow() {
                         <div className="video-play-buttonn" onClick={handleManualPlay}>
                             <CiPlay1 />
                         </div>
-                        {/* <div className="video-play-button" onClick={handleManualPlay}>
-                            <img src="https://clipart-library.com/clipart/8izrb858T.htm" />
-                        </div> */}
-                        {/* <button type="button" class="btn btn-outline-info playbtn" onClick={handleManualPlay}>Play</button> */}
                     </div>
                 )}
             </div>
