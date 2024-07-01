@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useDrag } from 'react-dnd';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; // Import arrow icons
 import './SidePanel.css';
-import video1 from './videos/video1.mp4';
-import video2 from './videos/video2.mp4';
-import video3 from './videos/video3.mp4';
 
 const DraggableItem = ({ videoUrl, name }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'draggableItem',
     item: { type: 'draggableItem', videoUrl, name },
-    collect: monitor => ({
+    collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
@@ -26,6 +24,7 @@ const DraggableItem = ({ videoUrl, name }) => {
 const SidePanel = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isArrowToLeft, setIsArrowToLeft] = useState(false);
+  const [videos, setVideos] = useState([]);
 
   const handleToggleSlideWindow = () => {
     setIsOpen(!isOpen);
@@ -54,14 +53,16 @@ const SidePanel = () => {
     overflowY: 'auto', // Add overflow-y property for vertical scrolling
   };
 
-  const videos = [
-    { name: 'jump', url: video1 },
-    { name: 'sit', url: video2 },
-    { name: 'hey', url: video3 },
-    { name: 'jump', url: video1 },
-    { name: 'sit', url: video2 },
-    { name: 'hey', url: video3 },
-  ];
+  useEffect(() => {
+    // Fetch the video data from the JSON server
+    axios.get('http://localhost:3000/movements') // Adjust the URL to your JSON server
+      .then(response => {
+        setVideos(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching video data:', error);
+      });
+  }, []);
 
   return (
     <div className="side-panel">
@@ -71,10 +72,10 @@ const SidePanel = () => {
       <div style={sidePanelStyle} className="slide-window-content">
         {isOpen && (
           <div>
-            <h3 className="text-movements-library">Movemets Library</h3>
+            <h3 className="text-movements-library">Movements Library</h3>
             <div className="video-list">
-              {videos.map((video, index) => (
-                <DraggableItem key={index} videoUrl={video.url} name={video.name} />
+              {videos.map((video) => (
+                <DraggableItem key={video.id} videoUrl={video.videoUrl} name={video.name} />
               ))}
             </div>
           </div>

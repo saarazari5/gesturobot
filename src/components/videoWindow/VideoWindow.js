@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import VideoContainer from './VideoContainer';
 import SidePanel from './SidePanel';
 import { DndProvider } from 'react-dnd';
@@ -7,7 +8,10 @@ import './VideoWindow.css'; // Import CSS file
 import { CiPlay1 } from "react-icons/ci";
 
 function VideoWindow() {
-    const [droppedItems, setDroppedItems] = useState([]);
+    const location = useLocation();
+    const { gesture } = location.state || {}; // Get gesture data from location state
+
+    const [droppedItems, setDroppedItems] = useState(gesture ? gesture.movements : []);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
     const combinedVideoRef = useRef(null);
 
