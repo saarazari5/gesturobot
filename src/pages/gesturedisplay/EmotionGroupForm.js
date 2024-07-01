@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import config from '../../config/config.json'; // Adjust the path according to your project structure
 
-const EmotionGroupForm = ({
-  translate,
-  handleGestureChange,
-  handleGroupChange,
-  selectedGroup,
-}) => {
+const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, selectedGroup }) => {
+  const [emotions, setEmotions] = useState([]);
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    // Load the config data when the component mounts
+    setEmotions(config.emotions);
+    setGroups(config.groups);
+  }, []);
+
   return (
     <form className="form-container">
       <div className="form-row">
@@ -15,36 +20,11 @@ const EmotionGroupForm = ({
           </div>
           <select id="new-gesture-name-3" onChange={handleGestureChange}>
             <option value=""></option>
-            <option value="Joy">Joy</option>
-            <option value="Sadness">Sadness</option>
-            <option value="Anger">Anger</option>
-            <option value="Fear">Fear</option>
-            <option value="Love">Love</option>
-            <option value="Hate">Hate</option>
-            <option value="Guilt">Guilt</option>
-            <option value="Shame">Shame</option>
-            <option value="Envy">Envy</option>
-            <option value="Jealousy">Jealousy</option>
-            <option value="Pride">Pride</option>
-            <option value="Gratitude">Gratitude</option>
-            <option value="Hope">Hope</option>
-            <option value="Despair">Despair</option>
-            <option value="Confusion">Confusion</option>
-            <option value="Curiosity">Curiosity</option>
-            <option value="Surprise">Surprise</option>
-            <option value="Excitement">Excitement</option>
-            <option value="Disappointment">Disappointment</option>
-            <option value="Contentment">Contentment</option>
-            <option value="Loneliness">Loneliness</option>
-            <option value="Nostalgia">Nostalgia</option>
-            <option value="Relief">Relief</option>
-            <option value="Pity">Pity</option>
-            <option value="Boredom">Boredom</option>
-            <option value="Empathy">Empathy</option>
-            <option value="Compassion">Compassion</option>
-            <option value="Apathy">Apathy</option>
-            <option value="Satisfaction">Satisfaction</option>
-            <option value="Disgust">Disgust</option>
+            {emotions.map((emotion) => (
+              <option key={emotion} value={emotion}>
+                {emotion}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -58,9 +38,11 @@ const EmotionGroupForm = ({
             onChange={handleGroupChange}
           >
             <option value=""></option>
-            <option value="group1">Group 1</option>
-            <option value="group2">Group 2</option>
-            <option value="group3">Group 3</option>
+            {groups.map((group) => (
+              <option key={group} value={group}>
+                {group}
+              </option>
+            ))}
           </select>
         </div>
       </div>
