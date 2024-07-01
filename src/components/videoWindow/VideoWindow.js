@@ -11,7 +11,7 @@ import { getMovements } from "../../databases/movementsAPI";
 
 function VideoWindow() {
     const location = useLocation();
-    const  gesture  = location.state.gestureId || {}; // Get gesture data from location state
+    const gesture = location.state?.gestureId || {};
     console.log("gesture: ", gesture)
     const [movements, setMovements] = useState([]);
 
@@ -25,20 +25,20 @@ function VideoWindow() {
 
     useEffect(() => {
         const fetchMovements = async () => {
-          try {
-            console.log("gesture: ", gesture);
-            const fetchedMovements = await getMovements();
-            const dropped = gesture.movements.map(movementID => {
-                return fetchedMovements.find(movement => movement.id === movementID);
-            });
-            setDroppedItems(dropped);
-          } catch (error) {
-            console.error("Failed to fetch movements:", error);
-          }
+            try {
+                console.log("gesture: ", gesture);
+                const fetchedMovements = await getMovements();
+                const dropped = gesture.movements.map(movementID => {
+                    return fetchedMovements.find(movement => movement.id === movementID);
+                });
+                setDroppedItems(dropped);
+            } catch (error) {
+                console.error("Failed to fetch movements:", error);
+            }
         };
-    
+
         fetchMovements();
-      }, [gesture]);
+    }, [gesture]);
 
     const playCombinedVideos = () => {
         if (combinedVideoRef.current) {
