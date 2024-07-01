@@ -25,9 +25,9 @@ function GestureSection(props) {
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
   };
 
-  const handleEditGesture = (gestureId) => {
-    props.setGestureID(gestureId);
-    navigate("/CreateNewExperiment");
+  const handleEditGesture = (gesture) => {
+    props.setGestureID(gesture.id);
+    navigate("/VideoWindow", { state: { gesture } });
   };
 
   const filteredGestures = gestures.filter(gesture => {
@@ -54,15 +54,15 @@ function GestureSection(props) {
                 <h5 className="card-title">{gesture.name}</h5>
               </div>
             </div>
-              <div className="icon-container">
-                <div className="delete-gesture" onClick={() => handleDeleteGesture(gesture.id)}>
-                  &#10006; {/* Delete icon */}
-                </div>
-                <div className="edit-gesture" onClick={() => handleEditGesture(gesture.id)}>
-                  {String.fromCharCode(9998)} {/* Edit icon */}
-                </div>
+            <div className="icon-container">
+              <div className="delete-gesture" onClick={() => handleDeleteGesture(gesture.id)}>
+                &#10006; {/* Delete icon */}
               </div>
-            
+              <div className="edit-gesture" onClick={() => handleEditGesture(gesture)}>
+                {String.fromCharCode(9998)} {/* Edit icon */}
+              </div>
+            </div>
+
             {/* <div className="card-body">
               <p className="card-text">{gesture.creator[0]}</p>
             </div> */}

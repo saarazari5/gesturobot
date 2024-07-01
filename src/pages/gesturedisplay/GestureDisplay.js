@@ -25,7 +25,7 @@ function GestureDisplay({ setGestureID }) {
 
 
   const handleClick = () => {
-    navigate("/CreateNewGesture");
+    navigate("/videoWindow");
   };
 
 
