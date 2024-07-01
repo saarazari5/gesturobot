@@ -27,7 +27,9 @@ function GestureSection(props) {
 
   const handleEditGesture = (gesture) => {
     props.setGestureID(gesture.id);
-    navigate("/VideoWindow", { state: { gesture } });
+    navigate("/VideoWindow", {
+      state: { gestureId: gesture },
+    });
   };
 
   const filteredGestures = gestures.filter(gesture => {

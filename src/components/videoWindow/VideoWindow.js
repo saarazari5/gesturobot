@@ -6,18 +6,39 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './VideoWindow.css'; // Import CSS file
 import { CiPlay1 } from "react-icons/ci";
+import { getMovements } from "../../databases/movementsAPI";
+
 
 function VideoWindow() {
     const location = useLocation();
-    const { gesture } = location.state || {}; // Get gesture data from location state
+    const  gesture  = location.state.gestureId || {}; // Get gesture data from location state
+    console.log("gesture: ", gesture)
+    const [movements, setMovements] = useState([]);
 
-    const [droppedItems, setDroppedItems] = useState(gesture ? gesture.movements : []);
+    const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
     const combinedVideoRef = useRef(null);
 
     useEffect(() => {
         playCombinedVideos(); // Autoplay combined videos when dropped items change
     }, [droppedItems]);
+
+    useEffect(() => {
+        const fetchMovements = async () => {
+          try {
+            console.log("gesture: ", gesture);
+            const fetchedMovements = await getMovements();
+            const dropped = gesture.movements.map(movementID => {
+                return fetchedMovements.find(movement => movement.id === movementID);
+            });
+            setDroppedItems(dropped);
+          } catch (error) {
+            console.error("Failed to fetch movements:", error);
+          }
+        };
+    
+        fetchMovements();
+      }, [gesture]);
 
     const playCombinedVideos = () => {
         if (combinedVideoRef.current) {
