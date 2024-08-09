@@ -37,7 +37,12 @@ const LoopOfMovements = (props) => {
     if (!isFirstVideoPlayed) {
       setIsFirstVideoPlayed(true);
     }
-    videoRef.current.play();
+    const playPromise = videoRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.error("Error attempting to play video:", error);
+      });
+    }
   };
 
   useEffect(() => {
@@ -52,8 +57,12 @@ const LoopOfMovements = (props) => {
       ((currentVideoIndex === 0 && !isFirstVideoPlayed) ||
         currentVideoIndex !== 0)
     ) {
-      videoRef.current.play();
-      return;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Error attempting to play video:", error);
+        });
+      }
     }
   }, [currentVideoIndex, isFirstVideoPlayed]);
 
@@ -62,7 +71,10 @@ const LoopOfMovements = (props) => {
       <div className="video-container">
         {isPlaying ? null : (
           <div className="video-play-button" onClick={handleButtonClick}>
-          <img src="http://clipart-library.com/images_k/white-play-button-transparent/white-play-button-transparent-14.png" /> 
+            <img
+              src="http://clipart-library.com/images_k/white-play-button-transparent/white-play-button-transparent-14.png"
+              alt="Play"
+            />
           </div>
         )}
 
