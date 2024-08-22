@@ -3,7 +3,7 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin: 15px; /* Adjust the margin as needed */
+  /*margin: 15px; /* Adjust the margin as needed */
 }
 
 .col-3 {

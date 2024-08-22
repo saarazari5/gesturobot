@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Center content vertically */
+    padding: 3% 15%;
+    background-color: whitesmoke;
+    height: 100vh;  /* Take full viewport height */
+    width: 100vw;   /* Take full viewport width */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+#login-screen-container {
+    max-width: 650px;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.login-row {
+    border: 0px;
+    border-radius: 20px;
+    box-shadow: 12px 7px 15px #ebfaff;
+    z-index: 1;
+}
+
+#login-col {
+    padding: 0% 10% 0% 10%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: white;
+}
