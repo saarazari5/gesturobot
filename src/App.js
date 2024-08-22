@@ -4,7 +4,8 @@ import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/mainpage/MainPage";
-import UserLogin from "./pages/userLogin/userLogin";
+// import UserLogin from "./pages/userLogin/userLogin";
+import Login from "./pages/userLogin/Login";
 import MovementsLib from "./pages/movementslib/movementslib";
 import GestureTag from "./pages/gesturetag/gesturetag";
 import GestureManagement from "./pages/gesturemanagement/gesturemanagement";
@@ -36,11 +37,11 @@ function App() {
         <LanguageSwitcher />
       </div>
       <Routes>
-        <Route path="/" element={<UserLogin />} />
+        <Route path="/" element={<Login />} />
         <Route path="/createNewExperiment/*" element={<CreateNewExperiment id={gestureID} />} />
         <Route path="/CreateNewGesture" element={<CreateNewGesture />} />
         <Route path="/GestureTag" element={<GestureTag />} />
-        <Route path="/UserLogin" element={<UserLogin />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/GestureManagement" element={
                                                   <PrivateRoute>
                                                     <GestureManagement setGestureID={setGestureID}/>
