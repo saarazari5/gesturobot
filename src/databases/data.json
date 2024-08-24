@@ -246,7 +246,9 @@
       "hebrewName": "צעידה במקום",
       "videoUrl": "../../movements/18.mp4"
     },
-    {}
+    {
+      "id": "c362"
+    }
   ],
   "gestures": [
     {
@@ -457,29 +459,6 @@
       ],
       "labels": [],
       "group": ""
-    },
-    {
-      "id": 35,
-      "name": "New Gesture",
-      "realLabel": [
-        "Gratitude",
-        "תודה"
-      ],
-      "movements": [
-        "2",
-        "4",
-        "6",
-        "8",
-        "5",
-        "9"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": ""
     }
   ],
   "users": [
@@ -646,29 +625,6 @@
         "121212121"
       ],
       "labels": []
-    },
-    {
-      "id": 1,
-      "name": "New Gesture",
-      "realLabel": [
-        "Gratitude",
-        "תודה"
-      ],
-      "movements": [
-        "2",
-        "4",
-        "6",
-        "8",
-        "5",
-        "9"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": ""
     }
   ],
   "TazNameType": [
