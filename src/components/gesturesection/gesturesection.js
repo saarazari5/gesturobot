@@ -14,6 +14,7 @@ function GestureSection(props) {
   useEffect(() => {
     const fetchGestures = async () => {
       const data = await getAllGestures();
+      console.log(data);
       setGestures(data);
     };
 
@@ -35,8 +36,8 @@ function GestureSection(props) {
   const filteredGestures = gestures.filter(gesture => {
     const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
     return (
-      temp.toLowerCase().includes(props.emotion.toLowerCase()) &&
-      gesture.group === props.group
+      temp.toLowerCase().includes(props.emotion.toLowerCase())
+      // gesture.group === props.group
     );
   });
 
