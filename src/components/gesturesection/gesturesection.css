@@ -1,55 +1,42 @@
-/* gesturesection.css */
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  /*margin: 15px; /* Adjust the margin as needed */
-}
-
-.col-3 {
-  flex: 0 0 25%; /* Adjust the flex properties as needed */
-  max-width: 25%; /* Adjust the maximum width as needed */
-  padding: 15px; /* Adjust the padding as needed */
-}
-
-.card-gestureSection {
-  position: absolute;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden; /* Ensure content doesn't overflow the card */
-}
-
-.card .embed-responsive {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
+.card-video {
+  position: relative; /* Ensure child elements are positioned relative to this container */
   overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid #ccc;
 }
 
-.card .embed-responsive video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* Position icons inside the video/image */
 .icon-container {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
   display: flex;
-  gap: 16px;
-  z-index: 10; /* Ensure icons are on top of the video */
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for icons */
-  border-radius: 5px;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.8); /* Optional: background for better visibility */
   padding: 5px;
+  border-radius: 15px;
 }
 
 .delete-gesture,
-.edit-gesture {
+.edit-gesture,
+.info-gesture {
   cursor: pointer;
+  color: #333; /* Icon color */
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30; /* Ensure it's above the video but below icons */
+
+  border-radius: 80%; /* Circular buttons */
+  background: rgba(255, 255, 255, 0.7); /* Optional: subtle background for buttons */
+  transition: background 0.3s ease;
+}
+
+.delete-gesture:hover,
+.edit-gesture:hover,
+.info-gesture:hover {
+  background: rgba(255, 255, 255, 1); /* Highlight on hover */
 }
 
 .card-title-overlay {
@@ -60,16 +47,5 @@
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
-  z-index: 10; /* Ensure title is on top of the video but below icons */
-}
-
-.card-video {
-  position: relative;
-  z-index: 1;
-}
-
-.card-body {
-  text-align: left;
-  padding: 10px;
-  min-height: 100px;
+  z-index: 10; /* Ensure it's above the video but below icons */
 }
