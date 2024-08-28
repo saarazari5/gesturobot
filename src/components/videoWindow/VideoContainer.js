@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css'; // Import CSS file
 import LabelModal from './LabelModal'; // Assuming LabelModal is in the same directory
+import NameModal from './NameModal';
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
 import { FiCheck } from "react-icons/fi";
-
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
   const [{ isOver }, drop] = useDrop({
@@ -91,6 +91,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   const [showModal, setShowModal] = useState(false);
   const [showLabelModal, setShowLabelModal] = useState(false); // State for label modal
   const [gestureLabel, setGestureLabel] = useState(''); // State for gesture label
+  const [gestureName, setGestureName] = useState(''); // State for gesture name
+  const [showNameModal, setShowNameModal] = useState(false); // State for name modal
 
   const moveItem = (dragIndex, hoverIndex) => {
     const newItems = droppedItems.filter(item => item !== undefined); // Filter out undefined items
@@ -121,11 +123,16 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   };
 
   const handleSaveLabel = (label) => {
-    // Implement your logic to save the label here
     setGestureLabel(label);
     setShowLabelModal(false);
-    // Additional logic you might want to execute after saving the label
-    alert(`Gesture labeled as: ${label}`);
+    setShowNameModal(true); // Show name modal after saving the label
+  };
+
+  const handleSaveName = (name) => {
+    setGestureName(name);
+    setShowNameModal(false);
+    // Now you have both label and name, implement your logic here
+    alert(`Gesture labeled as: ${gestureLabel}, named as: ${name}`);
   };
 
   const canSave = droppedItems.some(item => item !== undefined); // Check if there is at least one non-undefined item
@@ -164,6 +171,13 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
         <LabelModal
           onSaveLabel={handleSaveLabel}
           onCancel={() => setShowLabelModal(false)}
+        />
+      )}
+
+      {showNameModal && (
+        <NameModal
+          onSaveName={handleSaveName}
+          onCancel={() => setShowNameModal(false)}
         />
       )}
 

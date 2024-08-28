@@ -14,9 +14,14 @@
   margin: 0 auto;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
+
+.card1:hover {
+  transform: scale(1.05); /* Scale the card slightly when hovered */
+}
+
 .face {
   position: absolute;
   bottom: 0;
