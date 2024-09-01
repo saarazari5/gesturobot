@@ -96,8 +96,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
   const MAX_ITEMS = 6;
   const [showModal, setShowModal] = useState(false);
   const [showLabelModal, setShowLabelModal] = useState(false);
-  const [gestureLabel, setGestureLabel] = useState('');
-  const [gestureName, setGestureName] = useState('');
+  const [gestureLabel, setGestureLabel] = useState(initialLabel);
+  const [gestureName, setGestureName] = useState(initialName);
   const [showNameModal, setShowNameModal] = useState(false);
   let navigate = useNavigate();
 
