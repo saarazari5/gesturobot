@@ -4,10 +4,10 @@ import { useDrag } from 'react-dnd';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; // Import arrow icons
 import './SidePanel.css';
 
-const DraggableItem = ({ videoUrl, name }) => {
+const DraggableItem = ({ id, videoUrl, name }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'draggableItem',
-    item: { type: 'draggableItem', videoUrl, name },
+    item: { type: 'draggableItem', id, videoUrl, name },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -53,7 +53,7 @@ const SidePanel = () => {
             <h3 className="text-movements-library">Movements<br />Library</h3>
             <div className="video-list">
               {videos.map((video) => (
-                <DraggableItem key={video.id} videoUrl={video.videoUrl} name={video.name} />
+                <DraggableItem id={video.id} videoUrl={video.videoUrl} name={video.name} />
               ))}
             </div>
           </div>

@@ -12,7 +12,6 @@ import { getMovements } from "../../databases/movementsAPI";
 function VideoWindow() {
     const location = useLocation();
     const gesture = location.state?.gestureId || {};
-    console.log("gesture: ", gesture)
     const [movements, setMovements] = useState([]);
 
     const [droppedItems, setDroppedItems] = useState([]);
@@ -26,7 +25,6 @@ function VideoWindow() {
     useEffect(() => {
         const fetchMovements = async () => {
             try {
-                console.log("gesture: ", gesture);
                 const fetchedMovements = await getMovements();
                 const dropped = gesture.movements.map(movementID => {
                     return fetchedMovements.find(movement => movement.id === movementID);
@@ -75,6 +73,7 @@ function VideoWindow() {
             combinedVideoRef.current.play(); // Start playing the combined video
         }
     };
+    console.log("dropped", droppedItems);
 
     return (
         <DndProvider backend={HTML5Backend}>
