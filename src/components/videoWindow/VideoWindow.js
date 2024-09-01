@@ -7,13 +7,12 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import './VideoWindow.css'; // Import CSS file
 import { CiPlay1 } from "react-icons/ci";
 import { getMovements } from "../../databases/movementsAPI";
-
+import { Translations } from "../../language-management/Translations";
 
 function VideoWindow() {
     const location = useLocation();
     const gesture = location.state?.gestureId || {};
     const [movements, setMovements] = useState([]);
-
     const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
     const combinedVideoRef = useRef(null);
@@ -80,27 +79,30 @@ function VideoWindow() {
     console.log("dropped", droppedItems);
 
     return (
-        <DndProvider backend={HTML5Backend}>
-            <div className="App">
-                <SidePanel />
-                <VideoContainer
-                    droppedItems={droppedItems}
-                    setDroppedItems={setDroppedItems}
-                    existingGestureId={gesture.id} // Pass gesture ID or null
-                    initialName={gesture.name || ''} // Use empty string if name is undefined
-                    initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''} // Default to empty string if undefined
-                />
-
-                {droppedItems.length > 0 && (
-                    <div className="combined-video">
-                        {combineVideos()}
-                        <div className="video-play-buttonn" onClick={handleManualPlay}>
-                            <CiPlay1 />
-                        </div>
+        <Translations>
+            {({ translate }) => (
+                <DndProvider backend={HTML5Backend}>
+                    <div className="App">
+                        <SidePanel />
+                        <VideoContainer
+                            droppedItems={droppedItems}
+                            setDroppedItems={setDroppedItems}
+                            existingGestureId={gesture.id} // Pass gesture ID or null
+                            initialName={gesture.name || ''} // Use empty string if name is undefined
+                            initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''} // Default to empty string if undefined
+                        />
+                        {droppedItems.length > 0 && (
+                            <div className="combined-video">
+                                {combineVideos()}
+                                <div className="video-play-buttonn" onClick={handleManualPlay}>
+                                    <CiPlay1 />
+                                </div>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-        </DndProvider>
+                </DndProvider>
+            )}
+        </Translations>
     );
 }
 

@@ -6,6 +6,7 @@ import { LanguageContext } from '../../language-management/LanguageContext';
 import { useNavigate } from "react-router-dom";
 import { Tooltip, IconButton } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal'; // Import the modal component
+import { Translations } from '../../language-management/Translations';
 
 function GestureSection(props) {
   let navigate = useNavigate();
@@ -27,7 +28,7 @@ function GestureSection(props) {
   }, []);
 
   const handleDeleteGesture = async (gestureId) => {
-    deleteGesture(gestureId);
+    await deleteGesture(gestureId);
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
   };
 
@@ -65,48 +66,51 @@ function GestureSection(props) {
   });
 
   return (
-    <div className="row">
-      {filteredGestures.map(gesture => (
-        <div
-          className="col-lg-4 col-sm-6 col-12 mb-4"
-          key={gesture.id}
-          onMouseEnter={() => setHoveredGestureId(gesture.id)}
-          onMouseLeave={() => setHoveredGestureId(null)}
-        >
-          <div className="card-video">
-            <div className="icon-container">
-              <div className="delete-gesture" onClick={() => confirmDeleteGesture(gesture.id)}>
-                &#10006; {/* Delete icon */}
-              </div>
-              <div className="edit-gesture" onClick={() => handleEditGesture(gesture)}>
-                {String.fromCharCode(9998)} {/* Edit icon */}
-              </div>
+    <Translations>
+      {({ translate }) => (
+        <div className="row">
+          {filteredGestures.map(gesture => (
+            <div
+              className="col-lg-4 col-sm-6 col-12 mb-4"
+              key={gesture.id}
+              onMouseEnter={() => setHoveredGestureId(gesture.id)}
+              onMouseLeave={() => setHoveredGestureId(null)}
+            >
+              <div className="card-video">
+                <div className="icon-container">
+                  <div className="delete-gesture" onClick={() => confirmDeleteGesture(gesture.id)}>
+                    &#10006; {/* Delete icon */}
+                  </div>
+                  <div className="edit-gesture" onClick={() => handleEditGesture(gesture)}>
+                    {String.fromCharCode(9998)} {/* Edit icon */}
+                  </div>
 
-              <Tooltip title={"id: " + gesture.id + ", " + "label: " + gesture.realLabel[0]} aria-label="info">
-                <div className="info-gesture"
-                  onMouseEnter={() => setShowTooltip(gesture.id)}
-                  onMouseLeave={() => setShowTooltip(null)}>
-                  {String.fromCharCode(9432)} {/* Info icon */}
+                  <Tooltip title={"ID: " + gesture.id + ", " + translate("Label") + ": " + gesture.realLabel[0]} aria-label="info">
+                    <div className="info-gesture"
+                      onMouseEnter={() => setShowTooltip(gesture.id)}
+                      onMouseLeave={() => setShowTooltip(null)}>
+                      {String.fromCharCode(9432)} {/* Info icon */}
+                    </div>
+                  </Tooltip>
                 </div>
-              </Tooltip>
-
+                <LoopOfMovements ids={gesture.movements} />
+                <div className="card-title-overlay">
+                  <h5 className="card-title">{gesture.name}</h5>
+                </div>
+              </div>
             </div>
-            <LoopOfMovements ids={gesture.movements} />
-            <div className="card-title-overlay">
-              <h5 className="card-title">{gesture.name}</h5>
-            </div>
-          </div>
+          ))}
+          {/* Render the ConfirmationModal */}
+          {showConfirmationModal && (
+            <ConfirmationModal
+              message={translate("Are you sure you want to delete this gesture?")}
+              onConfirm={handleConfirmDelete}
+              onCancel={handleCancelDelete}
+            />
+          )}
         </div>
-      ))}
-      {/* Render the ConfirmationModal */}
-      {showConfirmationModal && (
-        <ConfirmationModal
-          message="Are you sure you want to delete this gesture?"
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
       )}
-    </div>
+    </Translations>
   );
 }
 

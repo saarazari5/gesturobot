@@ -7,6 +7,7 @@ import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal';
 import { useNavigate } from "react-router-dom";
 import { FiCheck } from "react-icons/fi";
+import { Translations } from "../../language-management/Translations";
 import { addGestureJson, editGesture } from '../../databases/gesturesAPI'; // Import necessary functions
 
 // DropZone component to handle drag-and-drop functionality
@@ -170,49 +171,56 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
   const canSave = droppedItems.some(item => item !== undefined);
 
   return (
-    <div className="videoContainerWrapper">
-      <div className="VideoContainer">
-        {[...Array(MAX_ITEMS)].map((_, index) => (
-          <DropZone
-            key={index}
-            index={index}
-            droppedItems={droppedItems}
-            setDroppedItems={setDroppedItems}
-            moveItem={moveItem}
-            handleRemoveItem={handleRemoveItem}
-          />
-        ))}
-      </div>
-      {canSave && (
-        <button className="savebtn btn" onClick={handleSaveClick}>
-          <FiCheck />
-        </button>
-      )}
+    <Translations>
+      {({ translate }) => (
+        <div className="videoContainerWrapper">
+          <div className="VideoContainer">
+            {[...Array(MAX_ITEMS)].map((_, index) => (
+              <DropZone
+                key={index}
+                index={index}
+                droppedItems={droppedItems}
+                setDroppedItems={setDroppedItems}
+                moveItem={moveItem}
+                handleRemoveItem={handleRemoveItem}
+              />
+            ))}
+          </div>
+          {canSave && (
+            <button className="savebtn btn" onClick={handleSaveClick}>
+              <FiCheck />
+              {/* <FcCheckmark /> */}
+            </button>
+          )}
 
-      {showModal && (
-        <ConfirmationModal
-          message="Are you sure you want to save?"
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
+          {showModal && (
+            <ConfirmationModal
+              message={translate("Are you sure you want to save?")}
+              onConfirm={handleConfirm}
+              onCancel={handleCancel}
+            />
+          )}
 
-      {showLabelModal && (
-        <LabelModal
-          onSaveLabel={handleSaveLabel}
-          onCancel={() => setShowLabelModal(false)}
-          initialLabel={gestureLabel} // Pass initialLabel prop
-        />
-      )}
+          {/* Only show LabelModal if showLabelModal is true */}
+          {showLabelModal && (
+            <LabelModal
+              onSaveLabel={handleSaveLabel}
+              onCancel={() => setShowLabelModal(false)}
+              initialLabel={gestureLabel} // Pass initialLabel prop
+            />
+          )}
 
-      {showNameModal && (
-        <NameModal
-          onSaveName={handleSaveName}
-          onCancel={() => setShowNameModal(false)}
-          initialName={initialName} // Pass initialName prop
-        />
+          {showNameModal && (
+            <NameModal
+              onSaveName={handleSaveName}
+              onCancel={() => setShowNameModal(false)}
+              initialName={initialName} // Pass initialName prop
+            />
+          )}
+
+        </div>
       )}
-    </div>
+    </Translations>
   );
 };
 

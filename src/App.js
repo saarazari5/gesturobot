@@ -26,10 +26,10 @@ import VideoWindow from "./components/videoWindow/VideoWindow.js";
 function App() {
   const [gestureID, setGestureID] = useState(0);
   const { language } = useContext(LanguageContext);
-  document.documentElement.setAttribute(
+  /*document.documentElement.setAttribute(
     "dir",
     language === "he" ? "rtl" : "ltr"
-  );
+  );*/
 
   return (
     <DndProvider backend={HTML5Backend}>

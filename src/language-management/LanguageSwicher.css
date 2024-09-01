@@ -1,0 +1,16 @@
+#nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 5px 5px; 
+    z-index: 1;
+  }
+  
+  .language-buttons {
+    margin-left: auto; 
+  }
+  
+  .language-buttons button {
+    margin-right: 10px;     
+  }
+  

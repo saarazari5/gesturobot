@@ -51,8 +51,8 @@ function GestureDisplay({ setGestureID }) {
           {/* Container for checkbox and add icon */}
           <div className="actions-container">
             {/* Checkbox */}
-            <Tooltip title="Add New Gesture" aria-label="add">
-              <Fab aria-label="add" onClick={handleClick} >
+            <Tooltip title={translate("Add New Gesture")} aria-label="add">
+              <Fab aria-label="add" onClick={handleClick}>
                 <AddIcon />
               </Fab>
             </Tooltip>

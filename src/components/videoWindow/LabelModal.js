@@ -1,3 +1,4 @@
+import { Translations } from "../../language-management/Translations"; // Import Translations context
 import React, { useState, useEffect } from 'react';
 import config from '../../config/config.json'; // Import the configuration file for labels
 import './ConfirmationModal.css'; // Ensure you have the correct path for your CSS file
@@ -32,28 +33,36 @@ const LabelModal = ({ onSaveLabel, onCancel, initialLabel = '' }) => {
 
     // Render the modal with a dropdown list for label selection
     return (
-        <div className="modalBackdrop">
-            <div className="modalContent">
-                <p className='labelMessage'>Please select a label for this gesture:</p>
-                <select
-                    value={label}
-                    onChange={handleChange}
-                    placeholder="Select label"
-                >
-                    <option value="">Select a label</option>
-                    {labelOptions.map((option) => (
-                        <option key={option} value={option}>
-                            {option}
-                        </option>
-                    ))}
-                </select>
-                {error && <p className="errorMessage">Label cannot be empty</p>}
-                <div className="buttonContainer">
-                    <button className="modalButton" onClick={handleSaveLabel}>Save</button>
-                    <button className="modalButton" onClick={onCancel}>Cancel</button>
+        <Translations>
+            {({ translate }) => (
+                <div className="modalBackdrop">
+                    <div className="modalContent">
+                        <p className='lableMessage'>{translate('Please label this gesture:')}</p>
+                        <select
+                            value={label}
+                            onChange={handleChange}
+                            placeholder="Select label"
+                        >
+                            <option value="">Select a label</option>
+                            {labelOptions.map((option) => (
+                                <option key={option} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                        {error && <p className="errorMessage">{translate('Label cannot be empty')}</p>}
+                        <div className="buttonContainer">
+                            <button className="modalButton" onClick={handleSaveLabel}>
+                                {translate('Save')}
+                            </button>
+                            <button className="modalButton" onClick={onCancel}>
+                                {translate('Cancel')}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </Translations>
     );
 };
 
