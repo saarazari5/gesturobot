@@ -23,9 +23,7 @@ const LoopOfMovements = (props) => {
       setIsPlaying(false);
       return;
     }
-    setCurrentVideoIndex(
-      currentVideoIndex === URLs.length - 1 ? 0 : currentVideoIndex + 1
-    );
+    setCurrentVideoIndex(currentVideoIndex + 1);
     if (currentVideoIndex === 0 && !isFirstVideoPlayed) {
       setIsFirstVideoPlayed(true);
     }

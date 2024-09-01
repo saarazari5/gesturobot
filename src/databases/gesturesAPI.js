@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {BASE_URL} from '../params.js'
+import { BASE_URL } from '../params.js'
 
 function getAllGestures() {
   return fetch(BASE_URL + "/gestures")
@@ -33,7 +33,7 @@ function addGestureJson(newGesture) {
         console.log(data);
         const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
         const nextId = maxId + 1;
-        
+
         fetch(BASE_URL + "/gestures", {
           method: "POST",
           headers: {

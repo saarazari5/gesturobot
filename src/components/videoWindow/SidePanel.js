@@ -5,10 +5,10 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; // Import arrow icon
 import { Translations } from "../../language-management/Translations"; 
 import './SidePanel.css';
 
-const DraggableItem = ({ videoUrl, name }) => {
+const DraggableItem = ({ id, videoUrl, name }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'draggableItem',
-    item: { type: 'draggableItem', videoUrl, name },
+    item: { type: 'draggableItem', id, videoUrl, name },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -66,7 +66,7 @@ const SidePanel = () => {
                 <div className="video-list">
                   {videos.map((video) => (
                     <DraggableItem
-                      key={video.id}
+                      id={video.id}
                       videoUrl={video.videoUrl}
                       name={translate(video.name)}
                     />

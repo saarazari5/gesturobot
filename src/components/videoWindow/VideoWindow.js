@@ -12,7 +12,6 @@ import { Translations } from "../../language-management/Translations";
 function VideoWindow() {
     const location = useLocation();
     const gesture = location.state?.gestureId || {};
-    console.log("gesture: ", gesture)
     const [movements, setMovements] = useState([]);
     const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
@@ -23,9 +22,12 @@ function VideoWindow() {
     }, [droppedItems]);
 
     useEffect(() => {
+        console.log("Gesture from state:", gesture); // Debugging line
+    }, [gesture]);
+
+    useEffect(() => {
         const fetchMovements = async () => {
             try {
-                console.log("gesture: ", gesture);
                 const fetchedMovements = await getMovements();
                 const dropped = gesture.movements.map(movementID => {
                     return fetchedMovements.find(movement => movement.id === movementID);
@@ -74,6 +76,7 @@ function VideoWindow() {
             combinedVideoRef.current.play(); // Start playing the combined video
         }
     };
+    console.log("dropped", droppedItems);
 
     return (
         <Translations>
@@ -82,11 +85,12 @@ function VideoWindow() {
                     <div className="App">
                         <SidePanel />
                         <VideoContainer
-                            droppedItems={droppedItems.map(item => ({
-                                ...item,
-                                name: translate(item.name)  // Translate the movement name
-                            }))}
+                        <VideoContainer
+                            droppedItems={droppedItems}
                             setDroppedItems={setDroppedItems}
+                            existingGestureId={gesture.id} // Pass gesture ID or null
+                            initialName={gesture.name || ''} // Use empty string if name is undefined
+                            initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''} // Default to empty string if undefined
                         />
                         {droppedItems.length > 0 && (
                             <div className="combined-video">
