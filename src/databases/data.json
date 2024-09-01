@@ -252,14 +252,30 @@
   ],
   "gestures": [
     {
-      "name": "heyyd",
+      "name": "try1",
+      "realLabel": [
+        "Shame",
+        "Shame"
+      ],
+      "movements": [
+        "20"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "id": "1"
+    },
+    {
+      "name": "try2.1",
       "realLabel": [
         "Pride",
         "Pride"
       ],
       "movements": [
-        "1",
-        "4",
         "22"
       ],
       "creator": [
@@ -269,25 +285,7 @@
       ],
       "labels": [],
       "group": "default",
-      "id": "33"
-    },
-    {
-      "name": "liori",
-      "realLabel": [
-        "Envy",
-        "Envy"
-      ],
-      "movements": [
-        "21"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "id": "34"
+      "id": "2"
     }
   ],
   "users": [
