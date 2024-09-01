@@ -85,7 +85,6 @@ function VideoWindow() {
                     <div className="App">
                         <SidePanel />
                         <VideoContainer
-                        <VideoContainer
                             droppedItems={droppedItems}
                             setDroppedItems={setDroppedItems}
                             existingGestureId={gesture.id} // Pass gesture ID or null

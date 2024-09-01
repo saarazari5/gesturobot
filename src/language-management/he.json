@@ -137,6 +137,7 @@
   "Movements": "ספריית",
   "Library": "התנועות",
   "Are you sure you want to save?": "?האם אתה בטוח שברצונך לשמור"  ,
+  "Are you sure you want to delete this gesture?": "?האם אתה בטול שברצונך למחוק את המחווה הזו",
   "Yes": "כן",
   "No": "לא",
   "Please label this gesture:": ":נא לתייג את המחווה הזו",
@@ -147,4 +148,5 @@
   "Please enter the gesture name:": "אנא הכנס את שם המחווה",
   "Enter name": "הכנס שם",
   "Name cannot be empty": "שם לא יכול להיות ריק",
+  "Label": "תיוג"
 }
