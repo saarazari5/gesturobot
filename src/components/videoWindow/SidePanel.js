@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDrag } from 'react-dnd';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; // Import arrow icons
+import { Translations } from "../../language-management/Translations"; 
 import './SidePanel.css';
 
 const DraggableItem = ({ videoUrl, name }) => {
@@ -43,23 +44,40 @@ const SidePanel = () => {
   }, []);
 
   return (
-    <div className="side-panel">
-      <div className={`arrow-icon ${isOpen ? 'arrow-open' : 'arrow-closed'}`} onClick={handleToggleSlideWindow}>
-        {isOpen ? <SlArrowLeft /> : <SlArrowRight />}
-      </div>
-      <div className={`side-panel-style ${isOpen ? 'side-panel-open' : 'side-panel-closed'}`}>
-        {isOpen && (
-          <div>
-            <h3 className="text-movements-library">Movements<br />Library</h3>
-            <div className="video-list">
-              {videos.map((video) => (
-                <DraggableItem key={video.id} videoUrl={video.videoUrl} name={video.name} />
-              ))}
-            </div>
+    <Translations>
+      {({ translate }) => (
+        <div className="side-panel">
+          <div
+            className={`arrow-icon ${isOpen ? 'arrow-open' : 'arrow-closed'}`}
+            onClick={handleToggleSlideWindow}
+          >
+            {isOpen ? <SlArrowLeft /> : <SlArrowRight />}
           </div>
-        )}
-      </div>
-    </div>
+          <div
+            className={`side-panel-style ${isOpen ? 'side-panel-open' : 'side-panel-closed'}`}
+          >
+            {isOpen && (
+              <div>
+                <h3 className="text-movements-library">
+                  {translate('Movements')}
+                  <br />
+                  {translate('Library')}
+                </h3>
+                <div className="video-list">
+                  {videos.map((video) => (
+                    <DraggableItem
+                      key={video.id}
+                      videoUrl={video.videoUrl}
+                      name={translate(video.name)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </Translations>
   );
 };
 

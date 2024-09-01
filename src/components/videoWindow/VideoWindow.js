@@ -7,14 +7,13 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import './VideoWindow.css'; // Import CSS file
 import { CiPlay1 } from "react-icons/ci";
 import { getMovements } from "../../databases/movementsAPI";
-
+import { Translations } from "../../language-management/Translations";
 
 function VideoWindow() {
     const location = useLocation();
     const gesture = location.state?.gestureId || {};
     console.log("gesture: ", gesture)
     const [movements, setMovements] = useState([]);
-
     const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
     const combinedVideoRef = useRef(null);
@@ -77,23 +76,30 @@ function VideoWindow() {
     };
 
     return (
-        <DndProvider backend={HTML5Backend}>
-            <div className="App">
-                <SidePanel />
-                <VideoContainer
-                    droppedItems={droppedItems}
-                    setDroppedItems={setDroppedItems}
-                />
-                {droppedItems.length > 0 && (
-                    <div className="combined-video">
-                        {combineVideos()}
-                        <div className="video-play-buttonn" onClick={handleManualPlay}>
-                            <CiPlay1 />
-                        </div>
+        <Translations>
+            {({ translate }) => (
+                <DndProvider backend={HTML5Backend}>
+                    <div className="App">
+                        <SidePanel />
+                        <VideoContainer
+                            droppedItems={droppedItems.map(item => ({
+                                ...item,
+                                name: translate(item.name)  // Translate the movement name
+                            }))}
+                            setDroppedItems={setDroppedItems}
+                        />
+                        {droppedItems.length > 0 && (
+                            <div className="combined-video">
+                                {combineVideos()}
+                                <div className="video-play-buttonn" onClick={handleManualPlay}>
+                                    <CiPlay1 />
+                                </div>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-        </DndProvider>
+                </DndProvider>
+            )}
+        </Translations>
     );
 }
 

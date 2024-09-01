@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { useContext } from 'react';
 import { AuthContext } from '../pages/userLogin/AuthContext';
+import './LanguageSwicher.css'; // Ensure this path is correct
 
 export const LanguageSwitcher = () => {
   const { language, changeLanguage } = useLanguage();
@@ -15,12 +16,11 @@ export const LanguageSwitcher = () => {
 
   const handleLogout = () => {
     logout();
-    // Redirect to the root page after logout
-    navigate('/');
+    navigate('/'); // Redirect to the home page or login page
   };
 
   return (
-    <nav id="nav" className="navbar" style={{ position: '' }}>
+    <nav id="nav" className="navbar">
       {location.pathname !== '/' && location.pathname !== '/GestureManagement' && (
         <Link to={user ? "/GestureManagement" : "/"}>
           <img
@@ -28,7 +28,7 @@ export const LanguageSwitcher = () => {
             height="30"
             style={{ marginLeft: '25px' }}
             className="d-inline-block align-top"
-            alt=""
+            alt="Home"
           />
         </Link>
       )}
@@ -45,12 +45,11 @@ export const LanguageSwitcher = () => {
         </div>
       )}
 
-      <div className="navbar-brand">
+      <div className="language-buttons">
         <button
           value="en"
           onClick={handleLanguageChange}
           disabled={language === 'en'}
-          style={{ marginRight: '5px' }}
         >
           English
         </button>

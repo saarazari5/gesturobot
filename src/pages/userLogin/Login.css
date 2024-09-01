@@ -10,9 +10,8 @@ html, body {
     justify-content: center;
     align-items: center;  /* Center content vertically */
     padding: 3% 15%;
-    background-color: whitesmoke;
-    height: 100vh;  /* Take full viewport height */
-    width: 100vw;   /* Take full viewport width */
+    /*background-color: whitesmoke;*/
+
     box-sizing: border-box; /* Include padding in width/height calculations */
 }
 
@@ -25,7 +24,7 @@ html, body {
 .login-row {
     border: 0px;
     border-radius: 20px;
-    box-shadow: 12px 7px 15px #ebfaff;
+    box-shadow: 12px 7px 15px #e0f1f7;
     z-index: 1;
 }
 

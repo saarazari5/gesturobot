@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Translations } from "../../language-management/Translations"; // Import Translations context
 import './ConfirmationModal.css'; // Adjust path if needed
 
 const LabelModal = ({ onSaveLabel, onCancel }) => {
@@ -28,23 +29,31 @@ const LabelModal = ({ onSaveLabel, onCancel }) => {
     };
 
     return (
-        <div className="modalBackdrop">
-            <div className="modalContent">
-                <p className='lableMessage'>Please label this gesture:</p>
-                <input
-                    type="text"
-                    value={label}
-                    onChange={handleChange} // Handle change in input value
-                    onKeyPress={handleKeyPress} // Handle key press event
-                    placeholder="Enter label"
-                />
-                {error && <p className="errorMessage">Label cannot be empty</p>}
-                <div className="buttonContainer">
-                    <button className="modalButton" onClick={handleSaveLabel}>Save</button>
-                    <button className="modalButton" onClick={onCancel}>Cancel</button>
+        <Translations>
+            {({ translate }) => (
+                <div className="modalBackdrop">
+                    <div className="modalContent">
+                        <p className='lableMessage'>{translate('Please label this gesture:')}</p>
+                        <input
+                            type="text"
+                            value={label}
+                            onChange={handleChange} // Handle change in input value
+                            onKeyPress={handleKeyPress} // Handle key press event
+                            placeholder={translate('Enter label')}
+                        />
+                        {error && <p className="errorMessage">{translate('Label cannot be empty')}</p>}
+                        <div className="buttonContainer">
+                            <button className="modalButton" onClick={handleSaveLabel}>
+                                {translate('Save')}
+                            </button>
+                            <button className="modalButton" onClick={onCancel}>
+                                {translate('Cancel')}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </Translations>
     );
 };
 

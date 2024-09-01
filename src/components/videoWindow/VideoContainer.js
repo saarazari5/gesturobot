@@ -6,6 +6,7 @@ import NameModal from './NameModal';
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal'; // Adjust path as per your project structure
 import { FiCheck } from "react-icons/fi";
+import { Translations } from "../../language-management/Translations";
 
 const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
   const [{ isOver }, drop] = useDrop({
@@ -138,50 +139,54 @@ const VideoContainer = ({ droppedItems, setDroppedItems }) => {
   const canSave = droppedItems.some(item => item !== undefined); // Check if there is at least one non-undefined item
 
   return (
-    <div className="videoContainerWrapper">
-      <div className="VideoContainer">
-        {[...Array(MAX_ITEMS)].map((_, index) => (
-          <DropZone
-            key={index}
-            index={index}
-            droppedItems={droppedItems}
-            setDroppedItems={setDroppedItems}
-            moveItem={moveItem}
-            handleRemoveItem={handleRemoveItem}
-          />
-        ))}
-      </div>
-      {canSave && (
-        <button className="savebtn btn" onClick={handleSaveClick}>
-          {/* <FcCheckmark /> */}
-          <FiCheck />
-        </button>
-      )}
+    <Translations>
+      {({ translate }) => (
+        <div className="videoContainerWrapper">
+          <div className="VideoContainer">
+            {[...Array(MAX_ITEMS)].map((_, index) => (
+              <DropZone
+                key={index}
+                index={index}
+                droppedItems={droppedItems}
+                setDroppedItems={setDroppedItems}
+                moveItem={moveItem}
+                handleRemoveItem={handleRemoveItem}
+              />
+            ))}
+          </div>
+          {canSave && (
+            <button className="savebtn btn" onClick={handleSaveClick}>
+              <FiCheck />
+              {/* <FcCheckmark /> */}
+            </button>
+          )}
 
-      {showModal && (
-        <ConfirmationModal
-          message="Are you sure you want to save?"
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
+          {showModal && (
+            <ConfirmationModal
+              message={translate("Are you sure you want to save?")}
+              onConfirm={handleConfirm}
+              onCancel={handleCancel}
+            />
+          )}
 
-      {/* Only show LabelModal if showLabelModal is true */}
-      {showLabelModal && (
-        <LabelModal
-          onSaveLabel={handleSaveLabel}
-          onCancel={() => setShowLabelModal(false)}
-        />
-      )}
+          {/* Only show LabelModal if showLabelModal is true */}
+          {showLabelModal && (
+            <LabelModal
+              onSaveLabel={handleSaveLabel}
+              onCancel={() => setShowLabelModal(false)}
+            />
+          )}
 
-      {showNameModal && (
-        <NameModal
-          onSaveName={handleSaveName}
-          onCancel={() => setShowNameModal(false)}
-        />
-      )}
+          {showNameModal && (
+            <NameModal
+              onSaveName={handleSaveName}
+              onCancel={() => setShowNameModal(false)}
+            />
+          )}
 
-    </div>
+        </div>
+      )}
+    </Translations>
   );
 };
 
