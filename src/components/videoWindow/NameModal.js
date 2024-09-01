@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ConfirmationModal.css'; // Adjust path if needed
 
-const NameModal = ({ onSaveName, onCancel }) => {
-    const [name, setName] = useState('');
+const NameModal = ({ onSaveName, onCancel, initialName = '' }) => {
+    const [name, setName] = useState(initialName);
     const [error, setError] = useState(false);
 
     const handleSaveName = () => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ConfirmationModal.css'; // Adjust path if needed
 
-const LabelModal = ({ onSaveLabel, onCancel }) => {
-    const [label, setLabel] = useState('');
+const LabelModal = ({ onSaveLabel, onCancel, initialLabel = '' }) => {
+    const [label, setLabel] = useState(initialLabel);
     const [error, setError] = useState(false);
 
     const handleSaveLabel = () => {

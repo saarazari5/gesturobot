@@ -252,16 +252,15 @@
   ],
   "gestures": [
     {
-      "id": "33",
-      "name": "New Gesture",
+      "name": "heyy",
       "realLabel": [
-        "Anger",
-        "כעס"
+        "hellooo",
+        "hellooo"
       ],
       "movements": [
         "1",
         "4",
-        "6"
+        "22"
       ],
       "creator": [
         null,
@@ -269,7 +268,8 @@
         null
       ],
       "labels": [],
-      "group": ""
+      "group": "default",
+      "id": "33"
     }
   ],
   "users": [
