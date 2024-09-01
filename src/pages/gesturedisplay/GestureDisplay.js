@@ -23,6 +23,12 @@ function GestureDisplay({ setGestureID }) {
     setSelectedGroup(e.target.value);
   };
 
+  const handleEditGesture = (gesture) => {
+    setGestureID(gesture.id); // Set the gesture ID for the gesture being edited
+    navigate("/VideoWindow", {
+      state: { gestureId: gesture }, // Navigate and pass gesture data
+    });
+  };
 
   const handleClick = () => {
     navigate("/videoWindow");

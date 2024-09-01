@@ -92,7 +92,7 @@ const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedIt
 };
 
 // Main VideoContainer component
-const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfo }) => {
+const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfoת, initialName, initialLabel }) => {
   const MAX_ITEMS = 6;
   const [showModal, setShowModal] = useState(false);
   const [showLabelModal, setShowLabelModal] = useState(false);
@@ -200,6 +200,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
         <LabelModal
           onSaveLabel={handleSaveLabel}
           onCancel={() => setShowLabelModal(false)}
+          initialLabel={initialLabel} // Pass initialLabel prop
         />
       )}
 
@@ -207,6 +208,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
         <NameModal
           onSaveName={handleSaveName}
           onCancel={() => setShowNameModal(false)}
+          initialName={initialName} // Pass initialName prop
         />
       )}
     </div>

@@ -23,6 +23,10 @@ function VideoWindow() {
     }, [droppedItems]);
 
     useEffect(() => {
+        console.log("Gesture from state:", gesture); // Debugging line
+    }, [gesture]);
+
+    useEffect(() => {
         const fetchMovements = async () => {
             try {
                 const fetchedMovements = await getMovements();
@@ -82,7 +86,11 @@ function VideoWindow() {
                 <VideoContainer
                     droppedItems={droppedItems}
                     setDroppedItems={setDroppedItems}
+                    existingGestureId={gesture.id} // Pass gesture ID or null
+                    initialName={gesture.name || ''} // Use empty string if name is undefined
+                    initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''} // Default to empty string if undefined
                 />
+
                 {droppedItems.length > 0 && (
                     <div className="combined-video">
                         {combineVideos()}
