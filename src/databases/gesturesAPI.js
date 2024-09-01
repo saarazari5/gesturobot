@@ -31,7 +31,8 @@ function addGestureJson(newGesture) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
+        //const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
+        const maxId = data && data.length > 0 ? Math.max(...data.map((gesture) => parseInt(gesture.id, 10))) : 0;
         const nextId = maxId + 1;
 
         fetch(BASE_URL + "/gestures", {
@@ -39,7 +40,7 @@ function addGestureJson(newGesture) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ id: nextId, ...newGesture }),
+          body: JSON.stringify({ id: String(nextId), ...newGesture }),
         })
           .then((response) => response.json())
           .then((data) => {
