@@ -252,10 +252,10 @@
   ],
   "gestures": [
     {
-      "name": "heyy",
+      "name": "heyyd",
       "realLabel": [
-        "hellooo",
-        "hellooo"
+        "Pride",
+        "Pride"
       ],
       "movements": [
         "1",
@@ -272,14 +272,13 @@
       "id": "33"
     },
     {
-      "id": 34,
-      "name": "hey",
+      "name": "liori",
       "realLabel": [
-        "Empathy",
-        "Empathy"
+        "Envy",
+        "Envy"
       ],
       "movements": [
-        "20"
+        "21"
       ],
       "creator": [
         null,
@@ -287,7 +286,8 @@
         null
       ],
       "labels": [],
-      "group": "default"
+      "group": "default",
+      "id": "34"
     }
   ],
   "users": [

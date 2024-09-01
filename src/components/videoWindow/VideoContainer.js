@@ -152,6 +152,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
       group: 'default'  // Placeholder, modify as needed
     };
 
+    console.log(newGesture);
     if (existingGestureId) {
       // Edit existing gesture with PUT request
       const response = await editGesture(existingGestureId, newGesture);  // Use await for async call
@@ -200,7 +201,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
         <LabelModal
           onSaveLabel={handleSaveLabel}
           onCancel={() => setShowLabelModal(false)}
-          initialLabel={initialLabel} // Pass initialLabel prop
+          initialLabel={gestureLabel} // Pass initialLabel prop
         />
       )}
 

@@ -39,7 +39,7 @@ function addGestureJson(newGesture) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ id: nextId, ...newGesture }),
+          body: JSON.stringify({ id: String(nextId), ...newGesture }),
         })
           .then((response) => response.json())
           .then((data) => {
