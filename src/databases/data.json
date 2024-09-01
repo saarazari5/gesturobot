@@ -270,60 +270,6 @@
       ],
       "labels": [],
       "group": ""
-    },
-    {
-      "id": 34,
-      "name": "555",
-      "realLabel": [
-        "333",
-        "333"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default"
-    },
-    {
-      "id": 35,
-      "name": "ppp",
-      "realLabel": [
-        "iiouo",
-        "iiouo"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default"
-    },
-    {
-      "id": 36,
-      "name": "llp",
-      "realLabel": [
-        "lll",
-        "lll"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default"
     }
   ],
   "users": [
