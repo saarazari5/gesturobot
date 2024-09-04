@@ -1,11 +1,52 @@
 {
-    "emotions": [
-      "Joy", "Sadness", "Anger", "Fear", "Love", "Hate", "Guilt", "Shame",
-      "Envy", "Pride", "Gratitude", "Hope", "Despair", "Confusion",
-      "Curiosity", "Surprise", "Excitement", "Disappointment", "Contentment",
-      "Loneliness", "Nostalgia", "Relief", "Pity", "Boredom", "Empathy",
-      "Compassion", "Apathy", "Satisfaction", "Disgust"
-    ],
-    "groups": ["Group 1", "Group 2", "Group 3"]
-  }
-  
+  "emotions": [
+    "Joy",
+    "Sadness",
+    "Anger",
+    "Fear",
+    "Love",
+    "Hate",
+    "Guilt",
+    "Shame",
+    "Envy",
+    "Pride",
+    "Gratitude",
+    "Hope",
+    "Despair",
+    "Confusion",
+    "Curiosity",
+    "Surprise",
+    "Excitement",
+    "Disappointment",
+    "Contentment",
+    "Loneliness",
+    "Nostalgia",
+    "Relief",
+    "Pity",
+    "Boredom",
+    "Empathy",
+    "Compassion",
+    "Apathy",
+    "Satisfaction",
+    "Disgust"
+  ],
+  "groups": [
+    "Group 1",
+    "Group 2",
+    "Group 3"
+  ],
+  "subjects": [
+    "user1",
+    "user2",
+    "user3",
+    "user4",
+    "user5",
+    "user6",
+    "user7",
+    "user8",
+    "user9",
+    "user10",
+    "user11",
+    "user12"
+  ]
+}

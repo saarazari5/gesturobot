@@ -12,6 +12,8 @@ function GestureDisplay({ setGestureID }) {
 
   const [selectedGesture, setSelectedGesture] = useState('');
   const [selectedGroup, setSelectedGroup] = useState('');
+  // const [selectedSubjects, setSelectedSubjects] = useState([]);
+  // const [selectedSubject, setSelectedSubject] = useState('');
   let navigate = useNavigate();
 
 
@@ -22,6 +24,19 @@ function GestureDisplay({ setGestureID }) {
   const handleGroupChange = (e) => {
     setSelectedGroup(e.target.value);
   };
+
+  // const handleSubjectsChange = (e) => {
+  //   const value = e.target.value;
+  //   setSelectedSubjects((prev) =>
+  //     prev.includes(value)
+  //       ? prev.filter((subject) => subject !== value)
+  //       : [...prev, value]
+  //   );
+  // };
+
+  // const handleSubjectChange = (e) => {
+  //   setSelectedSubject(e.target.value);
+  // };
 
   const handleEditGesture = (gesture) => {
     setGestureID(gesture.id); // Set the gesture ID for the gesture being edited
@@ -44,6 +59,10 @@ function GestureDisplay({ setGestureID }) {
             handleGestureChange={handleGestureChange}
             handleGroupChange={handleGroupChange}
             selectedGroup={selectedGroup}
+          // handleSubjectsChange={handleSubjectsChange}
+          // selectedSubjects={selectedSubjects}
+          // handleSubjectChange={handleSubjectChange}
+          // selectedSubject={selectedSubject}
           />
 
           <GestureSection emotion={selectedGesture} group={selectedGroup} setGestureID={setGestureID} />

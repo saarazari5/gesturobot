@@ -1,25 +1,23 @@
 import React, { useState, useRef } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import './VideoContainer.css';
-import LabelModal from './LabelModal';
-import NameModal from './NameModal';
+import UnifiedModal from './UnifiedModal'; // Import the new UnifiedModal
 import { FcCheckmark } from "react-icons/fc";
 import ConfirmationModal from './ConfirmationModal';
 import { useNavigate } from "react-router-dom";
 import { FiCheck } from "react-icons/fi";
 import { Translations } from "../../language-management/Translations";
-import { addGestureJson, editGesture } from '../../databases/gesturesAPI'; // Import necessary functions
+import { addGestureJson, editGesture } from '../../databases/gesturesAPI';
 
-// DropZone component to handle drag-and-drop functionality
-const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem }) => {
+const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemoveItem, currentPlayingIndex }) => {
   const [{ isOver }, drop] = useDrop({
     accept: 'draggableItem',
     drop: (item, monitor) => {
       const { name, videoUrl } = item;
       setDroppedItems(prevItems => {
         const newItems = [...prevItems];
-        newItems[index] = { name, videoUrl, id: item.id };  // Ensure each item has an id
-        return newItems.filter(item => item !== undefined); // Filter out undefined items
+        newItems[index] = { name, videoUrl, id: item.id };
+        return newItems.filter(item => item !== undefined);
       });
     },
     collect: monitor => ({
@@ -29,7 +27,7 @@ const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemove
 
   return (
     <div
-      className='dropZoneStyle'
+      className="dropZoneStyle"
       ref={drop}
       style={{ backgroundColor: isOver ? 'lightgray' : 'transparent' }}
     >
@@ -42,14 +40,14 @@ const DropZone = ({ index, droppedItems, setDroppedItems, moveItem, handleRemove
           moveItem={moveItem}
           handleRemoveItem={handleRemoveItem}
           droppedItems={droppedItems}
+          isActive={index === currentPlayingIndex && currentPlayingIndex !== -1} // Pass isActive prop
         />
       ) : ' '}
     </div>
   );
 };
 
-// Item component representing each draggable item
-const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedItems }) => {
+const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedItems, isActive }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'draggableItem',
     item: { type: 'draggableItem', name, videoUrl, index, id },
@@ -82,7 +80,7 @@ const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedIt
   drag(drop(ref));
 
   return (
-    <div ref={ref} className={`frameStyle ${isDragging ? 'dragging' : ''}`} style={{ opacity }}>
+    <div ref={ref} className={`frameStyle ${isActive ? 'activeVideo' : ''}`} style={{ opacity }}>
       <div className="videoContainer">
         <video src={videoUrl} className="videoStyle" loading="lazy" preload="metadata" />
         <button onClick={() => handleRemoveItem(index)} className="buttonStyle">X</button>
@@ -92,14 +90,11 @@ const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedIt
   );
 };
 
-// Main VideoContainer component
-const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfoת, initialName, initialLabel }) => {
+const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfo, initialName, initialLabel, currentPlayingIndex }) => {
   const MAX_ITEMS = 6;
-  const [showModal, setShowModal] = useState(false);
-  const [showLabelModal, setShowLabelModal] = useState(false);
+  const [showUnifiedModal, setShowUnifiedModal] = useState(false);
   const [gestureLabel, setGestureLabel] = useState(initialLabel);
   const [gestureName, setGestureName] = useState(initialName);
-  const [showNameModal, setShowNameModal] = useState(false);
   let navigate = useNavigate();
 
   const moveItem = (dragIndex, hoverIndex) => {
@@ -118,51 +113,31 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
   };
 
   const handleSaveClick = () => {
-    setShowModal(true);
+    setShowUnifiedModal(true); // Show the unified modal instead of separate ones
   };
 
-  const handleConfirm = () => {
-    setShowModal(false);
-    setShowLabelModal(true);
-  };
-
-  const handleCancel = () => {
-    setShowModal(false);
-  };
-
-  const handleSaveLabel = (label) => {
+  const handleSave = async ({ label, name }) => {
     setGestureLabel(label);
-    setShowLabelModal(false);
-    setShowNameModal(true);
-  };
-
-  const handleSaveName = async (name) => {
     setGestureName(name);
-    setShowNameModal(false);
-    await handleFinalSave(name);
+    setShowUnifiedModal(false);
+    await handleFinalSave(name, label);
   };
 
-  const handleFinalSave = async (name) => {
+  const handleFinalSave = async (name, label) => {
     const newGesture = {
       name: name,
-      realLabel: [gestureLabel, gestureLabel],
-      movements: droppedItems.filter(item => item !== undefined).map(item => item.id), // Mapping to movement ids
-      // creator: [userInfo.name, parseInt(userInfo.type), userInfo.Taz], // Creator information
+      realLabel: [label, label],
+      movements: droppedItems.filter(item => item !== undefined).map(item => item.id),
       creator: [null, null, null],
-      labels: [],  // Placeholder, modify as needed
-      group: 'default'  // Placeholder, modify as needed
+      labels: [],
+      group: 'default'
     };
 
-    console.log(newGesture);
     if (existingGestureId) {
-      // Edit existing gesture with PUT request
-      const response = await editGesture(existingGestureId, newGesture);  // Use await for async call
-      console.log("Gesture updated successfully", response);
+      const response = await editGesture(existingGestureId, newGesture);
       alert('Gesture updated successfully');
     } else {
-      // Add new gesture with POST request
-      const newId = await addGestureJson(newGesture);  // Use await for async call
-      console.log("New gesture added with ID:", newId);
+      const newId = await addGestureJson(newGesture);
       alert('New gesture added successfully');
     }
     navigate("/GestureDisplay");
@@ -183,41 +158,24 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
                 setDroppedItems={setDroppedItems}
                 moveItem={moveItem}
                 handleRemoveItem={handleRemoveItem}
+                currentPlayingIndex={currentPlayingIndex}
               />
             ))}
           </div>
           {canSave && (
             <button className="savebtn btn" onClick={handleSaveClick}>
               <FiCheck />
-              {/* <FcCheckmark /> */}
             </button>
           )}
 
-          {showModal && (
-            <ConfirmationModal
-              message={translate("Are you sure you want to save?")}
-              onConfirm={handleConfirm}
-              onCancel={handleCancel}
+          {showUnifiedModal && (
+            <UnifiedModal
+              onSave={handleSave}
+              onCancel={() => setShowUnifiedModal(false)}
+              initialLabel={gestureLabel}
+              initialName={gestureName}
             />
           )}
-
-          {/* Only show LabelModal if showLabelModal is true */}
-          {showLabelModal && (
-            <LabelModal
-              onSaveLabel={handleSaveLabel}
-              onCancel={() => setShowLabelModal(false)}
-              initialLabel={gestureLabel} // Pass initialLabel prop
-            />
-          )}
-
-          {showNameModal && (
-            <NameModal
-              onSaveName={handleSaveName}
-              onCancel={() => setShowNameModal(false)}
-              initialName={initialName} // Pass initialName prop
-            />
-          )}
-
         </div>
       )}
     </Translations>
@@ -225,3 +183,4 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
 };
 
 export default VideoContainer;
+

@@ -3,14 +3,16 @@ import config from '../../config/config.json'; // Adjust the path according to y
 import { Translations } from "../../language-management/Translations";
 
 
-const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, selectedGroup }) => {
+const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, selectedGroup, handleSubjectsChange, selectedSubjects, handleSubjectChange, selectedSubject }) => {
   const [emotions, setEmotions] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     // Load the config data when the component mounts
     setEmotions(config.emotions);
     setGroups(config.groups);
+    setSubjects(config.subjects);
   }, []);
 
   return (
@@ -50,7 +52,34 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
               </select>
             </div>
           </div>
+
+          {/* <div className="form-column subject-multichoice-filter">
+            <div className="label-container">
+              <label>{translate('Subjects (Multiple):')}</label>
+            </div>
+            <select
+              id="subject-dropdown"
+              value={selectedSubject}
+              onChange={handleSubjectsChange}
+            >
+              <option value=""></option>
+              {subjects.map((subject) => (
+                <option key={subject}>
+                  <input
+                    type="checkbox"
+                    value={subject}
+                    checked={selectedSubjects.includes(subject)}
+                    onChange={handleSubjectsChange}
+                  />
+                  {translate(subject)}
+                </option>
+              ))}
+            </select>
+
+          </div> */}
         </form>
+
+
       )}
     </Translations>
   );
