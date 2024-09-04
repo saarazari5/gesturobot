@@ -65,7 +65,7 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '' })
                         </select>
                         {error.label && <p className="errorMessage">{translate('Label cannot be empty')}</p>}
 
-                        <p className='lableMessage'>{translate('Please choose a subject:')}</p>
+                        <p className='lableMessage '>{translate('Please choose a subject:')}</p>
                         <select
                             value={name}
                             onChange={handleNameChange}
