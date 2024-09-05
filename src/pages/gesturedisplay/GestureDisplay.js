@@ -6,16 +6,13 @@ import { Tooltip, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import EmotionGroupForm from "./EmotionGroupForm";
-
+import Select from 'react-select';
 
 function GestureDisplay({ setGestureID }) {
-
   const [selectedGesture, setSelectedGesture] = useState('');
   const [selectedGroup, setSelectedGroup] = useState('');
-  // const [selectedSubjects, setSelectedSubjects] = useState([]);
-  // const [selectedSubject, setSelectedSubject] = useState('');
+  const [dateFilter, setDateFilter] = useState('recentWeek'); // Date filter state
   let navigate = useNavigate();
-
 
   const handleGestureChange = (e) => {
     setSelectedGesture(e.target.value);
@@ -25,23 +22,14 @@ function GestureDisplay({ setGestureID }) {
     setSelectedGroup(e.target.value);
   };
 
-  // const handleSubjectsChange = (e) => {
-  //   const value = e.target.value;
-  //   setSelectedSubjects((prev) =>
-  //     prev.includes(value)
-  //       ? prev.filter((subject) => subject !== value)
-  //       : [...prev, value]
-  //   );
-  // };
-
-  // const handleSubjectChange = (e) => {
-  //   setSelectedSubject(e.target.value);
-  // };
+  const handleDateFilterChange = (selectedOption) => {
+    setDateFilter(selectedOption.value); // Update date filter
+  };
 
   const handleEditGesture = (gesture) => {
-    setGestureID(gesture.id); // Set the gesture ID for the gesture being edited
+    setGestureID(gesture.id);
     navigate("/VideoWindow", {
-      state: { gestureId: gesture }, // Navigate and pass gesture data
+      state: { gestureId: gesture },
     });
   };
 
@@ -49,6 +37,12 @@ function GestureDisplay({ setGestureID }) {
     navigate("/videoWindow");
   };
 
+  const dateOptions = [
+    { label: 'Recent Week', value: 'recentWeek' },
+    { label: 'Recent Month', value: 'recentMonth' },
+    { label: 'Recent 3 Months', value: 'recent3Months' },
+    { label: 'Recent 6 Months', value: 'recent6Months' },
+  ];
 
   return (
     <Translations>
@@ -59,17 +53,27 @@ function GestureDisplay({ setGestureID }) {
             handleGestureChange={handleGestureChange}
             handleGroupChange={handleGroupChange}
             selectedGroup={selectedGroup}
-          // handleSubjectsChange={handleSubjectsChange}
-          // selectedSubjects={selectedSubjects}
-          // handleSubjectChange={handleSubjectChange}
-          // selectedSubject={selectedSubject}
           />
 
-          <GestureSection emotion={selectedGesture} group={selectedGroup} setGestureID={setGestureID} />
+          <Select
+            options={dateOptions}
+            onChange={handleDateFilterChange}
+            value={dateOptions.find(option => option.value === dateFilter)}
+            placeholder={translate('Select date range')}
+            isClearable={false}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            styles={{ menu: provided => ({ ...provided, zIndex: 1000 }) }}
+          />
 
-          {/* Container for checkbox and add icon */}
+          <GestureSection
+            emotion={selectedGesture}
+            group={selectedGroup}
+            setGestureID={setGestureID}
+            dateFilter={dateFilter} // Pass date filter to GestureSection
+          />
+
           <div className="actions-container">
-            {/* Checkbox */}
             <Tooltip title={translate("Add New Gesture")} aria-label="add">
               <Fab aria-label="add" onClick={handleClick}>
                 <AddIcon />

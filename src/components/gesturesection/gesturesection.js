@@ -8,7 +8,7 @@ import { Tooltip, IconButton } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal'; // Import the modal component
 import { Translations } from '../../language-management/Translations';
 
-function GestureSection(props) {
+function GestureSection({ emotion, group, setGestureID, dateFilter }) {
   let navigate = useNavigate();
   const language = useContext(LanguageContext);
   const [gestures, setGestures] = useState([]);
@@ -27,13 +27,32 @@ function GestureSection(props) {
     fetchGestures();
   }, []);
 
+  const filterGesturesByDate = (gestures) => {
+    const now = new Date();
+    return gestures.filter(gesture => {
+      const createdDate = new Date(gesture.createdDate);
+      switch (dateFilter) {
+        case 'recentWeek':
+          return (now - createdDate) <= (7 * 24 * 60 * 60 * 1000);
+        case 'recentMonth':
+          return (now - createdDate) <= (30 * 24 * 60 * 60 * 1000);
+        case 'recent3Months':
+          return (now - createdDate) <= (3 * 30 * 24 * 60 * 60 * 1000);
+        case 'recent6Months':
+          return (now - createdDate) <= (6 * 30 * 24 * 60 * 60 * 1000);
+        default:
+          return true;
+      }
+    });
+  };
+
   const handleDeleteGesture = async (gestureId) => {
     await deleteGesture(gestureId);
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
   };
 
   const handleEditGesture = (gesture) => {
-    props.setGestureID(gesture.id);
+    setGestureID(gesture.id);
     navigate("/VideoWindow", {
       state: { gestureId: gesture },
     });
@@ -57,12 +76,9 @@ function GestureSection(props) {
     setShowConfirmationModal(false); // Hide the modal
   };
 
-  const filteredGestures = gestures.filter(gesture => {
+  const filteredGestures = filterGesturesByDate(gestures).filter(gesture => {
     const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
-    return (
-      temp.toLowerCase().includes(props.emotion.toLowerCase())
-      // gesture.group === props.group
-    );
+    return temp.toLowerCase().includes(emotion.toLowerCase());
   });
 
   return (

@@ -130,7 +130,8 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
       movements: droppedItems.filter(item => item !== undefined).map(item => item.id),
       creator: [null, null, null],
       labels: [],
-      group: 'default'
+      group: 'default',
+      createdDate: new Date().toISOString(), // Add the creation date here
     };
 
     if (existingGestureId) {
