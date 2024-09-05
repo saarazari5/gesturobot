@@ -83,4 +83,11 @@ select {
   z-index: 1000; /* Ensure it's on top of other content */
 
 }
+.some-video-wrapper {
+  position: relative; /* Ensure it is positioned */
+  z-index: 10; /* Lower z-index than the dropdown */
+}
 
+.react-select__menu {
+  z-index: 1000 !important; /* Ensure dropdown is on top */
+}
