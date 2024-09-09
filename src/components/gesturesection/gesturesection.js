@@ -51,8 +51,8 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
       // If no subjects (gesture names) are selected, return all gestures
       if (subjects.length === 0) return true;
 
-      // Check if the gesture name matches any of the selected subjects
-      return subjects.some(subject => gesture.name.toLowerCase().includes(subject.toLowerCase()));
+      // Check if the gesture name matches any of the selected subjects exactly
+      return subjects.some(subject => gesture.name === subject); // Exact match using '==='
     });
   };
 
