@@ -94,7 +94,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
   const MAX_ITEMS = 6;
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
   const [gestureLabel, setGestureLabel] = useState(initialLabel);
-  const [gestureName, setGestureName] = useState(initialName);
+  const [gestureName, setGestureName] = useState(initialName);  // Set initialName as default
   let navigate = useNavigate();
 
   const moveItem = (dragIndex, hoverIndex) => {
@@ -174,7 +174,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
               onSave={handleSave}
               onCancel={() => setShowUnifiedModal(false)}
               initialLabel={gestureLabel}
-              initialName={gestureName}
+              initialName={gestureName}  // Pre-fill the name with initialName
             />
           )}
         </div>
@@ -184,4 +184,3 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
 };
 
 export default VideoContainer;
-

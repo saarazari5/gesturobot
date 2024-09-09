@@ -3,10 +3,10 @@ import Select from 'react-select';
 import config from '../../config/config.json'; // Adjust the path according to your project structure
 import { Translations } from "../../language-management/Translations";
 
-const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, selectedGroup, handleSubjectsChange, selectedSubjects, handleSubjectChange, selectedSubject }) => {
+const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, selectedGroup, dateFilter, handleDateFilterChange, dateOptions, handleSubjectChange, selectedSubjects, handleCurrentSubjectChange, currentSubject }) => {
   const [emotions, setEmotions] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [subjects, setSubjects] = useState([]);
+  const [subjects, setSubjects] = useState([]); // State for subjects
 
   useEffect(() => {
     const sortedEmotions = config.emotions
@@ -17,10 +17,14 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
       .map(group => ({ label: translate(group), value: group }))
       .sort((a, b) => a.label.localeCompare(b.label)); // Sort groups alphabetically
 
+    const sortedSubjects = config.subjects
+      .map(subject => ({ label: translate(subject), value: subject }))
+      .sort((a, b) => a.label.localeCompare(b.label)); // Sort subjects alphabetically
+
     setEmotions(sortedEmotions);
     setGroups(sortedGroups);
-    setSubjects(config.subjects);
-  }, []);
+    setSubjects(sortedSubjects); // Set subjects from config
+  }, [translate]);
 
   const handleEmotionChange = (selectedOption) => {
     handleGestureChange({ target: { value: selectedOption ? selectedOption.value : '' } });
@@ -30,20 +34,19 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
     handleGroupChange({ target: { value: selectedOption ? selectedOption.value : '' } });
   };
 
-  // Custom styles to remove transparency and set z-index
   const customStyles = {
     menu: (provided) => ({
       ...provided,
-      backgroundColor: 'white', // Set background to white
-      opacity: 1, // Remove any transparency
-      zIndex: 1000, // Set a high z-index to ensure it appears on top
+      backgroundColor: 'white',
+      opacity: 1,
+      zIndex: 1000,
     }),
     control: (provided) => ({
       ...provided,
-      backgroundColor: 'white', // Set background to white
+      backgroundColor: 'white',
       border: '1px solid #ccc',
       boxShadow: 'none',
-      zIndex: 1000, // Ensure control is above other elements
+      zIndex: 1000,
     }),
   };
 
@@ -60,12 +63,12 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
               <Select
                 options={emotions}
                 onChange={handleEmotionChange}
-                placeholder={translate('Search for an emotion...')}
+                placeholder={translate('choose emotion...')}
                 isClearable
                 className="react-select-container"
                 classNamePrefix="react-select"
-                styles={customStyles} // Apply custom styles with z-index here
-                filterOption={(option, inputValue) => option.label.toLowerCase().startsWith(inputValue.toLowerCase())} // Filter by order
+                styles={customStyles}
+                filterOption={(option, inputValue) => option.label.toLowerCase().startsWith(inputValue.toLowerCase())}
               />
             </div>
 
@@ -77,12 +80,64 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
               <Select
                 options={groups}
                 onChange={handleGroupChangeSelect}
-                placeholder={translate('Search for a group...')}
+                placeholder={translate('choose group...')}
                 isClearable
                 className="react-select-container"
                 classNamePrefix="react-select"
-                styles={customStyles} // Apply custom styles with z-index here
-                filterOption={(option, inputValue) => option.label.toLowerCase().startsWith(inputValue.toLowerCase())} // Filter by order
+                styles={customStyles}
+                filterOption={(option, inputValue) => option.label.toLowerCase().startsWith(inputValue.toLowerCase())}
+              />
+            </div>
+
+            {/* Subject Dropdown with Multiple Selection */}
+            <div className="form-column subject-filter">
+              <div className="label-container">
+                <label htmlFor="subject-select">{translate('Subjects:')}</label>
+              </div>
+              <Select
+                options={subjects} // Subject options from config
+                onChange={handleSubjectChange}
+                value={subjects.filter(option => selectedSubjects.includes(option.value))} // Show selected subjects
+                placeholder={translate('choose a subject...')}
+                isClearable
+                isMulti // Enable multiple selection
+                className="react-select-container"
+                classNamePrefix="react-select"
+                styles={customStyles}
+              />
+            </div>
+
+            {/* Date Filter Dropdown */}
+            <div className="form-column date-filter">
+              <div className="label-container">
+                <label htmlFor="date-select">{translate('Date:')}</label>
+              </div>
+              <Select
+                options={dateOptions}
+                onChange={handleDateFilterChange}
+                value={dateOptions.find(option => option.value === dateFilter)}
+                placeholder={translate('Select date range')}
+                isClearable={false}
+                className="react-select-container"
+                classNamePrefix="react-select"
+                styles={customStyles}
+              />
+            </div>
+
+            {/* New Current Subject Dropdown */}
+            <div className="form-column current-subject-filter">
+              <div className="label-container">
+                <label htmlFor="current-subject-select">{translate('Current Subject:')}</label>
+              </div>
+              <Select
+                options={subjects} // Use the same subjects list
+                onChange={handleCurrentSubjectChange}
+                value={subjects.find(option => option.value === currentSubject)} // Show selected current subject
+                placeholder={translate('Select current subject...')}
+                isClearable
+                className="react-select-container"
+                classNamePrefix="react-select"
+                styles={customStyles}
               />
             </div>
           </div>

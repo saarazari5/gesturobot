@@ -8,7 +8,7 @@ import { Tooltip, IconButton } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal'; // Import the modal component
 import { Translations } from '../../language-management/Translations';
 
-function GestureSection({ emotion, group, setGestureID, dateFilter }) {
+function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) { // Add subjects prop here
   let navigate = useNavigate();
   const language = useContext(LanguageContext);
   const [gestures, setGestures] = useState([]);
@@ -46,6 +46,16 @@ function GestureSection({ emotion, group, setGestureID, dateFilter }) {
     });
   };
 
+  const filterGesturesByName = (gestures) => {
+    return gestures.filter(gesture => {
+      // If no subjects (gesture names) are selected, return all gestures
+      if (subjects.length === 0) return true;
+
+      // Check if the gesture name matches any of the selected subjects
+      return subjects.some(subject => gesture.name.toLowerCase().includes(subject.toLowerCase()));
+    });
+  };
+
   const handleDeleteGesture = async (gestureId) => {
     await deleteGesture(gestureId);
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
@@ -76,10 +86,18 @@ function GestureSection({ emotion, group, setGestureID, dateFilter }) {
     setShowConfirmationModal(false); // Hide the modal
   };
 
-  const filteredGestures = filterGesturesByDate(gestures).filter(gesture => {
-    const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
-    return temp.toLowerCase().includes(emotion.toLowerCase());
-  });
+  const filteredGestures = filterGesturesByDate(gestures)
+    .filter(gesture => {
+      const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
+      return temp.toLowerCase().includes(emotion.toLowerCase());
+    })
+    .filter(gesture => {
+      if (group) {
+        return gesture.group === group; // Ensure group matches
+      }
+      return true;
+    })
+    .filter(gesture => filterGesturesByName([gesture]).length > 0); // Filter by gesture name (subject)
 
   return (
     <Translations>
@@ -101,13 +119,26 @@ function GestureSection({ emotion, group, setGestureID, dateFilter }) {
                     {String.fromCharCode(9998)} {/* Edit icon */}
                   </div>
 
-                  <Tooltip title={"ID: " + gesture.id + ", " + translate("Label") + ": " + gesture.realLabel[0]} aria-label="info">
-                    <div className="info-gesture"
+                  <Tooltip
+                    title={
+                      <>
+                        {"ID: " + gesture.id} <br />
+                        {translate("Label") + ": " + gesture.realLabel[0]} <br />
+                        {translate("Date") + ": " + new Date(gesture.createdDate).toLocaleDateString()}
+                      </>
+                    }
+                    aria-label="info"
+                  >
+                    <div
+                      className="info-gesture"
                       onMouseEnter={() => setShowTooltip(gesture.id)}
-                      onMouseLeave={() => setShowTooltip(null)}>
+                      onMouseLeave={() => setShowTooltip(null)}
+                    >
                       {String.fromCharCode(9432)} {/* Info icon */}
                     </div>
                   </Tooltip>
+
+
                 </div>
                 <LoopOfMovements ids={gesture.movements} />
                 <div className="card-title-overlay">

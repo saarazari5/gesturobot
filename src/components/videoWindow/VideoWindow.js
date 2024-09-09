@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import VideoContainer from './VideoContainer';
 import SidePanel from './SidePanel';
 import { DndProvider } from 'react-dnd';
@@ -11,10 +11,14 @@ import { Translations } from "../../language-management/Translations";
 
 const VideoWindow = () => {
     const location = useLocation();
+    const navigate = useNavigate();  // Added to handle navigation
     const gesture = location.state?.gestureId || {};
+    const currentSubject = location.state?.currentSubject || ''; // Retrieve current subject from navigation state
+
     const [movements, setMovements] = useState([]);
     const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(-1); // Start with -1 to hide borders initially
+
     const combinedVideoRef = useRef(null);
 
     useEffect(() => {
@@ -25,14 +29,10 @@ const VideoWindow = () => {
     }, [droppedItems]);
 
     useEffect(() => {
-        console.log("Gesture from state:", gesture);
-    }, [gesture]);
-
-    useEffect(() => {
         const fetchMovements = async () => {
             try {
                 const fetchedMovements = await getMovements();
-                const dropped = gesture.movements.map(movementID => {
+                const dropped = gesture.movements?.map(movementID => {
                     return fetchedMovements.find(movement => movement.id === movementID);
                 });
                 setDroppedItems(dropped);
@@ -41,7 +41,9 @@ const VideoWindow = () => {
             }
         };
 
-        fetchMovements();
+        if (gesture.movements) {
+            fetchMovements();
+        }
     }, [gesture]);
 
     const playCombinedVideos = () => {
@@ -82,8 +84,6 @@ const VideoWindow = () => {
         }
     };
 
-    console.log("dropped", droppedItems);
-
     return (
         <Translations>
             {({ translate }) => (
@@ -94,7 +94,7 @@ const VideoWindow = () => {
                             droppedItems={droppedItems}
                             setDroppedItems={setDroppedItems}
                             existingGestureId={gesture.id}
-                            initialName={gesture.name || ''}
+                            initialName={gesture.name || currentSubject}  // Set initialName as currentSubject
                             initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''}
                             currentPlayingIndex={currentVideoIndex}
                         />
@@ -111,7 +111,6 @@ const VideoWindow = () => {
             )}
         </Translations>
     );
-}
+};
 
 export default VideoWindow;
-
