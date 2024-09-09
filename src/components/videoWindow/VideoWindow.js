@@ -1,35 +1,38 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import VideoContainer from './VideoContainer';
 import SidePanel from './SidePanel';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import './VideoWindow.css'; // Import CSS file
+import './VideoWindow.css';
 import { CiPlay1 } from "react-icons/ci";
 import { getMovements } from "../../databases/movementsAPI";
 import { Translations } from "../../language-management/Translations";
 
-function VideoWindow() {
+const VideoWindow = () => {
     const location = useLocation();
+    const navigate = useNavigate();  // Added to handle navigation
     const gesture = location.state?.gestureId || {};
+    const currentSubject = location.state?.currentSubject || ''; // Retrieve current subject from navigation state
+
     const [movements, setMovements] = useState([]);
     const [droppedItems, setDroppedItems] = useState([]);
-    const [currentVideoIndex, setCurrentVideoIndex] = useState(0); // Index of the currently playing video
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(-1); // Start with -1 to hide borders initially
+
     const combinedVideoRef = useRef(null);
 
     useEffect(() => {
-        playCombinedVideos(); // Autoplay combined videos when dropped items change
+        if (droppedItems.length > 0) {
+            setCurrentVideoIndex(0); // Start from the first video when videos are available
+            playCombinedVideos();
+        }
     }, [droppedItems]);
-
-    useEffect(() => {
-        console.log("Gesture from state:", gesture); // Debugging line
-    }, [gesture]);
 
     useEffect(() => {
         const fetchMovements = async () => {
             try {
                 const fetchedMovements = await getMovements();
-                const dropped = gesture.movements.map(movementID => {
+                const dropped = gesture.movements?.map(movementID => {
                     return fetchedMovements.find(movement => movement.id === movementID);
                 });
                 setDroppedItems(dropped);
@@ -38,17 +41,19 @@ function VideoWindow() {
             }
         };
 
-        fetchMovements();
+        if (gesture.movements) {
+            fetchMovements();
+        }
     }, [gesture]);
 
     const playCombinedVideos = () => {
         if (combinedVideoRef.current) {
-            combinedVideoRef.current.play(); // Start playing the combined video
+            combinedVideoRef.current.play();
         }
     };
 
     const combineVideos = () => {
-        const validDroppedItems = droppedItems.filter(item => item !== undefined); // Filter out undefined items
+        const validDroppedItems = droppedItems.filter(item => item !== undefined);
         return (
             <>
                 <video muted ref={combinedVideoRef} onEnded={playNextVideo}>
@@ -63,20 +68,21 @@ function VideoWindow() {
     const playNextVideo = () => {
         const nextVideoIndex = currentVideoIndex + 1;
         if (nextVideoIndex < droppedItems.length) {
-            setCurrentVideoIndex(nextVideoIndex); // Update current video index
+            setCurrentVideoIndex(nextVideoIndex);
             combinedVideoRef.current.src = droppedItems[nextVideoIndex].videoUrl;
             combinedVideoRef.current.play();
+        } else {
+            setCurrentVideoIndex(-1); // Reset the index when all videos are done
         }
     };
 
     const handleManualPlay = () => {
         if (combinedVideoRef.current) {
-            combinedVideoRef.current.src = droppedItems[0].videoUrl; // Start with the first video in the playlist
-            setCurrentVideoIndex(0); // Reset current video index
-            combinedVideoRef.current.play(); // Start playing the combined video
+            combinedVideoRef.current.src = droppedItems[0].videoUrl;
+            setCurrentVideoIndex(0);
+            combinedVideoRef.current.play();
         }
     };
-    console.log("dropped", droppedItems);
 
     return (
         <Translations>
@@ -87,9 +93,10 @@ function VideoWindow() {
                         <VideoContainer
                             droppedItems={droppedItems}
                             setDroppedItems={setDroppedItems}
-                            existingGestureId={gesture.id} // Pass gesture ID or null
-                            initialName={gesture.name || ''} // Use empty string if name is undefined
-                            initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''} // Default to empty string if undefined
+                            existingGestureId={gesture.id}
+                            initialName={gesture.name || currentSubject}  // Set initialName as currentSubject
+                            initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''}
+                            currentPlayingIndex={currentVideoIndex}
                         />
                         {droppedItems.length > 0 && (
                             <div className="combined-video">
@@ -104,6 +111,6 @@ function VideoWindow() {
             )}
         </Translations>
     );
-}
+};
 
 export default VideoWindow;

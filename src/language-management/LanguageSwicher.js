@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { useContext } from 'react';
 import { AuthContext } from '../pages/userLogin/AuthContext';
+import { FiArrowRight } from "react-icons/fi"; // Import the back arrow icon
 import './LanguageSwicher.css'; // Ensure this path is correct
 
 export const LanguageSwitcher = () => {
@@ -17,6 +18,11 @@ export const LanguageSwitcher = () => {
   const handleLogout = () => {
     logout();
     navigate('/'); // Redirect to the home page or login page
+  };
+
+  // Function to handle going back
+  const handleGoBack = () => {
+    navigate(-1); // This navigates to the previous page
   };
 
   return (
@@ -43,6 +49,13 @@ export const LanguageSwitcher = () => {
             onClick={handleLogout}
           />
         </div>
+      )}
+
+      {/* Conditionally show the Back button, but not on the login page */}
+      {location.pathname !== '/' && (
+        <button onClick={handleGoBack} className="back-button">
+          <FiArrowRight size={20} /> {/* Back arrow icon */}
+        </button>
       )}
 
       <div className="language-buttons">

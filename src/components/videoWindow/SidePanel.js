@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDrag } from 'react-dnd';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; // Import arrow icons
-import { Translations } from "../../language-management/Translations"; 
+import { Translations } from "../../language-management/Translations";
 import './SidePanel.css';
 
 const DraggableItem = ({ id, videoUrl, name }) => {
@@ -16,7 +16,7 @@ const DraggableItem = ({ id, videoUrl, name }) => {
 
   return (
     <div ref={drag} className={`draggable-item ${isDragging ? 'dragging' : ''}`}>
-      <video src={videoUrl} controls width="155" height="100" />
+      <video src={videoUrl} muted controls width="155" height="100" />
       <p>{name}</p>
     </div>
   );

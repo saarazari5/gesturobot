@@ -8,7 +8,7 @@ import { Tooltip, IconButton } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal'; // Import the modal component
 import { Translations } from '../../language-management/Translations';
 
-function GestureSection(props) {
+function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) { // Add subjects prop here
   let navigate = useNavigate();
   const language = useContext(LanguageContext);
   const [gestures, setGestures] = useState([]);
@@ -27,13 +27,42 @@ function GestureSection(props) {
     fetchGestures();
   }, []);
 
+  const filterGesturesByDate = (gestures) => {
+    const now = new Date();
+    return gestures.filter(gesture => {
+      const createdDate = new Date(gesture.createdDate);
+      switch (dateFilter) {
+        case 'recentWeek':
+          return (now - createdDate) <= (7 * 24 * 60 * 60 * 1000);
+        case 'recentMonth':
+          return (now - createdDate) <= (30 * 24 * 60 * 60 * 1000);
+        case 'recent3Months':
+          return (now - createdDate) <= (3 * 30 * 24 * 60 * 60 * 1000);
+        case 'recent6Months':
+          return (now - createdDate) <= (6 * 30 * 24 * 60 * 60 * 1000);
+        default:
+          return true;
+      }
+    });
+  };
+
+  const filterGesturesByName = (gestures) => {
+    return gestures.filter(gesture => {
+      // If no subjects (gesture names) are selected, return all gestures
+      if (subjects.length === 0) return true;
+
+      // Check if the gesture name matches any of the selected subjects exactly
+      return subjects.some(subject => gesture.name === subject); // Exact match using '==='
+    });
+  };
+
   const handleDeleteGesture = async (gestureId) => {
     await deleteGesture(gestureId);
     setGestures(gestures.filter(gesture => gesture.id !== gestureId));
   };
 
   const handleEditGesture = (gesture) => {
-    props.setGestureID(gesture.id);
+    setGestureID(gesture.id);
     navigate("/VideoWindow", {
       state: { gestureId: gesture },
     });
@@ -57,13 +86,18 @@ function GestureSection(props) {
     setShowConfirmationModal(false); // Hide the modal
   };
 
-  const filteredGestures = gestures.filter(gesture => {
-    const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
-    return (
-      temp.toLowerCase().includes(props.emotion.toLowerCase())
-      // gesture.group === props.group
-    );
-  });
+  const filteredGestures = filterGesturesByDate(gestures)
+    .filter(gesture => {
+      const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
+      return temp.toLowerCase().includes(emotion.toLowerCase());
+    })
+    .filter(gesture => {
+      if (group) {
+        return gesture.group === group; // Ensure group matches
+      }
+      return true;
+    })
+    .filter(gesture => filterGesturesByName([gesture]).length > 0); // Filter by gesture name (subject)
 
   return (
     <Translations>
@@ -85,13 +119,26 @@ function GestureSection(props) {
                     {String.fromCharCode(9998)} {/* Edit icon */}
                   </div>
 
-                  <Tooltip title={"ID: " + gesture.id + ", " + translate("Label") + ": " + gesture.realLabel[0]} aria-label="info">
-                    <div className="info-gesture"
+                  <Tooltip
+                    title={
+                      <>
+                        {"ID: " + gesture.id} <br />
+                        {translate("Label") + ": " + gesture.realLabel[0]} <br />
+                        {translate("Date") + ": " + new Date(gesture.createdDate).toLocaleDateString()}
+                      </>
+                    }
+                    aria-label="info"
+                  >
+                    <div
+                      className="info-gesture"
                       onMouseEnter={() => setShowTooltip(gesture.id)}
-                      onMouseLeave={() => setShowTooltip(null)}>
+                      onMouseLeave={() => setShowTooltip(null)}
+                    >
                       {String.fromCharCode(9432)} {/* Info icon */}
                     </div>
                   </Tooltip>
+
+
                 </div>
                 <LoopOfMovements ids={gesture.movements} />
                 <div className="card-title-overlay">

@@ -1,6 +1,6 @@
 .form-container {
   width: 100%;
-  max-width: 600px; /* Set a reasonable max-width for the form */
+  max-width: 1300px; /* Set a reasonable max-width for the form */
   margin: 0 auto; /* Center the form horizontally */
   padding: 20px;
   box-sizing: border-box;
@@ -83,4 +83,13 @@ select {
   z-index: 1000; /* Ensure it's on top of other content */
 
 }
+.some-video-wrapper {
+  position: relative; /* Ensure it is positioned */
+  z-index: 10; /* Lower z-index than the dropdown */
+}
+
+.react-select__menu {
+  z-index: 1000 !important; /* Ensure dropdown is on top */
+}
+
 

@@ -37,19 +37,7 @@
       "videoUrl": "../../movements/robot2/mp4/step_left.mp4"
     },
     {
-      "id": "26",
-      "name": "step right",
-      "hebrewName": "צעד ימינה",
-      "videoUrl": "../../movements/robot2/mp4/step_right.mp4"
-    },
-    {
       "id": "27",
-      "name": "sit",
-      "hebrewName": "ישיבה",
-      "videoUrl": "../../movements/robot2/mp4/sit.mp4"
-    },
-    {
-      "id": "28",
       "name": "sit",
       "hebrewName": "ישיבה",
       "videoUrl": "../../movements/robot2/mp4/sit.mp4"
@@ -61,40 +49,16 @@
       "videoUrl": "../../movements/robot2/mp4/lying.mp4"
     },
     {
-      "id": "30",
-      "name": "Lying and getting up",
-      "hebrewName": "שכיבה ועלייה",
-      "videoUrl": "../../movements/robot2/mp4/lying_andUp.mp4"
-    },
-    {
       "id": "31",
       "name": "Looking left",
       "hebrewName": "הסתכלות שמאלה",
       "videoUrl": "../../movements/robot2/mp4/looking_left.mp4"
     },
     {
-      "id": "32",
-      "name": "Looking right",
-      "hebrewName": "הסתכלות ימינה",
-      "videoUrl": "../../movements/robot2/mp4/looking_right.mp4"
-    },
-    {
       "id": "33",
       "name": "Looking up",
       "hebrewName": "הסתכלות למעלה",
       "videoUrl": "../../movements/robot2/mp4/look_up.mp4"
-    },
-    {
-      "id": "34",
-      "name": "Jump forward",
-      "hebrewName": "קפיצה קדימה",
-      "videoUrl": "../../movements/robot2/mp4/jump.mp4"
-    },
-    {
-      "id": "35",
-      "name": "Jump to hands",
-      "hebrewName": "קפיצה אל ידי אדם",
-      "videoUrl": "../../movements/robot2/mp4/jump_toHands.mp4"
     },
     {
       "id": "36",
@@ -115,12 +79,6 @@
       "videoUrl": "../../movements/robot2/mp4/bowing.mp4"
     },
     {
-      "id": "39",
-      "name": "Bowing right",
-      "hebrewName": "השתחוות ימינה",
-      "videoUrl": "../../movements/robot2/mp4/bowing_right.mp4"
-    },
-    {
       "id": "40",
       "name": "Bending",
       "hebrewName": "כיפוף",
@@ -137,117 +95,6 @@
       "name": "Bend stretch left",
       "hebrewName": "כיפוף ומתיחה שמאלה",
       "videoUrl": "../../movements/robot2/mp4/bend_stretch_left.mp4"
-    },
-    {
-      "id": "1",
-      "name": "Stretch to the left",
-      "hebrewName": "התמתחות לשמאל",
-      "videoUrl": "../../movements/1.mp4"
-    },
-    {
-      "id": "2",
-      "name": "Looking to the left",
-      "hebrewName": "התבוננות לשמאל",
-      "videoUrl": "../../movements/2.mp4"
-    },
-    {
-      "id": "3",
-      "name": "Bowing",
-      "hebrewName": "השתחוות",
-      "videoUrl": "../../movements/3.mp4"
-    },
-    {
-      "id": "4",
-      "name": "Bending",
-      "hebrewName": "התכופפות",
-      "videoUrl": "../../movements/4.mp4"
-    },
-    {
-      "id": "5",
-      "name": "Lying",
-      "hebrewName": "שכיבה",
-      "videoUrl": "../../movements/5.mp4"
-    },
-    {
-      "id": "6",
-      "name": "Step forward",
-      "hebrewName": "צעידה קדימה",
-      "videoUrl": "../../movements/6.mp4"
-    },
-    {
-      "id": "7",
-      "name": "Walking to the left",
-      "hebrewName": "הליכה שמאלה",
-      "videoUrl": "../../movements/7.mp4"
-    },
-    {
-      "id": "8",
-      "name": "Gentle walk",
-      "hebrewName": "הליכה מליצית",
-      "videoUrl": "../../movements/8.mp4"
-    },
-    {
-      "id": "9",
-      "name": "Bent to the right",
-      "hebrewName": "רכינה לימין",
-      "videoUrl": "../../movements/9.mp4"
-    },
-    {
-      "id": "10",
-      "name": "Push up",
-      "hebrewName": "שכיבת סמיכה",
-      "videoUrl": "../../movements/10.mp4"
-    },
-    {
-      "id": "11",
-      "name": "Cynical walk to the left",
-      "hebrewName": "הליכה צינית שמאלה",
-      "videoUrl": "../../movements/11.mp4"
-    },
-    {
-      "id": "12",
-      "name": "Bowing to the right",
-      "hebrewName": "השתחוות לימין",
-      "videoUrl": "../../movements/12.mp4"
-    },
-    {
-      "id": "13",
-      "name": "Stretch to the right",
-      "hebrewName": "התמתחות לימין",
-      "videoUrl": "../../movements/13.mp4"
-    },
-    {
-      "id": "14",
-      "name": "Bent to the left",
-      "hebrewName": "התכופפות לשמאל",
-      "videoUrl": "../../movements/14.mp4"
-    },
-    {
-      "id": "15",
-      "name": "Aggressive stoop",
-      "hebrewName": "גחינה אגרסיבית",
-      "videoUrl": "../../movements/15.mp4"
-    },
-    {
-      "id": "16",
-      "name": "Spinning left",
-      "hebrewName": "להסתובב לשמאל",
-      "videoUrl": "../../movements/16.mp4"
-    },
-    {
-      "id": "17",
-      "name": "Spinning right",
-      "hebrewName": "להסתובב לימין",
-      "videoUrl": "../../movements/17.mp4"
-    },
-    {
-      "id": "18",
-      "name": "Trampling in place",
-      "hebrewName": "צעידה במקום",
-      "videoUrl": "../../movements/18.mp4"
-    },
-    {
-      "id": "c362"
     }
   ],
   "gestures": [
@@ -267,7 +114,8 @@
       ],
       "labels": [],
       "group": "default",
-      "id": "1"
+      "id": "1",
+      "createdDate": "2024-08-10T10:55:47.453Z"
     },
     {
       "name": "try2.1",
@@ -285,7 +133,8 @@
       ],
       "labels": [],
       "group": "default",
-      "id": "2"
+      "id": "2",
+      "createdDate": "2024-05-05T10:55:47.453Z"
     },
     {
       "id": "3",
@@ -303,7 +152,104 @@
         null
       ],
       "labels": [],
-      "group": "default"
+      "group": "default",
+      "createdDate": "2024-08-05T10:55:47.453Z"
+    },
+    {
+      "id": "4",
+      "name": "user1",
+      "realLabel": [
+        "Curiosity",
+        "Curiosity"
+      ],
+      "movements": [
+        "20"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "createdDate": "2024-09-05T10:55:47.453Z"
+    },
+    {
+      "name": "user10",
+      "realLabel": [
+        "Disappointment",
+        "Disappointment"
+      ],
+      "movements": [
+        "20"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "createdDate": "2024-09-09T17:49:51.859Z",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "name": "user2",
+      "realLabel": [
+        "Surprise",
+        "Surprise"
+      ],
+      "movements": [
+        "20"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "createdDate": "2024-09-09T17:00:26.986Z"
+    },
+    {
+      "name": "user2",
+      "realLabel": [
+        "Confusion",
+        "Confusion"
+      ],
+      "movements": [
+        "20",
+        "21"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "createdDate": "2024-09-09T17:46:32.581Z",
+      "id": "7"
+    },
+    {
+      "id": "8",
+      "name": "user7",
+      "realLabel": [
+        "Disappointment",
+        "Disappointment"
+      ],
+      "movements": [
+        "20"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "default",
+      "createdDate": "2024-09-09T17:43:26.418Z"
     }
   ],
   "users": [
