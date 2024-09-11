@@ -250,6 +250,26 @@
       "labels": [],
       "group": "default",
       "createdDate": "2024-09-09T17:43:26.418Z"
+    },
+    {
+      "id": "9",
+      "name": "user1",
+      "realLabel": [
+        "Sadness",
+        "Sadness"
+      ],
+      "movements": [
+        "20",
+        "21"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 1",
+      "createdDate": "2024-09-11T15:24:29.934Z"
     }
   ],
   "users": [

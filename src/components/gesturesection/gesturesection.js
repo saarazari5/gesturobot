@@ -124,7 +124,8 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
                       <>
                         {"ID: " + gesture.id} <br />
                         {translate("Label") + ": " + gesture.realLabel[0]} <br />
-                        {translate("Date") + ": " + new Date(gesture.createdDate).toLocaleDateString()}
+                        {translate("Date") + ": " + new Date(gesture.createdDate).toLocaleDateString()} <br />
+                        {translate("Group" + ": " + gesture.group)}
                       </>
                     }
                     aria-label="info"

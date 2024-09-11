@@ -3,17 +3,20 @@ import { Translations } from "../../language-management/Translations"; // Import
 import config from '../../config/config.json'; // Import the configuration file for labels and subjects
 import './ConfirmationModal.css'; // Ensure you have the correct path for your CSS file
 
-const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '' }) => {
+const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '', initialGroup = '' }) => {
     const [label, setLabel] = useState(initialLabel);
     const [name, setName] = useState(initialName);
+    const [group, setGroup] = useState(initialGroup);
     const [error, setError] = useState({ label: false, name: false });
     const [labelOptions, setLabelOptions] = useState([]); // State to hold label options
     const [nameOptions, setNameOptions] = useState([]); // State to hold name options
+    const [groupOptions, setGroupOptions] = useState([]);
 
     // Load labels and names from config file when component mounts
     useEffect(() => {
         setLabelOptions(config.emotions); // Load label options from config
         setNameOptions(config.subjects);  // Load name options from config
+        setGroupOptions(config.groups);
     }, []);
 
     const handleSave = () => {
@@ -27,12 +30,18 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '' })
             isError = true;
         }
 
+        if (group.trim().length === 0) {
+            setError(prev => ({ ...prev, group: true }));
+            isError = true;
+        }
+
         if (isError) return;
 
-        onSave({ label: label.trim(), name: name.trim() });
+        onSave({ label: label.trim(), name: name.trim(), group: group.trim() });
         setLabel('');
         setName('');
-        setError({ label: false, name: false });
+        setGroup('');
+        setError({ label: false, name: false, group: false });
     };
 
     const handleLabelChange = (e) => {
@@ -43,6 +52,11 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '' })
     const handleNameChange = (e) => {
         setName(e.target.value);
         setError(prev => ({ ...prev, name: false }));
+    };
+
+    const handleGroupChange = (e) => {
+        setGroup(e.target.value);
+        setError(prev => ({ ...prev, group: false }));
     };
 
     return (
@@ -79,6 +93,22 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '' })
                             ))}
                         </select>
                         {error.name && <p className="errorMessage">{translate('Name cannot be empty')}</p>}
+
+                        <p className='lableMessage'>{translate('Please choose a group:')}</p>
+                        <select
+                            value={group}
+                            onChange={handleGroupChange}
+                            placeholder="Select group"
+                        >
+                            <option value="">{translate('Select a group')}</option>
+                            {groupOptions.map((option) => (
+                                <option key={option} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                        {error.group && <p className="errorMessage">{translate('Group cannot be empty')}</p>}
+
 
                         <div className="buttonContainer">
                             <button className="modalButton" onClick={handleSave}>
