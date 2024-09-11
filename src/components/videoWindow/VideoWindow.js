@@ -97,6 +97,7 @@ const VideoWindow = () => {
                             initialName={gesture.name || currentSubject}  // Set initialName as currentSubject
                             initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''}
                             currentPlayingIndex={currentVideoIndex}
+                            initialGroup={gesture.group}
                         />
                         {droppedItems.length > 0 && (
                             <div className="combined-video">

@@ -90,11 +90,12 @@ const Item = ({ id, name, videoUrl, index, moveItem, handleRemoveItem, droppedIt
   );
 };
 
-const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfo, initialName, initialLabel, currentPlayingIndex }) => {
+const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = null, userInfo, initialName, initialLabel, currentPlayingIndex, initialGroup }) => {
   const MAX_ITEMS = 6;
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
   const [gestureLabel, setGestureLabel] = useState(initialLabel);
   const [gestureName, setGestureName] = useState(initialName);  // Set initialName as default
+  const [gestureGroup, setGestureGroup] = useState(initialGroup);
   let navigate = useNavigate();
 
   const moveItem = (dragIndex, hoverIndex) => {
@@ -116,21 +117,22 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
     setShowUnifiedModal(true); // Show the unified modal instead of separate ones
   };
 
-  const handleSave = async ({ label, name }) => {
+  const handleSave = async ({ label, name, group }) => {
     setGestureLabel(label);
     setGestureName(name);
+    setGestureGroup(group);
     setShowUnifiedModal(false);
-    await handleFinalSave(name, label);
+    await handleFinalSave(name, label, group);
   };
 
-  const handleFinalSave = async (name, label) => {
+  const handleFinalSave = async (name, label, group) => {
     const newGesture = {
       name: name,
       realLabel: [label, label],
       movements: droppedItems.filter(item => item !== undefined).map(item => item.id),
       creator: [null, null, null],
       labels: [],
-      group: 'default',
+      group: group,
       createdDate: new Date().toISOString(), // Add the creation date here
     };
 
@@ -175,6 +177,7 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
               onCancel={() => setShowUnifiedModal(false)}
               initialLabel={gestureLabel}
               initialName={gestureName}  // Pre-fill the name with initialName
+              initialGroup={gestureGroup}
             />
           )}
         </div>
