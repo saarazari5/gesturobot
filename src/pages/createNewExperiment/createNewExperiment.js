@@ -38,6 +38,7 @@ const CreateNewExp = () => {
 
     // Map gestures data into an array of arrays for CSV export
     const gestureRows = gestures.map((gesture) => [
+      gesture.id,
       gesture.name,
       gesture.realLabel[0],
       formatDate(gesture.createdDate),
@@ -47,7 +48,7 @@ const CreateNewExp = () => {
 
     // Create worksheet with headers and gesture data
     const worksheet = XLSX.utils.aoa_to_sheet([
-      ["Name", "Label", "Creation Date", "Group"], // CSV headers
+      ["Id", "Name", "Label", "Creation Date", "Group"], // CSV headers
       ...gestureRows,
     ]);
 
