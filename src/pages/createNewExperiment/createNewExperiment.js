@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getAllGestures } from "../../databases/gesturesAPI"; // Adjust the import to your actual API service path
 import * as XLSX from "xlsx";
+import "./createNewExperiment.css"; // Ensure the CSS file is correctly linked
 
-// Function to format the date to DD-MM-YYYY
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, '0');
@@ -14,12 +14,10 @@ const formatDate = (dateString) => {
 const CreateNewExp = () => {
   const [gestures, setGestures] = useState([]);
 
-  // Fetch the gestures data from the server when the component mounts
   useEffect(() => {
     fetchGestures();
   }, []);
 
-  // Function to fetch all gestures
   const fetchGestures = async () => {
     try {
       const data = await getAllGestures();
@@ -29,40 +27,34 @@ const CreateNewExp = () => {
     }
   };
 
-  // Function to generate and download CSV file
   const handleExportToCSV = () => {
     if (gestures.length === 0) {
       alert("No gestures to export.");
       return;
     }
 
-    // Map gestures data into an array of arrays for CSV export
     const gestureRows = gestures.map((gesture) => [
       gesture.id,
       gesture.name,
-      gesture.realLabel[0],
+      gesture.realLabel[0].replace('=', ''), // Remove "=" sign from label
       formatDate(gesture.createdDate),
-      gesture.group || 'default', // Replace with actual parameters of your gesture object
-      gesture.param2, // Add more parameters if necessary
+      gesture.group || 'default',
     ]);
 
-    // Create worksheet with headers and gesture data
     const worksheet = XLSX.utils.aoa_to_sheet([
-      ["Id", "Name", "Label", "Creation Date", "Group"], // CSV headers
+      ["Id", "Name", "Label", "Creation Date", "Group"],
       ...gestureRows,
     ]);
 
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Gestures");
 
-    // Trigger the CSV download
     XLSX.writeFile(workbook, "gestures_export.xlsx");
   };
 
   return (
-    <div>
-      <button onClick={handleExportToCSV}>Export Gestures to CSV</button>
-      {/* Add other parts of your form here */}
+    <div className="experiment">
+      <button className="csv" onClick={handleExportToCSV}>Click here to export gestures to CSV</button>
     </div>
   );
 };
