@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
 import { getAllGestures } from "../../databases/gesturesAPI"; // Adjust the import to your actual API service path
+import config from '../../config/config.json'; // Assuming your config is in this path
 import * as XLSX from "xlsx";
 import "./createNewExperiment.css"; // Ensure the CSS file is correctly linked
 
@@ -13,27 +15,85 @@ const formatDate = (dateString) => {
 
 const CreateNewExp = () => {
   const [gestures, setGestures] = useState([]);
+  const [selectedEmotions, setSelectedEmotions] = useState([]);
+  const [selectedGroups, setSelectedGroups] = useState([]);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [dateFilter, setDateFilter] = useState('');
 
   useEffect(() => {
-    fetchGestures();
+    const fetchData = async () => {
+      try {
+        const data = await getAllGestures();
+        console.log("Fetched Data:", data);
+        setGestures(data);
+      } catch (error) {
+        console.error("Error fetching gestures:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const fetchGestures = async () => {
-    try {
-      const data = await getAllGestures();
-      setGestures(data);
-    } catch (error) {
-      console.error("Error fetching gestures:", error);
-    }
-  };
-
   const handleExportToCSV = () => {
-    if (gestures.length === 0) {
-      alert("No gestures to export.");
+    // Filter gestures based on selected filters
+    let filteredGestures = gestures;
+
+    // Filter by emotions
+    if (selectedEmotions.length > 0) {
+      filteredGestures = filteredGestures.filter(gesture =>
+        selectedEmotions.some(emotion => gesture.realLabel[0] && gesture.realLabel[0] === emotion.value)
+      );
+    }
+
+    // Filter by groups
+    if (selectedGroups.length > 0) {
+      filteredGestures = filteredGestures.filter(gesture =>
+        selectedGroups.some(group => gesture.group && gesture.group === group.value)
+      );
+    }
+
+    // Filter by subjects
+    if (selectedSubjects.length > 0) {
+      filteredGestures = filteredGestures.filter(gesture =>
+        selectedSubjects.some(subject => gesture.name && gesture.name === subject.value)
+      );
+    }
+
+    // Filter by date
+    if (dateFilter) {
+      const now = new Date();
+      const filterDate = new Date();
+
+      switch (dateFilter) {
+        case 'week':
+          filterDate.setDate(now.getDate() - 7);
+          break;
+        case 'month':
+          filterDate.setMonth(now.getMonth() - 1);
+          break;
+        case 'three_months':
+          filterDate.setMonth(now.getMonth() - 3);
+          break;
+        case 'six_months':
+          filterDate.setMonth(now.getMonth() - 6);
+          break;
+        default:
+          break;
+      }
+
+      filteredGestures = filteredGestures.filter(gesture =>
+        new Date(gesture.createdDate) >= filterDate
+      );
+    }
+
+    console.log("Filtered Gestures:", filteredGestures);
+
+    if (filteredGestures.length === 0) {
+      alert("No gestures to export based on selected filters.");
       return;
     }
 
-    const gestureRows = gestures.map((gesture) => [
+    const gestureRows = filteredGestures.map((gesture) => [
       gesture.id,
       gesture.name,
       gesture.realLabel[0].replace('=', ''), // Remove "=" sign from label
@@ -52,9 +112,83 @@ const CreateNewExp = () => {
     XLSX.writeFile(workbook, "gestures_export.xlsx");
   };
 
+  const dateOptions = [
+    { value: 'week', label: 'Recent Week' },
+    { value: 'month', label: 'Recent Month' },
+    { value: 'three_months', label: 'Recent 3 Months' },
+    { value: 'six_months', label: 'Recent 6 Months' }
+  ];
+
+  const customStyles = {
+    menu: (provided) => ({
+      ...provided,
+      zIndex: 1000,
+    }),
+    control: (provided) => ({
+      ...provided,
+      border: '1px solid #ccc',
+    }),
+  };
+
   return (
-    <div className="experiment">
-      <button className="csv" onClick={handleExportToCSV}>Click here to export gestures to CSV</button>
+    <div className="experiment-container">
+      <h3 className="head">Filter and Export Gestures</h3>
+      <div className="filters">
+        {/* Emotions Multi-select */}
+        <div className="filter">
+          <label className="filter-name">Emotions:</label>
+          <Select
+            isMulti
+            options={config.emotions.map(emotion => ({ value: emotion, label: emotion }))}
+            onChange={setSelectedEmotions}
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Select emotions..."
+          />
+        </div>
+
+        {/* Groups Multi-select */}
+        <div className="filter">
+          <label className="filter-name">Groups:</label>
+          <Select
+            isMulti
+            options={config.groups.map(group => ({ value: group, label: group }))}
+            onChange={setSelectedGroups}
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Select groups..."
+          />
+        </div>
+
+        {/* Subjects Multi-select */}
+        <div className="filter">
+          <label className="filter-name">Subjects:</label>
+          <Select
+            isMulti
+            options={config.subjects.map(subject => ({ value: subject, label: subject }))}
+            onChange={setSelectedSubjects}
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Select subjects..."
+          />
+        </div>
+
+        {/* Date Filter */}
+        <div className="filter">
+          <label className="filter-name">Date Range:</label>
+          <Select
+            options={dateOptions}
+            onChange={(selected) => setDateFilter(selected?.value || '')}
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Select date range..."
+          />
+        </div>
+      </div>
+
+      <button className="csv" onClick={handleExportToCSV}>
+        Export Gestures to CSV
+      </button>
     </div>
   );
 };

@@ -1,23 +1,64 @@
-#form{
-    max-height: 400px;
-}
-
-#form2{
-    max-height: 150px;
-}
-
-.experiment {
+/* Container to center the content */
+.experiment-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 80vh; 
+    justify-content: center;
+    width: fit-content;
+    max-width: 1300px; /* Set a reasonable max-width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding around the content */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
 }
 
+/* Center the headline and button within the container */
+.head {
+    margin-bottom: 20px;
+    text-align: center; /* Center text within the headline */
+    font-size: 26px;
+}
+
+.filter-name {
+    font-size: 15px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+
+.filter {
+    margin-bottom: 15px; /* Add space between each filter */
+    min-width: 200px;
+}
+
+/* Styling for the CSV button */
 .csv {
     padding: 10px 20px;
     font-size: 16px;
+    margin-left: 10px;
     cursor: pointer;
-    width: 200px;
+    width: 215px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
 }
 
+.csv:hover {
+    background-color: rgb(193, 235, 238);
+}
+/* Adjust the max-height for forms if needed */
+#form {
+    max-height: 400px;
+}
 
+#form2 {
+    max-height: 150px;
+}
