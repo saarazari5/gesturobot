@@ -289,6 +289,25 @@
       "labels": [],
       "group": "Group 2",
       "createdDate": "2024-09-13T12:37:43.909Z"
+    },
+    {
+      "name": "user6",
+      "realLabel": [
+        "Guilt",
+        "Guilt"
+      ],
+      "movements": [
+        "21"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 1",
+      "createdDate": "2024-09-16T12:28:33.473Z",
+      "id": "11"
     }
   ],
   "users": [
