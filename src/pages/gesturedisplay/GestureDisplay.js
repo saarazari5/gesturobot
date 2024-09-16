@@ -101,6 +101,7 @@ function GestureDisplay({ setGestureID }) {
 
           {/* Error Modal for missing subject */}
           <ErrorModal
+            translate={translate}
             show={isModalOpen}
             message="Please choose a current subject before adding a new gesture."
             onClose={closeModal}

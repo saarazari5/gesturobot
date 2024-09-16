@@ -73,7 +73,7 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '', i
                             <option value="">{translate('Select a label')}</option>
                             {labelOptions.map((option) => (
                                 <option key={option} value={option}>
-                                    {option}
+                                    {translate(option)}
                                 </option>
                             ))}
                         </select>
@@ -85,14 +85,14 @@ const UnifiedModal = ({ onSave, onCancel, initialLabel = '', initialName = '', i
                             onChange={handleNameChange}
                             placeholder="Select name"
                         >
-                            <option value="">{translate('Select a name')}</option>
+                            <option value="">{translate('Select a subject')}</option>
                             {nameOptions.map((option) => (
                                 <option key={option} value={option}>
                                     {option}
                                 </option>
                             ))}
                         </select>
-                        {error.name && <p className="errorMessage">{translate('Name cannot be empty')}</p>}
+                        {error.name && <p className="errorMessage">{translate('Subject cannot be empty')}</p>}
 
                         <p className='lableMessage'>{translate('Please choose a group:')}</p>
                         <select
