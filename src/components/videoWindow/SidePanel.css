@@ -13,6 +13,7 @@
   background-color: #ebfaff !important;
   /* background-color: white; */
   direction: rtl;
+  z-index: 100;
 }
 
 /* Hide the side panel on smaller screens */
@@ -53,6 +54,8 @@
 
 .side-panel-open {
   left: 0; /* When the panel is open */
+  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / .4);
+
 }
 
 .side-panel-closed {

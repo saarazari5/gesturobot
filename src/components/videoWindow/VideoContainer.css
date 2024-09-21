@@ -1,13 +1,11 @@
 .VideoContainer {
   position: fixed;
   bottom: 50px;
-  left: 55%;
+  left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: 900px; */
-  /* height: 80px; */
   width: 60%;
   height: 10%;
   padding: 10px;
@@ -22,7 +20,6 @@
 .frameStyle {
   border: 1px solid #918d8d;
   padding: 5px;
-  /* transition: all 0.1s; */
   position: relative;
   display: flex;
   align-items: center;
@@ -31,10 +28,9 @@
   background-color: #f0f0f0;
   width: 100%;
   height: 100%;
-  box-sizing: border-box; /* Include border in the element's dimensions */
+  box-sizing: border-box;
   margin: 0;
 }
-
 
 .frameStyle.dragging {
   opacity: 0.5;
@@ -104,7 +100,7 @@
 }
 
 .VideoContainer > .dropZoneStyle:not(:last-child) {
-  border-right: 1px solid #8f8c8c; /* Adds a line between drop zones */
+  border-right: 1px solid #8f8c8c;
 }
 
 .videoContainerWrapper {
@@ -112,48 +108,86 @@
   align-items: center;
 }
 
-/* .savebtn {
-  position: absolute;
-  /* bottom: 5px; */
-  /*right: 5%;
-  background-color: rgb(129, 194, 129);
-  max-height: 40px;
-  top: 80% !important;
-} */
-
 .savebtn {
-  position: absolute;
-  right: 5%;
-  bottom: 90px;
-  color: #121212;
-  /* top: 80%; */
-  background-color: transparent;
-  border: 2px solid rgb(117 117 117);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  position: fixed; /* Make it fixed so it floats above other content */
+  right: 5%; /* Position on the right */
+  bottom: 90px; /* Slightly above the bottom */
+  background-color: #005adf; /* Set a floating button background color */
+  color: white;
+  border: none; /* Remove border */
+  border-radius: 50%; /* Make it round */
+  width: 60px; /* Standard FAB size */
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transition for transform and background-color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for a floating effect */
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .savebtn:hover {
-  transform: scale(1.2); /* Scale up by 10% on hover */
-  color: #005adf;
-  border: 2px solid rgb(63 157 255);
-  background-color: transparent; 
+  transform: scale(1.1); /* Slightly increase the size on hover */
+  background-color: #0047b3; /* Change the background color on hover */
 }
-
-
-.activeVideo {
-  border: 3px solid rgb(233, 35, 35); /* Make the border red for active video */
-}
-
 
 .savebtn .fa-save {
-  color: white;
-  font-size: 20px;
+  font-size: 24px; /* Icon size */
 }
 
+.activeVideo {
+  border: 3px solid rgb(233, 35, 35);
+}
+
+/* Responsive Media Queries */
+
+/* For tablets and medium screens (768px and below) */
+@media (max-width: 768px) {
+  .VideoContainer {
+    width: 80%; /* Make the container wider on tablets */
+    height: 15%; /* Increase height to fit more content */
+    bottom: 20px; /* Lower the container */
+  }
+  .frameStyle {
+    width: 100%; /* Ensure each frame occupies full width */
+    height: 80%; /* Adjust height to match increased container size */
+  }
+  .savebtn {
+    width: 50px;
+    height: 50px;
+    bottom: 70px; /* Adjust bottom position for smaller screens */
+  }
+  .savebtn .fa-save {
+    font-size: 20px;
+  }
+}
+
+/* For mobile phones and small screens (480px and below) */
+@media (max-width: 480px) {
+  .VideoContainer {
+    width: 95%; /* Almost full width on mobile */
+    height: 20%; /* Increase height for better visibility */
+    bottom: 10px; /* Move it closer to the bottom */
+    padding: 5px;
+  }
+  .frameStyle {
+    padding: 3px;
+    height: 70%;
+  }
+  .savebtn {
+    width: 45px;
+    height: 45px;
+    bottom: 60px; /* Adjust bottom position for small screens */
+  }
+  .savebtn .fa-save {
+    font-size: 18px;
+  }
+}
+
+/* For extra large screens (1440px and above) */
+@media (min-width: 1440px) {
+  .VideoContainer {
+    width: 50%; /* Slightly reduce the container width */
+    height: 10%;
+  }
+}
