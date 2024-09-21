@@ -3,6 +3,7 @@ import Select from "react-select";
 import { getAllGestures } from "../../databases/gesturesAPI"; // Adjust the import to your actual API service path
 import config from '../../config/config.json'; // Assuming your config is in this path
 import * as XLSX from "xlsx";
+import { Translations } from "../../language-management/Translations"; // Import Translations context
 import "./createNewExperiment.css"; // Ensure the CSS file is correctly linked
 
 const formatDate = (dateString) => {
@@ -131,65 +132,69 @@ const CreateNewExp = () => {
   };
 
   return (
-    <div className="experiment-container">
-      <h3 className="head">Filter and Export Gestures</h3>
-      <div className="filters">
-        {/* Emotions Multi-select */}
-        <div className="filter">
-          <label className="filter-name">Emotions:</label>
-          <Select
-            isMulti
-            options={config.emotions.map(emotion => ({ value: emotion, label: emotion }))}
-            onChange={setSelectedEmotions}
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Select emotions..."
-          />
-        </div>
+    <Translations>
+      {({ translate }) => (
+        <div className="experiment-container">
+          <h3 className="head">{translate("Filter and Export Gestures")}</h3>
+          <div className="filters">
+            {/* Emotions Multi-select */}
+            <div className="filter">
+              <label className="filter-name">{translate("Emotions:")}</label>
+              <Select
+                isMulti
+                options={config.emotions.map(emotion => ({ value: emotion, label: translate(emotion) }))}
+                onChange={setSelectedEmotions}
+                classNamePrefix="react-select"
+                styles={customStyles}
+                placeholder={translate("Select emotions...")}
+              />
+            </div>
 
-        {/* Groups Multi-select */}
-        <div className="filter">
-          <label className="filter-name">Groups:</label>
-          <Select
-            isMulti
-            options={config.groups.map(group => ({ value: group, label: group }))}
-            onChange={setSelectedGroups}
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Select groups..."
-          />
-        </div>
+            {/* Groups Multi-select */}
+            <div className="filter">
+              <label className="filter-name">{translate("Groups:")}</label>
+              <Select
+                isMulti
+                options={config.groups.map(group => ({ value: group, label: translate(group) }))}
+                onChange={setSelectedGroups}
+                classNamePrefix="react-select"
+                styles={customStyles}
+                placeholder={translate("Select groups...")}
+              />
+            </div>
 
-        {/* Subjects Multi-select */}
-        <div className="filter">
-          <label className="filter-name">Subjects:</label>
-          <Select
-            isMulti
-            options={config.subjects.map(subject => ({ value: subject, label: subject }))}
-            onChange={setSelectedSubjects}
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Select subjects..."
-          />
-        </div>
+            {/* Subjects Multi-select */}
+            <div className="filter">
+              <label className="filter-name">{translate("Subjects:")}</label>
+              <Select
+                isMulti
+                options={config.subjects.map(subject => ({ value: subject, label: translate(subject) }))}
+                onChange={setSelectedSubjects}
+                classNamePrefix="react-select"
+                styles={customStyles}
+                placeholder={translate("Select subjects...")}
+              />
+            </div>
 
-        {/* Date Filter */}
-        <div className="filter">
-          <label className="filter-name">Date Range:</label>
-          <Select
-            options={dateOptions}
-            onChange={(selected) => setDateFilter(selected?.value || '')}
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Select date range..."
-          />
-        </div>
-      </div>
+            {/* Date Filter */}
+            <div className="filter">
+              <label className="filter-name">{translate("Date Range:")}</label>
+              <Select
+                options={dateOptions.map(option => ({ ...option, label: translate(option.label) }))}
+                onChange={(selected) => setDateFilter(selected?.value || '')}
+                classNamePrefix="react-select"
+                styles={customStyles}
+                placeholder={translate("Select date range...")}
+              />
+            </div>
+          </div>
 
-      <button className="csv" onClick={handleExportToCSV}>
-        Export Gestures to CSV
-      </button>
-    </div>
+          <button className="csv" onClick={handleExportToCSV}>
+            {translate("Export Gestures to CSV")}
+          </button>
+        </div>
+      )}
+    </Translations>
   );
 };
 

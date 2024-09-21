@@ -7,6 +7,7 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
   const [emotions, setEmotions] = useState([]);
   const [groups, setGroups] = useState([]);
   const [subjects, setSubjects] = useState([]); // State for subjects
+  const [translatedDateOptions, setTranslatedDateOptions] = useState([]); // State for translated date options
 
   useEffect(() => {
     const sortedEmotions = config.emotions
@@ -21,10 +22,14 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
       .map(subject => ({ label: translate(subject), value: subject }))
       .sort((a, b) => a.label.localeCompare(b.label)); // Sort subjects alphabetically
 
+    const translatedDates = dateOptions
+      .map(dateOption => ({ label: translate(dateOption.label), value: dateOption.value })); // Translate date options
+
     setEmotions(sortedEmotions);
     setGroups(sortedGroups);
     setSubjects(sortedSubjects); // Set subjects from config
-  }, [translate]);
+    setTranslatedDateOptions(translatedDates); // Set translated date options
+  }, [translate, dateOptions]); // Add dateOptions to dependencies to update when they change
 
   const handleEmotionChange = (selectedOption) => {
     handleGestureChange({ target: { value: selectedOption ? selectedOption.value : '' } });
@@ -98,7 +103,7 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
                 options={subjects} // Subject options from config
                 onChange={handleSubjectChange}
                 value={subjects.filter(option => selectedSubjects.includes(option.value))} // Show selected subjects
-                placeholder={translate('choose a subject...')}
+                placeholder={translate('choose subjects...')}
                 isClearable
                 isMulti // Enable multiple selection
                 className="react-select-container"
@@ -113,9 +118,9 @@ const EmotionGroupForm = ({ translate, handleGestureChange, handleGroupChange, s
                 <label htmlFor="date-select">{translate('Date:')}</label>
               </div>
               <Select
-                options={dateOptions}
+                options={translatedDateOptions} // Use translated date options
                 onChange={handleDateFilterChange}
-                value={dateOptions.find(option => option.value === dateFilter)}
+                value={translatedDateOptions.find(option => option.value === dateFilter)}
                 placeholder={translate('Select date range')}
                 isClearable={false}
                 className="react-select-container"
