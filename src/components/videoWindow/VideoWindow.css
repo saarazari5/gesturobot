@@ -3,58 +3,66 @@
     box-sizing: content-box !important;
   }  
 
-  .combined-video video{
-    /* background-color: rgb(224, 223, 223); */
-    position: fixed;
-    top: 5%;
-    left: 27%;
-    /* width: 60%; */
-    height: 60%;
-    padding: 10px;
-    box-sizing: content-box !important;
-    border-radius: 70px;
+  .combined-video {
+    position: relative;
+    width: 80%; /* Increase the overall width */
+    max-width: 1200px; /* Allow it to scale larger */
+    margin: 0 auto; /* Center the video */
   }
   
-  /* .combined-video video{
-    padding: 10px;
-    width: 400px;
-    height: 250px;
-    margin-top: 3%;
-    height: 300px;
-  } */
+  .combined-video video {
+    width: 100%; /* Ensure the video takes up the full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 30px; /* Keep rounded corners */
+    opacity: 1.0;
+  }
   
+  .play-pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px; /* Increase size of the button */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .combined-video:hover .play-pause-btn {
+    opacity: 1;
+  }
+
+  .combined-video:hover video {
+    opacity: 0.5;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .combined-video {
+      width: 90%; /* Adjust width for smaller screens */
+    }
+  
+    .play-pause-btn {
+      font-size: 40px; /* Scale down the button for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .combined-video {
+      width: 100%; /* Make it full width for mobile */
+    }
+  
+    .play-pause-btn {
+      font-size: 30px; /* Further reduce button size for mobile */
+    }
+  }
+
   .drop-area {
     border-left: 1px dashed black;
     margin-left: 20px;
   }
-
-  .playbtn{
-    position: absolute;
-    top: 66%;
-    color: black;
-    border-color: black;
-  }
-  
-  .video-play-buttonn {
-  position: absolute;
-  top: 68%;
-  left: 50% ;
-  width: 40px;
-  height: 40px;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: rgba(209, 204, 204, 0.77); */
-  cursor: pointer;
-  border-radius: 20px;
-  border: 1px solid rgb(129 129 129);
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transition for transform and background-color */
-
-}
-
-.video-play-buttonn:hover {
-  transform: scale(1.2); /* Scale up by 10% on hover */
-  border: 1px solid rgb(129 129 129);
-  background-color: transparent; 
-}
