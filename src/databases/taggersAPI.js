@@ -1,24 +1,26 @@
-import {BASE_URL} from '../params.js'
+import { BASE_URL } from '../params.js';
 
-function addTaggerJson(newTagger) {
-  // get the current maximum ID
-  fetch(BASE_URL + "/taggers")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
-      // add 1 to the maximum ID to get the next ID for the new gesture
-      const nextId = maxId + 1;
+async function addTaggerJson(newTagger) {
+  console.log("new tagger is: " + JSON.stringify(newTagger));
 
-      // add the new gesture with the next ID
-      fetch(BASE_URL + "/taggers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: nextId, ...newTagger }),
-      }).then((response) => console.log(response.json()));
-    })
-    .catch((error) => console.log("Error fetching gestures:", error));
+  try {
+    const response = await fetch(BASE_URL + "/taggers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...newTagger }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Response data:", data);
+  } catch (error) {
+    console.error("Error adding tagger:", error);
+  }
 }
+
 export default addTaggerJson;

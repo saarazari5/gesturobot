@@ -10,7 +10,6 @@ import MovementsLib from "./pages/movementslib/movementslib";
 import GestureTag from "./pages/gesturetag/gesturetag";
 import GestureManagement from "./pages/gesturemanagement/gesturemanagement";
 import GestureDisplay from "./pages/gesturedisplay/GestureDisplay";
-import Tagging from "./pages/tagging/tagging";
 import Labelfeedback from "./pages/labelfeedback/labelfeedback";
 import DemographicForm from "./pages/demographicForm/demographicForm";
 import TagInstructions from "./pages/tagInstructions/tagInstructions";
@@ -40,20 +39,16 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/createNewExperiment/*" element={<CreateNewExperiment id={gestureID} />} />
         <Route path="/CreateNewGesture" element={<CreateNewGesture />} />
-        <Route path="/GestureTag" element={<GestureTag />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/GestureManagement" element={
                                                   <PrivateRoute>
                                                     <GestureManagement setGestureID={setGestureID}/>
                                                   </PrivateRoute>} />
-        <Route path="/MovementsLib" element={<MovementsLib />} />
         <Route path="/GestureDisplay" element={<GestureDisplay setGestureID={setGestureID} />} />
-        <Route path="/DemographicForm" element={<DemographicForm />} />
-        <Route path="/TagInstructions" element={<TagInstructions />} />
-        <Route path="/Tagging" element={<Tagging />} />
-        <Route path="/MainPage" element={<MainPage />} />
-        <Route path="/LabelFeedBack" element={<Labelfeedback />} />
-        <Route path="/videoWindow" element={<VideoWindow />} />
+        <Route path="/videoWindow" element={
+                                                  <PrivateRoute>
+                                                    <VideoWindow setGestureID={setGestureID}/>
+                                                  </PrivateRoute>} />
       </Routes>
     </DndProvider>
   );

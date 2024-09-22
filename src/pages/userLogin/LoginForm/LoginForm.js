@@ -92,11 +92,7 @@ function LoginForm() {
           </div>
           <button type="submit" className="btn btn-primary" id="login-btn">{translate('Login')}</button>
           <b></b>
-          <div className="center-container">
-            <p className="links" style={{ fontSize: 'medium' }}>
-              <a href="#" onClick={handleGuestUser}>{translate('Continue as a guest')}</a>
-            </p>
-          </div>
+
         </form>
       )}
     </Translations>

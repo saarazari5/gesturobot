@@ -11,21 +11,20 @@ import { Translations } from "../../language-management/Translations";
 
 const VideoWindow = () => {
     const location = useLocation();
-    const navigate = useNavigate();
     const gesture = location.state?.gestureId || {};
     const currentSubject = location.state?.currentSubject || '';
 
-    const [movements, setMovements] = useState([]);
     const [droppedItems, setDroppedItems] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(-1); // Start at -1 when no video is selected
-    const [isPlaying, setIsPlaying] = useState(false); // State to manage play/pause
+    const [isPlaying, setIsPlaying] = useState(true); // State to manage play/pause
 
-    const combinedVideoRef = useRef(null);
+    const [videoRefs, setVideoRefs] = useState([]);
 
     useEffect(() => {
         if (droppedItems.length > 0) {
+            const refs = droppedItems.map(() => React.createRef());
+            setVideoRefs(refs);
             setCurrentVideoIndex(0); // Start with the first video
-            playCombinedVideos();
         }
     }, [droppedItems]);
 
@@ -47,30 +46,21 @@ const VideoWindow = () => {
         }
     }, [gesture]);
 
-    // Play or update the current video
-    const playCombinedVideos = () => {
-        if (combinedVideoRef.current && droppedItems[currentVideoIndex]) {
-            combinedVideoRef.current.src = droppedItems[currentVideoIndex].videoUrl;
-    
-            // Add an event listener for 'canplay' or 'loadeddata' to play the video when ready
-            combinedVideoRef.current.addEventListener('canplay', () => {
-                combinedVideoRef.current.play().catch(error => {
-                    console.error("Error attempting to play the video:", error);
-                });
-            }, { once: true }); // Use 'once' to remove the listener after it fires
-        }
-    };
-    
-
     const combineVideos = () => {
         return (
             <>
-                <video 
-                  muted 
-                  ref={combinedVideoRef} 
-                  onEnded={playNextVideo} 
-                  style={{ width: "100%" }}
-                />
+                {droppedItems.map((item, index) => (
+                    <video
+                        key={index}
+                        muted
+                        ref={videoRefs[index]}
+                        onEnded={playNextVideo}
+                        style={{ width: "100%", display: index === currentVideoIndex ? 'block' : 'none' }}
+                        src={item.videoUrl}
+                        preload="auto"
+                        autoPlay={index === currentVideoIndex}
+                    />
+                ))}
                 <div className="play-pause-btn" onClick={togglePlayPause}>
                     {isPlaying ? <CiPause1 size={40} /> : <CiPlay1 size={40} />}
                 </div>
@@ -79,43 +69,31 @@ const VideoWindow = () => {
     };
 
     const playNextVideo = () => {
-        const nextVideoIndex = currentVideoIndex + 1;
-    
-        if (nextVideoIndex < droppedItems.length) {
-            preloadVideo(nextVideoIndex); // Preload the next video
-            setCurrentVideoIndex(nextVideoIndex);
-        } else {
-            preloadVideo(0); // Loop back to the first video and preload it
-            setCurrentVideoIndex(0);
+        if (videoRefs[currentVideoIndex].current) {
+            videoRefs[currentVideoIndex].current.pause();
+            videoRefs[currentVideoIndex].current.currentTime = 0;
         }
+        const nextVideoIndex = (currentVideoIndex + 1) % droppedItems.length;
+        setCurrentVideoIndex(nextVideoIndex);
+        setIsPlaying(true);
     };
-    
-    // Preload the next video
-    const preloadVideo = (index) => {
-        const videoUrl = droppedItems[index]?.videoUrl;
-        if (videoUrl) {
-            const videoPreload = document.createElement('video'); // Create an off-screen video element
-            videoPreload.src = videoUrl; // Set the video URL to preload
-            videoPreload.preload = 'auto'; // Enable automatic preloading
-        }
-    };
-    
 
     const togglePlayPause = () => {
-        if (combinedVideoRef.current) {
+        if (videoRefs[currentVideoIndex].current) {
             if (isPlaying) {
-                combinedVideoRef.current.pause();
+                videoRefs[currentVideoIndex].current.pause();
             } else {
-                combinedVideoRef.current.play();
+                videoRefs[currentVideoIndex].current.play();
             }
-            setIsPlaying(!isPlaying); // Toggle the play/pause state
+            setIsPlaying(!isPlaying);
         }
     };
 
-    // When the currentVideoIndex changes, update the video source
     useEffect(() => {
-        if (currentVideoIndex !== -1) {
-            playCombinedVideos(); // Update video to the new selected one
+        if (videoRefs[currentVideoIndex]?.current) {
+            if (isPlaying) {
+                videoRefs[currentVideoIndex].current.play();
+            }
         }
     }, [currentVideoIndex]);
 
@@ -132,7 +110,7 @@ const VideoWindow = () => {
                             initialName={gesture.name || currentSubject}
                             initialLabel={gesture.realLabel ? gesture.realLabel[0] : ''}
                             currentPlayingIndex={currentVideoIndex}
-                            setCurrentPlayingIndex={setCurrentVideoIndex} // Pass setCurrentPlayingIndex to update it
+                            setCurrentPlayingIndex={setCurrentVideoIndex}
                             initialGroup={gesture.group}
                         />
                         {droppedItems.length > 0 && (

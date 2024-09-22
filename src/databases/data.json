@@ -99,32 +99,17 @@
   ],
   "gestures": [
     {
-      "name": "try1",
-      "realLabel": [
-        "Shame",
-        "Shame"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
       "id": "1",
-      "createdDate": "2024-08-10T10:55:47.453Z"
-    },
-    {
-      "name": "try2.1",
+      "name": "user3",
       "realLabel": [
-        "Pride",
-        "Pride"
+        "Joy",
+        "Joy"
       ],
       "movements": [
-        "22"
+        "20",
+        "25",
+        "24",
+        "36"
       ],
       "creator": [
         null,
@@ -132,135 +117,21 @@
         null
       ],
       "labels": [],
-      "group": "default",
+      "group": "Group 1",
+      "createdDate": "2024-09-23T11:45:42.995Z"
+    },
+    {
       "id": "2",
-      "createdDate": "2024-05-05T10:55:47.453Z"
-    },
-    {
-      "id": "3",
-      "name": "shakedo",
-      "realLabel": [
-        "Gratitude",
-        "Gratitude"
-      ],
-      "movements": [
-        "22"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-08-05T10:55:47.453Z"
-    },
-    {
-      "id": "4",
-      "name": "user1",
-      "realLabel": [
-        "Curiosity",
-        "Curiosity"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-09-05T10:55:47.453Z"
-    },
-    {
       "name": "user10",
       "realLabel": [
-        "Disappointment",
-        "Disappointment"
+        "Fear",
+        "Fear"
       ],
       "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-09-09T17:49:51.859Z",
-      "id": "5"
-    },
-    {
-      "id": "6",
-      "name": "user2",
-      "realLabel": [
-        "Surprise",
-        "Surprise"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-09-09T17:00:26.986Z"
-    },
-    {
-      "name": "user2",
-      "realLabel": [
-        "Confusion",
-        "Confusion"
-      ],
-      "movements": [
-        "20",
-        "21"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-09-09T17:46:32.581Z",
-      "id": "7"
-    },
-    {
-      "id": "8",
-      "name": "user7",
-      "realLabel": [
-        "Disappointment",
-        "Disappointment"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "default",
-      "createdDate": "2024-09-09T17:43:26.418Z"
-    },
-    {
-      "id": "9",
-      "name": "user1",
-      "realLabel": [
-        "Sadness",
-        "Sadness"
-      ],
-      "movements": [
-        "20",
-        "21"
+        "38",
+        "29",
+        "23",
+        "22"
       ],
       "creator": [
         null,
@@ -269,55 +140,86 @@
       ],
       "labels": [],
       "group": "Group 1",
-      "createdDate": "2024-09-11T15:24:29.934Z"
+      "createdDate": "2024-09-23T11:46:42.294Z"
+    }
+  ],
+  "newExperiment": [
+    {
+      "id": null,
+      "personalDetails": {
+        "userId": "ce4b2ae3-f80e-4451-a5f7-24c7d9476a17",
+        "age": {
+          "question": "What is your age?",
+          "response": "27"
+        },
+        "education": {
+          "question": "What is your highest level of education?",
+          "response": "Primary education"
+        },
+        "gender": {
+          "question": "What is your gender?",
+          "response": "Male"
+        },
+        "timeTaken": 5965
+      },
+      "examplePage": {
+        "rating": {
+          "question": "What kind of emotion do you think the robot is expressing?",
+          "response": 22
+        },
+        "timeTaken": 13091
+      },
+      "questionPage": [
+        {
+          "gesture": "1",
+          "rating": 24
+        }
+      ],
+      "finishPage": {
+        "problems": "",
+        "suggestions": "",
+        "timeTaken": 3530
+      },
+      "version": "2",
+      "PROLIFIC_PID": null,
+      "STUDY_ID": null,
+      "SESSION_ID": null
+    }
+  ],
+  "taggers": [
+    {
+      "id": "466b",
+      "userId": "9b1920b7-5195-4d22-8217-97882f15431a",
+      "age": {
+        "question": "What is your age?",
+        "response": "23"
+      },
+      "education": {
+        "question": "What is your highest level of education?",
+        "response": "Primary education"
+      },
+      "gender": {
+        "question": "What is your gender?",
+        "response": "Male"
+      },
+      "timeTaken": 7040
     },
     {
-      "id": "10",
-      "name": "user7",
-      "realLabel": [
-        "Anger",
-        "Anger"
-      ],
-      "movements": [
-        "20"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "Group 2",
-      "createdDate": "2024-09-13T12:37:43.909Z"
-    },
-    {
-      "id": "11",
-      "name": "user8",
-      "realLabel": [
-        "Sadness",
-        "Sadness"
-      ],
-      "movements": [
-        "20",
-        "24",
-        "24",
-        "24"
-      "name": "user6",
-      "realLabel": [
-        "Guilt",
-        "Guilt"
-      ],
-      "movements": [
-        "21"
-      ],
-      "creator": [
-        null,
-        null,
-        null
-      ],
-      "labels": [],
-      "group": "Group 1",
-      "createdDate": "2024-09-16T12:28:33.473Z",
+      "id": "87a3",
+      "userId": "ce4b2ae3-f80e-4451-a5f7-24c7d9476a17",
+      "age": {
+        "question": "What is your age?",
+        "response": "27"
+      },
+      "education": {
+        "question": "What is your highest level of education?",
+        "response": "Primary education"
+      },
+      "gender": {
+        "question": "What is your gender?",
+        "response": "Male"
+      },
+      "timeTaken": 5965
     }
   ],
   "users": [
@@ -325,485 +227,6 @@
       "name": "admin",
       "password": "admin1234",
       "id": "a928"
-    }
-  ],
-  "taggers": [
-    {
-      "id": "1",
-      "name": {
-        "name": "Amit"
-      },
-      "age": {
-        "age": "25"
-      },
-      "gender": {
-        "gender": "male"
-      },
-      "education": {
-        "education": "Bachelor's degree"
-      }
-    },
-    {
-      "id": "2",
-      "name": {
-        "name": "Test"
-      },
-      "age": {
-        "age": "123"
-      },
-      "gender": {
-        "gender": "female"
-      },
-      "education": {
-        "education": "דוקטורט או מעלה"
-      }
-    },
-    {
-      "id": "3",
-      "name": {
-        "name": "as"
-      },
-      "age": {
-        "age": "123"
-      },
-      "gender": {
-        "gender": "male"
-      },
-      "education": {
-        "education": "Master's degree"
-      }
-    },
-    {
-      "id": "4",
-      "name": {
-        "name": "Sahar Rofe"
-      },
-      "age": {
-        "age": "18"
-      },
-      "gender": {
-        "gender": "male"
-      },
-      "education": {
-        "education": "GED"
-      }
-    },
-    {
-      "id": "5",
-      "name": {
-        "name": "lior bazak"
-      },
-      "age": {
-        "age": "45"
-      },
-      "gender": {
-        "gender": "male"
-      },
-      "education": {
-        "education": "Primary education"
-      }
-    },
-    {
-      "id": "6",
-      "name": {
-        "name": "hello"
-      },
-      "age": {
-        "age": "19"
-      },
-      "gender": {
-        "gender": "other"
-      },
-      "education": {
-        "education": "GED"
-      }
-    },
-    {
-      "id": "7",
-      "name": {
-        "name": "bidur28"
-      },
-      "age": {
-        "age": "45"
-      },
-      "gender": {
-        "gender": "other"
-      },
-      "education": {
-        "education": "Primary education"
-      }
-    },
-    {
-      "id": "8",
-      "name": {
-        "name": "shaled"
-      },
-      "age": {
-        "age": "24"
-      },
-      "gender": {
-        "gender": "female"
-      },
-      "education": {
-        "education": "No formal education"
-      }
-    },
-    {
-      "id": "9",
-      "name": {
-        "name": "shaled"
-      },
-      "age": {
-        "age": "25"
-      },
-      "gender": {
-        "gender": "female"
-      },
-      "education": {
-        "education": "Bachelor's degree"
-      }
-    }
-  ],
-  "newExperiment": [
-    {
-      "id": null,
-      "name": "New Gesture",
-      "realLabel": [
-        "Anger",
-        "כעס"
-      ],
-      "movements": [
-        "2",
-        "1",
-        "6",
-        "5"
-      ],
-      "creator": [
-        "shaked1",
-        0,
-        "121212121"
-      ],
-      "labels": []
-    }
-  ],
-  "TazNameType": [
-    {
-      "taz": "123456700",
-      "name": "saharjjj",
-      "type": 0,
-      "id": "1"
-    },
-    {
-      "taz": "123456787",
-      "name": "sagiv",
-      "type": "",
-      "id": "2"
-    },
-    {
-      "taz": "123123123",
-      "name": "ase",
-      "type": "",
-      "id": "3"
-    },
-    {
-      "taz": "234567890",
-      "name": "lior",
-      "type": "1",
-      "id": "4"
-    },
-    {
-      "taz": "123456789",
-      "name": "hello",
-      "type": "1",
-      "id": "5"
-    },
-    {
-      "taz": "345678904",
-      "name": "heyyyy",
-      "type": "",
-      "id": "6"
-    },
-    {
-      "taz": "345678900",
-      "name": "pipi",
-      "type": "",
-      "id": "7"
-    },
-    {
-      "taz": "233445567",
-      "name": "saaron",
-      "type": "1",
-      "id": "8"
-    },
-    {
-      "taz": "233445678",
-      "name": "try4",
-      "type": "",
-      "id": "9"
-    },
-    {
-      "taz": "234454567",
-      "name": "try5",
-      "type": "1",
-      "id": "10"
-    },
-    {
-      "taz": "345678765",
-      "name": "liori",
-      "type": "1",
-      "id": "11"
-    },
-    {
-      "taz": "234556678",
-      "name": "rtyu",
-      "type": "",
-      "id": "12"
-    },
-    {
-      "taz": "234565432",
-      "name": "holaaaa",
-      "type": "1",
-      "id": "13"
-    },
-    {
-      "taz": "123456765",
-      "name": "holaaaaa",
-      "type": "1",
-      "id": "14"
-    },
-    {
-      "taz": "345654321",
-      "name": "popo",
-      "type": "1",
-      "id": "15"
-    },
-    {
-      "taz": "343234567",
-      "name": "trtyu",
-      "type": "",
-      "id": "16"
-    },
-    {
-      "taz": "284756485",
-      "name": "rnej",
-      "type": "",
-      "id": "17"
-    },
-    {
-      "taz": "234657697",
-      "name": "popopo",
-      "type": "",
-      "id": "18"
-    },
-    {
-      "taz": "364756348",
-      "name": "popopopo",
-      "type": "",
-      "id": "19"
-    },
-    {
-      "taz": "000000000",
-      "name": "papa",
-      "type": "1",
-      "id": "20"
-    },
-    {
-      "taz": "949494949",
-      "name": "fhfh",
-      "type": "",
-      "id": "21"
-    },
-    {
-      "taz": "354637465",
-      "name": "helloo",
-      "type": "1",
-      "id": "22"
-    },
-    {
-      "taz": "464656747",
-      "name": "ert",
-      "type": "",
-      "id": "23"
-    },
-    {
-      "taz": "777777777",
-      "name": "jhyu",
-      "type": "",
-      "id": "24"
-    },
-    {
-      "taz": "456789098",
-      "name": "holymoly",
-      "type": "",
-      "id": "25"
-    },
-    {
-      "taz": "123456543",
-      "name": "hellolo",
-      "type": "",
-      "id": "26"
-    },
-    {
-      "taz": "123423455",
-      "name": "popopop",
-      "type": "1",
-      "id": "27"
-    },
-    {
-      "taz": "060605070",
-      "name": "lililo",
-      "type": "",
-      "id": "28"
-    },
-    {
-      "taz": "536453627",
-      "name": "qqq",
-      "type": "",
-      "id": "29"
-    },
-    {
-      "taz": "263547586",
-      "name": "www",
-      "type": "",
-      "id": "30"
-    },
-    {
-      "taz": "987656745",
-      "name": "eee",
-      "type": "",
-      "id": "31"
-    },
-    {
-      "taz": "243657689",
-      "name": "rrr",
-      "type": "",
-      "id": "32"
-    },
-    {
-      "taz": "111111111",
-      "name": "ttt",
-      "type": "",
-      "id": "33"
-    },
-    {
-      "taz": "666666666",
-      "name": "yyy",
-      "type": "",
-      "id": "34"
-    },
-    {
-      "taz": "555555555",
-      "name": "uuu",
-      "type": "",
-      "id": "35"
-    },
-    {
-      "taz": "444444444",
-      "name": "iii",
-      "type": "",
-      "id": "36"
-    },
-    {
-      "taz": "454647583",
-      "name": "eer",
-      "type": "",
-      "id": "37"
-    },
-    {
-      "taz": "222222222",
-      "name": "ref",
-      "type": "",
-      "id": "38"
-    },
-    {
-      "taz": "344646588",
-      "name": "gjh",
-      "type": "",
-      "id": "39"
-    },
-    {
-      "taz": "576543680",
-      "name": "jjj",
-      "type": "",
-      "id": "40"
-    },
-    {
-      "taz": "098765432",
-      "name": "kkkj",
-      "type": "",
-      "id": "41"
-    },
-    {
-      "taz": "457865437",
-      "name": "kiuyt",
-      "type": "",
-      "id": "42"
-    },
-    {
-      "taz": "434343434",
-      "name": "fhgdrhj",
-      "type": "",
-      "id": "43"
-    },
-    {
-      "taz": "747383958",
-      "name": "sert",
-      "type": "",
-      "id": "44"
-    },
-    {
-      "taz": "447574845",
-      "name": "eghj",
-      "type": "",
-      "id": "45"
-    },
-    {
-      "taz": "364578989",
-      "name": "drty",
-      "type": "",
-      "id": "46"
-    },
-    {
-      "taz": "465768465",
-      "name": "erty",
-      "type": "",
-      "id": "47"
-    },
-    {
-      "taz": "586756475",
-      "name": "ertg",
-      "type": "",
-      "id": "48"
-    },
-    {
-      "taz": "768908978",
-      "name": "dfty",
-      "type": "",
-      "id": "49"
-    },
-    {
-      "taz": "747475768",
-      "name": "rdtfy",
-      "type": "",
-      "id": "50"
-    },
-    {
-      "id": "79b5",
-      "taz": "121212121",
-      "name": "shaked1",
-      "type": 0
-    },
-    {
-      "id": "2c8b",
-      "taz": "101010000",
-      "name": "shaked123",
-      "type": ""
-    },
-    {
-      "id": "e434",
-      "taz": "206430241",
-      "name": "shakedmaman",
-      "type": ""
     }
   ]
 }
