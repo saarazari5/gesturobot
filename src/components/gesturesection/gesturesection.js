@@ -122,10 +122,10 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
                   <Tooltip
                     title={
                       <>
-                        {translate("ID") + ": " + gesture.id} <br />
-                        {translate("Label") + ": " + translate(gesture.realLabel[0])} <br />
+                        {"ID: " + gesture.id} <br />
+                        {translate("Label") + ": " + gesture.realLabel[0]} <br />
                         {translate("Date") + ": " + new Date(gesture.createdDate).toLocaleDateString()} <br />
-                        {translate("Group") + ": " + translate(gesture.group)}
+                        {translate("Group" + ": " + gesture.group)}
                       </>
                     }
                     aria-label="info"

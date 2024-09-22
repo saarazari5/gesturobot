@@ -159,23 +159,6 @@ const VideoContainer = ({ droppedItems, setDroppedItems, existingGestureId = nul
     setCurrentPlayingIndex(index); // Change the current video to the clicked one
   };
 
-  // Preload the next video when the current one is playing to optimize performance
-  useEffect(() => {
-    const preloadNextVideo = () => {
-      if (currentPlayingIndex < droppedItems.length - 1) {
-        const nextVideoUrl = droppedItems[currentPlayingIndex + 1]?.videoUrl;
-        if (nextVideoUrl) {
-          const videoPreload = document.createElement('link');
-          videoPreload.rel = 'preload';
-          videoPreload.as = 'video';
-          videoPreload.href = nextVideoUrl;
-          document.head.appendChild(videoPreload);
-        }
-      }
-    };
-    preloadNextVideo();
-  }, [currentPlayingIndex, droppedItems]);
-
   return (
     <Translations>
       {({ translate }) => (
