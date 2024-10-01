@@ -5,7 +5,7 @@
     <h1 align="center">GESTUROBOT</h1>
 </p>
 <p align="center">
-    <em><code>❯ an app to create GO2 expreiments and gestures</code></em>
+    <em><code>❯ REPLACE-ME</code></em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/saarazari5/gesturobot?style=flat&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
@@ -49,13 +49,13 @@
 
 ##  Overview
 
-<code>❯ Gesturobot is a webapp that allow to create gestures for the go2 robots, watch them and modify them with a simple UI/UX</code>
+<code>❯ REPLACE-ME</code>
 
 ---
 
 ##  Features
 
-<code>❯ React, REST API, video modification exc..</code>
+<code>❯ REPLACE-ME</code>
 
 ---
 
@@ -570,5 +570,3 @@ This project is protected under the [SELECT-A-LICENSE](https://choosealicense.co
 - List any resources, contributors, inspiration, etc. here.
 
 ---
-
- 
