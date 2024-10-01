@@ -49,13 +49,25 @@
 
 ##  Overview
 
-<code>❯ REPLACE-ME</code>
+GESTUROBOT is an innovative application designed to facilitate the understanding and manipulation of robotic gestures through an intuitive user interface. This project aims to bridge the gap between human interactions and robotic movements, allowing users to create, manage, and visualize gestures seamlessly. Whether you are a researcher, developer, or enthusiast, GESTUROBOT provides the tools to explore the exciting intersection of technology and human expression.
 
 ---
 
 ##  Features
 
-<code>❯ REPLACE-ME</code>
+Gesture Creation and Management: Easily create and manage custom gestures using a user-friendly interface. Users can define specific movements and save them for future use.
+
+Emotion Recognition: Integrate emotion recognition capabilities to enhance robotic interactions, allowing the robot to respond appropriately based on user emotions.
+
+Experiment Tracking: Track and analyze gesture performance in various experiments, facilitating research and development in robotic behavior.
+
+Video Demonstrations: View and analyze gesture movements through video demonstrations to gain insights into robotic interactions.
+
+Language Support: Multilingual support ensures that users from different backgrounds can easily navigate and utilize the application.
+
+Extensive Documentation: Comprehensive documentation to guide users through setup, features, and best practices for using GESTUROBOT.
+
+Community Contributions: Engage with a vibrant community for feedback, suggestions, and collaborative improvements to the project.
 
 ---
 
