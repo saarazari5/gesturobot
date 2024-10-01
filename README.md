@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="20%" alt="GESTUROBOT-logo">
+  <img src="https://www.roscomponents.com/1794-thickbox_default/go2-quadruped-robot-.jpg" width="20%" alt="GESTUROBOT-logo">
 </p>
 <p align="center">
     <h1 align="center">GESTUROBOT</h1>
@@ -169,309 +169,102 @@ Community Contributions: Engage with a vibrant community for feedback, suggestio
 
 ---
 
-##  Modules
+## Modules
 
-<details closed><summary>.</summary>
-
-| File | Summary |
-| --- | --- |
-| [package.json](https://github.com/saarazari5/gesturobot/blob/main/package.json) | <code>❯ REPLACE-ME</code> |
-| [package-lock.json](https://github.com/saarazari5/gesturobot/blob/main/package-lock.json) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>public</summary>
+<details closed><summary>Public</summary>
 
 | File | Summary |
 | --- | --- |
-| [background1.avif](https://github.com/saarazari5/gesturobot/blob/main/public/background1.avif) | <code>❯ REPLACE-ME</code> |
-| [index.html](https://github.com/saarazari5/gesturobot/blob/main/public/index.html) | <code>❯ REPLACE-ME</code> |
-| [manifest.json](https://github.com/saarazari5/gesturobot/blob/main/public/manifest.json) | <code>❯ REPLACE-ME</code> |
-| [robots.txt](https://github.com/saarazari5/gesturobot/blob/main/public/robots.txt) | <code>❯ REPLACE-ME</code> |
+| [background1.avif](https://github.com/saarazari5/gesturobot/blob/main/public/background1.avif) | Background image used in the application. |
+| [index.html](https://github.com/saarazari5/gesturobot/blob/main/public/index.html) | Main HTML file for the application. |
+| [manifest.json](https://github.com/saarazari5/gesturobot/blob/main/public/manifest.json) | Web app manifest for progressive web application settings. |
+| [robots.txt](https://github.com/saarazari5/gesturobot/blob/main/public/robots.txt) | Instructions for web crawlers on how to index the site. |
 
 </details>
 
-<details closed><summary>src</summary>
+<details closed><summary>Src</summary>
 
 | File | Summary |
 | --- | --- |
-| [reportWebVitals.js](https://github.com/saarazari5/gesturobot/blob/main/src/reportWebVitals.js) | <code>❯ REPLACE-ME</code> |
-| [App.test.js](https://github.com/saarazari5/gesturobot/blob/main/src/App.test.js) | <code>❯ REPLACE-ME</code> |
-| [setupTests.js](https://github.com/saarazari5/gesturobot/blob/main/src/setupTests.js) | <code>❯ REPLACE-ME</code> |
-| [params.js](https://github.com/saarazari5/gesturobot/blob/main/src/params.js) | <code>❯ REPLACE-ME</code> |
-| [App.js](https://github.com/saarazari5/gesturobot/blob/main/src/App.js) | <code>❯ REPLACE-ME</code> |
-| [App.css](https://github.com/saarazari5/gesturobot/blob/main/src/App.css) | <code>❯ REPLACE-ME</code> |
-| [index.js](https://github.com/saarazari5/gesturobot/blob/main/src/index.js) | <code>❯ REPLACE-ME</code> |
-| [index.css](https://github.com/saarazari5/gesturobot/blob/main/src/index.css) | <code>❯ REPLACE-ME</code> |
+| [reportWebVitals.js](https://github.com/saarazari5/gesturobot/blob/main/src/reportWebVitals.js) | Utility for measuring performance metrics in the application. |
+| [App.test.js](https://github.com/saarazari5/gesturobot/blob/main/src/App.test.js) | Test suite for the main application component. |
+| [setupTests.js](https://github.com/saarazari5/gesturobot/blob/main/src/setupTests.js) | Configuration file for setting up tests. |
+| [params.js](https://github.com/saarazari5/gesturobot/blob/main/src/params.js) | Configuration parameters for the application. |
+| [App.js](https://github.com/saarazari5/gesturobot/blob/main/src/App.js) | Main application component. |
+| [App.css](https://github.com/saarazari5/gesturobot/blob/main/src/App.css) | Styles for the main application component. |
+| [index.js](https://github.com/saarazari5/gesturobot/blob/main/src/index.js) | Entry point for the React application. |
+| [index.css](https://github.com/saarazari5/gesturobot/blob/main/src/index.css) | Global styles for the application. |
 
 </details>
 
-<details closed><summary>src.language-management</summary>
+<details closed><summary>Language Management</summary>
 
 | File | Summary |
 | --- | --- |
-| [LanguageSwicher.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageSwicher.js) | <code>❯ REPLACE-ME</code> |
-| [LanguageSwicher.css](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageSwicher.css) | <code>❯ REPLACE-ME</code> |
-| [en.json](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/en.json) | <code>❯ REPLACE-ME</code> |
-| [LanguageContext.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageContext.js) | <code>❯ REPLACE-ME</code> |
-| [Translations.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/Translations.js) | <code>❯ REPLACE-ME</code> |
-| [he.json](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/he.json) | <code>❯ REPLACE-ME</code> |
+| [LanguageSwicher.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageSwicher.js) | Component for switching between languages. |
+| [LanguageSwicher.css](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageSwicher.css) | Styles for the language switcher component. |
+| [en.json](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/en.json) | English translations for the application. |
+| [LanguageContext.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/LanguageContext.js) | Context provider for language management. |
+| [Translations.js](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/Translations.js) | Component handling the translation logic. |
+| [he.json](https://github.com/saarazari5/gesturobot/blob/main/src/language-management/he.json) | Hebrew translations for the application. |
 
 </details>
 
-<details closed><summary>src.pages.userLogin</summary>
+<details closed><summary>Pages</summary>
 
 | File | Summary |
 | --- | --- |
-| [Login.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Login.js) | <code>❯ REPLACE-ME</code> |
-| [userLogin.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/userLogin.css) | <code>❯ REPLACE-ME</code> |
-| [Login.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Login.css) | <code>❯ REPLACE-ME</code> |
-| [userLogin.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/userLogin.js) | <code>❯ REPLACE-ME</code> |
-| [AuthContext.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/AuthContext.js) | <code>❯ REPLACE-ME</code> |
+| [createNewExperiment.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/createNewExperiment/createNewExperiment.js) | Page for creating new experiments. |
+| [createNewGesture.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/createNewGesture/createNewGesture.js) | Page for creating new gestures. |
+| [demographicForm.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/demographicForm/demographicForm.js) | Page for collecting demographic information. |
+| [gesturedisplay.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/GestureDisplay.js) | Page for displaying gestures. |
+| [gesturemanagement.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturemanagement/gesturemanagement.js) | Page for managing gestures. |
+| [labelfeedback.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/labelfeedback/labelfeedback.js) | Page for providing feedback on labels. |
+| [mainpage.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/mainpage/MainPage.js) | Main landing page for the application. |
+| [movementslib.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/movementslib/movementslib.js) | Page for managing movements library. |
+| [tagInstructions.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/tagInstructions/tagInstructions.js) | Page providing instructions for tagging gestures. |
+| [userLogin.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/userLogin.js) | User login page. |
 
 </details>
 
-<details closed><summary>src.pages.userLogin.LoginForm</summary>
+<details closed><summary>Components</summary>
 
 | File | Summary |
 | --- | --- |
-| [LoginForm.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/LoginForm/LoginForm.js) | <code>❯ REPLACE-ME</code> |
-| [LoginForm.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/LoginForm/LoginForm.css) | <code>❯ REPLACE-ME</code> |
+| [FilterMenu.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/FilterMenu.js) | Component for filtering gestures. |
+| [videoWindow/VideoWindow.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/VideoWindow.js) | Component for displaying video content. |
+| [gesturesection/gesturesection.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/gesturesection/gesturesection.js) | Component for managing gesture sections. |
+| [movment/movment.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/movment/movment.js) | Component representing movements. |
+| [gestureLable/gestureLable.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/gestureLable/gestureLable.js) | Component for labeling gestures. |
+| [loopOfMovements.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/loopOfMovements/loopOfMovements.js) | Component for looping through movements. |
+| [PrivateRoute.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/PrivateRoute/PrivateRoute.js) | Component for handling private routes. |
 
 </details>
 
-<details closed><summary>src.pages.userLogin.Bubble</summary>
+<details closed><summary>Databases</summary>
 
 | File | Summary |
 | --- | --- |
-| [Bubble.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Bubble/Bubble.css) | <code>❯ REPLACE-ME</code> |
-| [Bubble.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Bubble/Bubble.js) | <code>❯ REPLACE-ME</code> |
+| [data.json](https://github.com/saarazari5/gesturobot/blob/main/src/databases/data.json) | JSON data for application usage. |
+| [emotions.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/emotions.js) | API for managing emotions data. |
+| [gesturesAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/gesturesAPI.js) | API for managing gesture data. |
+| [movementsAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/movementsAPI.js) | API for managing movements data. |
+| [newExperimentAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/newExperimentAPI.js) | API for managing new experiments. |
+| [taggersAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/taggersAPI.js) | API for managing taggers. |
+| [tazNameTypeAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/tazNameTypeAPI.js) | API for managing Taz name types. |
+| [usersAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/usersAPI.js) | API for managing user data. |
 
 </details>
 
-<details closed><summary>src.pages.userLogin.InputBar</summary>
+<details closed><summary>Python</summary>
 
 | File | Summary |
 | --- | --- |
-| [InputBar.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/InputBar/InputBar.js) | <code>❯ REPLACE-ME</code> |
-| [InputBarPopOver.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/InputBar/InputBarPopOver.css) | <code>❯ REPLACE-ME</code> |
-| [ShakingField.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/InputBar/ShakingField.js) | <code>❯ REPLACE-ME</code> |
-| [InputBar.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/InputBar/InputBar.css) | <code>❯ REPLACE-ME</code> |
-| [InputBarPopOver.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/InputBar/InputBarPopOver.js) | <code>❯ REPLACE-ME</code> |
+| [movements.py](https://github.com/saarazari5/gesturobot/blob/main/src/python/movements.py) | Python script for managing movements. |
 
 </details>
 
-<details closed><summary>src.pages.userLogin.Logo</summary>
 
-| File | Summary |
-| --- | --- |
-| [Logo.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Logo/Logo.css) | <code>❯ REPLACE-ME</code> |
-| [Logo.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/Logo/Logo.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.userLogin.LoginMessage</summary>
-
-| File | Summary |
-| --- | --- |
-| [LoginMessage.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/LoginMessage/LoginMessage.js) | <code>❯ REPLACE-ME</code> |
-| [LoginMessage.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/userLogin/LoginMessage/LoginMessage.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.labelfeedback</summary>
-
-| File | Summary |
-| --- | --- |
-| [labelfeedback.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/labelfeedback/labelfeedback.css) | <code>❯ REPLACE-ME</code> |
-| [labelfeedback.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/labelfeedback/labelfeedback.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.createNewGesture</summary>
-
-| File | Summary |
-| --- | --- |
-| [createNewGesture.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/createNewGesture/createNewGesture.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.gesturedisplay</summary>
-
-| File | Summary |
-| --- | --- |
-| [ErrorModal.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/ErrorModal.css) | <code>❯ REPLACE-ME</code> |
-| [GestureDisplay.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/GestureDisplay.js) | <code>❯ REPLACE-ME</code> |
-| [EmotionGroupForm.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/EmotionGroupForm.js) | <code>❯ REPLACE-ME</code> |
-| [GestureDisplay.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/GestureDisplay.css) | <code>❯ REPLACE-ME</code> |
-| [ErrorModal.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturedisplay/ErrorModal.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.mainpage</summary>
-
-| File | Summary |
-| --- | --- |
-| [MainPage.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/mainpage/MainPage.js) | <code>❯ REPLACE-ME</code> |
-| [mainpage.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/mainpage/mainpage.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.createNewExperiment</summary>
-
-| File | Summary |
-| --- | --- |
-| [createNewExperiment.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/createNewExperiment/createNewExperiment.css) | <code>❯ REPLACE-ME</code> |
-| [createNewExperiment.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/createNewExperiment/createNewExperiment.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.gesturetag</summary>
-
-| File | Summary |
-| --- | --- |
-| [gesturetag.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturetag/gesturetag.js) | <code>❯ REPLACE-ME</code> |
-| [gesturetag.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturetag/gesturetag.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.demographicForm</summary>
-
-| File | Summary |
-| --- | --- |
-| [demographicForm.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/demographicForm/demographicForm.js) | <code>❯ REPLACE-ME</code> |
-| [demographicForm.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/demographicForm/demographicForm.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.gesturemanagement</summary>
-
-| File | Summary |
-| --- | --- |
-| [gestureManagement.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturemanagement/gestureManagement.css) | <code>❯ REPLACE-ME</code> |
-| [gesturemanagement.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/gesturemanagement/gesturemanagement.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.movementslib</summary>
-
-| File | Summary |
-| --- | --- |
-| [movementslib.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/movementslib/movementslib.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.pages.tagInstructions</summary>
-
-| File | Summary |
-| --- | --- |
-| [tagInstructions.js](https://github.com/saarazari5/gesturobot/blob/main/src/pages/tagInstructions/tagInstructions.js) | <code>❯ REPLACE-ME</code> |
-| [tagInstructions.css](https://github.com/saarazari5/gesturobot/blob/main/src/pages/tagInstructions/tagInstructions.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components</summary>
-
-| File | Summary |
-| --- | --- |
-| [FilterMenu.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/FilterMenu.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.videoWindow</summary>
-
-| File | Summary |
-| --- | --- |
-| [VideoContainer.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/VideoContainer.js) | <code>❯ REPLACE-ME</code> |
-| [SidePanel.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/SidePanel.css) | <code>❯ REPLACE-ME</code> |
-| [SidePanel.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/SidePanel.js) | <code>❯ REPLACE-ME</code> |
-| [ConfirmationModal.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/ConfirmationModal.js) | <code>❯ REPLACE-ME</code> |
-| [ConfirmationModal.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/ConfirmationModal.css) | <code>❯ REPLACE-ME</code> |
-| [VideoWindow.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/VideoWindow.js) | <code>❯ REPLACE-ME</code> |
-| [UnifiedModal.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/UnifiedModal.js) | <code>❯ REPLACE-ME</code> |
-| [index.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/index.js) | <code>❯ REPLACE-ME</code> |
-| [index.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/index.css) | <code>❯ REPLACE-ME</code> |
-| [VideoContainer.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/VideoContainer.css) | <code>❯ REPLACE-ME</code> |
-| [VideoWindow.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/videoWindow/VideoWindow.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.movment</summary>
-
-| File | Summary |
-| --- | --- |
-| [movment.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/movment/movment.css) | <code>❯ REPLACE-ME</code> |
-| [movment.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/movment/movment.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.gestureLable</summary>
-
-| File | Summary |
-| --- | --- |
-| [gestureLable.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/gestureLable/gestureLable.js) | <code>❯ REPLACE-ME</code> |
-| [gestureLable.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/gestureLable/gestureLable.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.loopOfMovements</summary>
-
-| File | Summary |
-| --- | --- |
-| [loopOfMovements.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/loopOfMovements/loopOfMovements.css) | <code>❯ REPLACE-ME</code> |
-| [loopOfMovements.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/loopOfMovements/loopOfMovements.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.gesturesection</summary>
-
-| File | Summary |
-| --- | --- |
-| [gesturesection.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/gesturesection/gesturesection.css) | <code>❯ REPLACE-ME</code> |
-| [ConfirmationModal.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/gesturesection/ConfirmationModal.js) | <code>❯ REPLACE-ME</code> |
-| [gesturesection.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/gesturesection/gesturesection.js) | <code>❯ REPLACE-ME</code> |
-| [ConfirmationModal.css](https://github.com/saarazari5/gesturobot/blob/main/src/components/gesturesection/ConfirmationModal.css) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.components.PrivateRoute</summary>
-
-| File | Summary |
-| --- | --- |
-| [PrivateRoute.js](https://github.com/saarazari5/gesturobot/blob/main/src/components/PrivateRoute/PrivateRoute.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.config</summary>
-
-| File | Summary |
-| --- | --- |
-| [config.json](https://github.com/saarazari5/gesturobot/blob/main/src/config/config.json) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.python</summary>
-
-| File | Summary |
-| --- | --- |
-| [movements.py](https://github.com/saarazari5/gesturobot/blob/main/src/python/movements.py) | <code>❯ REPLACE-ME</code> |
-
-</details>
-
-<details closed><summary>src.databases</summary>
-
-| File | Summary |
-| --- | --- |
-| [newExperimentAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/newExperimentAPI.js) | <code>❯ REPLACE-ME</code> |
-| [movementsAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/movementsAPI.js) | <code>❯ REPLACE-ME</code> |
-| [usersAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/usersAPI.js) | <code>❯ REPLACE-ME</code> |
-| [emotions.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/emotions.js) | <code>❯ REPLACE-ME</code> |
-| [data.json](https://github.com/saarazari5/gesturobot/blob/main/src/databases/data.json) | <code>❯ REPLACE-ME</code> |
-| [gesturesAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/gesturesAPI.js) | <code>❯ REPLACE-ME</code> |
-| [tazNameTypeAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/tazNameTypeAPI.js) | <code>❯ REPLACE-ME</code> |
-| [taggersAPI.js](https://github.com/saarazari5/gesturobot/blob/main/src/databases/taggersAPI.js) | <code>❯ REPLACE-ME</code> |
-
-</details>
 
 ---
 
@@ -505,7 +298,8 @@ Build the project from source:
 To run the project, execute the following command:
 
 ```sh
-❯ node app.js
+Json-server --watch src/databases/data.json
+npm start
 ```
 
 ###  Tests
@@ -518,13 +312,6 @@ Execute the test suite using the following command:
 
 ---
 
-##  Project Roadmap
-
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
 
 ##  Contributing
 
