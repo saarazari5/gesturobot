@@ -5,22 +5,21 @@ import LoopOfMovements from '../loopOfMovements/loopOfMovements';
 import { LanguageContext } from '../../language-management/LanguageContext';
 import { useNavigate } from "react-router-dom";
 import { Tooltip, IconButton } from '@mui/material';
-import ConfirmationModal from './ConfirmationModal'; // Import the modal component
+import ConfirmationModal from './ConfirmationModal';
 import { Translations } from '../../language-management/Translations';
 
-function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) { // Add subjects prop here
+function GestureSection({ emotion, group, subjects, setGestureID, startDate, endDate }) {
   let navigate = useNavigate();
   const language = useContext(LanguageContext);
   const [gestures, setGestures] = useState([]);
   const [hoveredGestureId, setHoveredGestureId] = useState(null);
-  const [showTooltip, setShowTooltip] = useState(null); // State to handle tooltip visibility
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false); // State to control modal visibility
-  const [gestureToDelete, setGestureToDelete] = useState(null); // State to store which gesture to delete
+  const [showTooltip, setShowTooltip] = useState(null);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [gestureToDelete, setGestureToDelete] = useState(null);
 
   useEffect(() => {
     const fetchGestures = async () => {
       const data = await getAllGestures();
-      console.log(data);
       setGestures(data);
     };
 
@@ -28,31 +27,18 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
   }, []);
 
   const filterGesturesByDate = (gestures) => {
-    const now = new Date();
+    if (!startDate || !endDate) return gestures; // If no dates are selected, return all gestures
+
     return gestures.filter(gesture => {
       const createdDate = new Date(gesture.createdDate);
-      switch (dateFilter) {
-        case 'recentWeek':
-          return (now - createdDate) <= (7 * 24 * 60 * 60 * 1000);
-        case 'recentMonth':
-          return (now - createdDate) <= (30 * 24 * 60 * 60 * 1000);
-        case 'recent3Months':
-          return (now - createdDate) <= (3 * 30 * 24 * 60 * 60 * 1000);
-        case 'recent6Months':
-          return (now - createdDate) <= (6 * 30 * 24 * 60 * 60 * 1000);
-        default:
-          return true;
-      }
+      return createdDate >= startDate && createdDate <= endDate; // Check if gesture date falls within range
     });
   };
 
   const filterGesturesByName = (gestures) => {
     return gestures.filter(gesture => {
-      // If no subjects (gesture names) are selected, return all gestures
       if (subjects.length === 0) return true;
-
-      // Check if the gesture name matches any of the selected subjects exactly
-      return subjects.some(subject => gesture.name === subject); // Exact match using '==='
+      return subjects.some(subject => gesture.name === subject);
     });
   };
 
@@ -69,35 +55,34 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
   };
 
   const confirmDeleteGesture = (gestureId) => {
-    setGestureToDelete(gestureId); // Set the gesture ID to delete
-    setShowConfirmationModal(true); // Show the confirmation modal
+    setGestureToDelete(gestureId);
+    setShowConfirmationModal(true);
   };
 
   const handleConfirmDelete = () => {
     if (gestureToDelete) {
-      handleDeleteGesture(gestureToDelete); // Perform the delete operation
-      setGestureToDelete(null); // Reset the gesture to delete
+      handleDeleteGesture(gestureToDelete);
+      setGestureToDelete(null);
     }
-    setShowConfirmationModal(false); // Hide the modal
+    setShowConfirmationModal(false);
   };
 
   const handleCancelDelete = () => {
-    setGestureToDelete(null); // Reset the gesture to delete
-    setShowConfirmationModal(false); // Hide the modal
+    setGestureToDelete(null);
+    setShowConfirmationModal(false);
   };
 
   const filteredGestures = filterGesturesByDate(gestures)
     .filter(gesture => {
-      const temp = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
-      return temp.toLowerCase().includes(emotion.toLowerCase());
+      const gestureLabel = language.language === 'en' ? gesture.realLabel[0] : gesture.realLabel[1];
+      if (emotion.length === 0) return true;
+      return emotion.some(e => gestureLabel.toLowerCase().includes(e.toLowerCase()));
     })
     .filter(gesture => {
-      if (group) {
-        return gesture.group === group; // Ensure group matches
-      }
-      return true;
+      if (group.length === 0) return true;
+      return group.some(g => gesture.group === g);
     })
-    .filter(gesture => filterGesturesByName([gesture]).length > 0); // Filter by gesture name (subject)
+    .filter(gesture => filterGesturesByName([gesture]).length > 0);
 
   return (
     <Translations>
@@ -138,8 +123,6 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
                       {String.fromCharCode(9432)} {/* Info icon */}
                     </div>
                   </Tooltip>
-
-
                 </div>
                 <LoopOfMovements ids={gesture.movements} />
                 <div className="card-title-overlay">
@@ -148,7 +131,7 @@ function GestureSection({ emotion, group, subjects, setGestureID, dateFilter }) 
               </div>
             </div>
           ))}
-          {/* Render the ConfirmationModal */}
+
           {showConfirmationModal && (
             <ConfirmationModal
               message={translate("Are you sure you want to delete this gesture?")}

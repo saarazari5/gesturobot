@@ -31,7 +31,6 @@ function addGestureJson(newGesture) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        //const maxId = data ? Math.max(...data.map((gesture) => gesture.id)) : 0;
         const maxId = data && data.length > 0 ? Math.max(...data.map((gesture) => parseInt(gesture.id, 10))) : 0;
         const nextId = maxId + 1;
 

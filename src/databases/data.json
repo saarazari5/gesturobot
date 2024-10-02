@@ -121,7 +121,6 @@
       "createdDate": "2024-09-23T11:45:42.995Z"
     },
     {
-      "id": "2",
       "name": "user10",
       "realLabel": [
         "Fear",
@@ -140,12 +139,453 @@
       ],
       "labels": [],
       "group": "Group 1",
-      "createdDate": "2024-09-23T11:46:42.294Z"
+      "createdDate": "2024-10-01T15:41:59.835Z",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "user11",
+      "realLabel": [
+        "Sadness",
+        "Sadness"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:42:56.366Z"
+    },
+    {
+      "id": "4",
+      "name": "user8",
+      "realLabel": [
+        "Joy",
+        "Joy"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:45:56.366Z"
+    },
+    {
+      "id": "5",
+      "name": "user11",
+      "realLabel": [
+        "Anger",
+        "Anger"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:48:56.366Z"
+    },
+    {
+      "id": "6",
+      "name": "user8",
+      "realLabel": [
+        "Fear",
+        "Fear"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:51:56.366Z"
+    },
+    {
+      "id": "7",
+      "name": "user11",
+      "realLabel": [
+        "Surprise",
+        "Surprise"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:55:56.366Z"
+    },
+    {
+      "id": "8",
+      "name": "user8",
+      "realLabel": [
+        "Sadness",
+        "Sadness"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T15:58:56.366Z"
+    },
+    {
+      "id": "9",
+      "name": "user11",
+      "realLabel": [
+        "Joy",
+        "Joy"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:01:56.366Z"
+    },
+    {
+      "id": "10",
+      "name": "user8",
+      "realLabel": [
+        "Anger",
+        "Anger"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:04:56.366Z"
+    },
+    {
+      "id": "11",
+      "name": "user11",
+      "realLabel": [
+        "Fear",
+        "Fear"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:07:56.366Z"
+    },
+    {
+      "id": "12",
+      "name": "user8",
+      "realLabel": [
+        "Surprise",
+        "Surprise"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:10:56.366Z"
+    },
+    {
+      "id": "13",
+      "name": "user11",
+      "realLabel": [
+        "Sadness",
+        "Sadness"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:13:56.366Z"
+    },
+    {
+      "id": "14",
+      "name": "user8",
+      "realLabel": [
+        "Joy",
+        "Joy"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:16:56.366Z"
+    },
+    {
+      "id": "15",
+      "name": "user11",
+      "realLabel": [
+        "Anger",
+        "Anger"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:19:56.366Z"
+    },
+    {
+      "id": "16",
+      "name": "user8",
+      "realLabel": [
+        "Fear",
+        "Fear"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:22:56.366Z"
+    },
+    {
+      "id": "17",
+      "name": "user11",
+      "realLabel": [
+        "Surprise",
+        "Surprise"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:25:56.366Z"
+    },
+    {
+      "id": "18",
+      "name": "user8",
+      "realLabel": [
+        "Sadness",
+        "Sadness"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:28:56.366Z"
+    },
+    {
+      "id": "19",
+      "name": "user11",
+      "realLabel": [
+        "Joy",
+        "Joy"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:31:56.366Z"
+    },
+    {
+      "id": "20",
+      "name": "user8",
+      "realLabel": [
+        "Anger",
+        "Anger"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:34:56.366Z"
+    },
+    {
+      "id": "21",
+      "name": "user11",
+      "realLabel": [
+        "Fear",
+        "Fear"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:37:56.366Z"
+    },
+    {
+      "id": "22",
+      "name": "user8",
+      "realLabel": [
+        "Surprise",
+        "Surprise"
+      ],
+      "movements": [
+        "24",
+        "31",
+        "36",
+        "40"
+      ],
+      "creator": [
+        null,
+        null,
+        null
+      ],
+      "labels": [],
+      "group": "Group 3",
+      "createdDate": "2024-10-01T16:40:56.366Z"
     }
   ],
   "newExperiment": [
     {
-      "id": null,
+      "id": 1,
       "personalDetails": {
         "userId": "ce4b2ae3-f80e-4451-a5f7-24c7d9476a17",
         "age": {

@@ -1,6 +1,8 @@
 import "./gestureManagement.css";
 import { Translations } from "../../language-management/Translations";
 import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+
 
 function GestureManagement({setGestureID}) {
   let navigate = useNavigate();
@@ -9,26 +11,26 @@ function GestureManagement({setGestureID}) {
     navigate("/GestureDisplay");
   };
 
-  const moveToMovmentLibrary = () => {
+  const moveToExport = () => {
     setGestureID(0)
-    navigate("/createNewExperiment");
+    navigate("/exportGestures");
   };
   return (
     <Translations>
       {({ translate }) => (
         <div>
-          <div class="container">
-            <div class="card1" onClick={moveToViewGestures}>
-              <div class="face face1">
-                <div class="face face2">
+          <div className="container">
+            <div className="card1" onClick={moveToViewGestures}>
+              <div className="face face1">
+                <div className="face face2">
                   <h2>{translate("Gesture Management")}</h2>
                 </div>
               </div>
             </div>
-            <div class="card1" onClick={moveToMovmentLibrary}>
-              <div class="face face1">
-                <div class="face face2">
-                  <h2>{translate("Experiment Management")}</h2>
+            <div className="card1" onClick={moveToExport}>
+              <div className="face face1">
+                <div className="face face2">
+                  <h2>{translate("Export Gesutres")}</h2>
                 </div>
               </div>
             </div>

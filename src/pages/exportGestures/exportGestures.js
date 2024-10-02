@@ -4,7 +4,7 @@ import { getAllGestures } from "../../databases/gesturesAPI"; // Adjust the impo
 import config from '../../config/config.json'; // Assuming your config is in this path
 import * as XLSX from "xlsx";
 import { Translations } from "../../language-management/Translations"; // Import Translations context
-import "./createNewExperiment.css"; // Ensure the CSS file is correctly linked
+import "./exportGestures.css"; // Ensure the CSS file is correctly linked
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
   return `${day}-${month}-${year}`;
 };
 
-const CreateNewExp = () => {
+const ExportGestures = () => {
   const [gestures, setGestures] = useState([]);
   const [selectedEmotions, setSelectedEmotions] = useState([]);
   const [selectedGroups, setSelectedGroups] = useState([]);
@@ -198,4 +198,4 @@ const CreateNewExp = () => {
   );
 };
 
-export default CreateNewExp;
+export default ExportGestures;

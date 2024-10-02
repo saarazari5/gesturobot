@@ -1,3 +1,7 @@
+.row{
+  margin: 16px;
+}
+
 .card-video {
   position: relative; /* Ensure child elements are positioned relative to this container */
   overflow: hidden;

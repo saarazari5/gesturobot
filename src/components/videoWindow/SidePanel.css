@@ -113,3 +113,13 @@ p {
     display: none;
   }
 }
+
+
+/*Draggable item*/
+.custom-video-controls::-webkit-media-controls-timeline {
+  display: none;
+}
+
+.custom-video-controls {
+  outline: none;
+}
