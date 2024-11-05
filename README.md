@@ -282,7 +282,7 @@ Build the project from source:
 ```sh
 ❯ git clone https://github.com/saarazari5/gesturobot
 ```
-1.1 install nodeJS via https://nodejs.org/en 
+1.1 install nodeJS via [https://nodejs.org/en]
 
 2. Navigate to the project directory:
 ```sh
