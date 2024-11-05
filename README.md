@@ -300,7 +300,15 @@ To run the project, execute the following command:
 
 ```sh
 json-server --watch src/databases/data.json --port 3000
-PORT=3001 npm start or in windows: set PORT=3001 && npm start
+```
+do not close the terminal after running this commanad, open a new terminal and run
+
+```
+PORT=3001 npm start
+```
+or in windows:
+```
+ set PORT=3001 && npm start
 ```
 
 ###  Tests
