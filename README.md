@@ -296,12 +296,14 @@ Build the project from source:
 
 ###  Usage
 
-To run the project, execute the following command:
+To run the project, execute the following command inside the gesturobot folder:
 
 ```sh
-json-server --watch src/databases/data.json --port 3000
+json-server --watch src/databases/data.json --port 3005
 ```
-do not close the terminal after running this commanad, open a new terminal and run
+1) do not close the terminal after running this commanad, open a new terminal and run
+2) the reason i chose this port is because 3000 will not work on some devices.
+3) when the project will have a domain you will also need to define a domain for the json server so differents clients will be able to access it.
 
 ```
 PORT=3001 npm start
@@ -368,7 +370,7 @@ Contributions are welcome! Here are several ways you can contribute:
 ---
 
 ## Important
-base url is currently localhost:3000 in order to change that please change params.js parameter under the namse BASE_URL
+base url is currently localhost:3005 in order to change that please change params.js parameter under the namse BASE_URL
 
 ##  License
 
